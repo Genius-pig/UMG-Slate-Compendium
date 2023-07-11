@@ -2,11 +2,11 @@
 
 # UMG-Slate 纲要
 
-Localized via [GitLocalize](https://gitlocalize.com/) (Please read the [FAQ](FAQ.md) page about becoming a translator!)
+通过[GitLocalize](https://gitlocalize.com/)本地化（请阅读有关成为翻译者的[常见问题解答](FAQ.md)页面！）
 
 <a name="document-version"></a>
 
-###### Document Version
+###### 文件版本
 
 <!---Major.Minor.Patch--->
 
@@ -57,285 +57,284 @@ HTML Notes:
 
 <a name="repo-page-links"></a>
 
-## Repository Page Links
+## 存储库页面链接
 
-> - [FAQ Page](FAQ.md)
-> - [External Links Page](EXTERNAL_LINKS.md)
+> - [常见问题页面](FAQ.md)
+> - [外部链接页面](EXTERNAL_LINKS.md)
 
 <a name="table-of-contents"></a>
 
-## Table of Contents
+## 目录
 
-> 1.0 [Introduction](#introduction)
->  2.0 [Performance &amp; Design Considerations](#performance--design-considerations)
->        2.1 [CPU Considerations](#cpu-considerations)
->              2.1.1 [Performance regarding Animations](#perf-animations)
->              2.1.2 [Performance regarding Widget Components](#perf-widget-components)
->        2.2 [GPU Considerations](#gpu-considerations)
->  3.0 [Slate &amp; UMG in Unreal](#slate--umg-in-unreal)
->  4.0 [Slate](#slate)
->        4.1 [Slate Widget Casting &amp; Storing](#slate-widget-casting--storing)
->        4.2 [Slate Units &amp; DPI Scaling](#slate-units--dpi-scaling)
->        4.3 [Slate Users](#slate-users)
->        4.4 [Widget Layout](#widget-layout)
->        4.5 [On Paint](#on-paint)
->        4.6 [Widget Ticking](#widget-ticking)
->        4.7 [Widget Hierarchy](#widget-hierarchy)
->        4.8 [Invalidation](#invalidation)
->        4.9 [Slate Attributes and Events](#slate-attributes-and-events)
->        4.10 [Slate Widget Examples(Slate Test Suite/Starship)](#slate-widget-examples)
->        4.11 [Helpful Console Commands for Slate](#helpful-console-commands-for-slate)
->  5.0 [UMG (Unreal Motion Graphics)](#umg)
->        5.1 [User Widget Hierarchy](#user-widget-hierarchy)
->        5.2 [User Widget Animation](#user-widget-animation)
->        5.3 [User Widget Events](#user-widget-events)
->  6.0 [Common Widgets](#common-widgets)
->  7.0 [Common Widget Functionality](#common-widget-functionality)
->  8.0 [UMG in relation to Levels/Worlds](#umg-in-relation-to-levels-worlds)
->        8.1 [HUD Actors](#hud-actors)
->              8.1.1 [HUD Drawing](#hud-drawing)
->              8.1.2 [HUD HitBoxes](#hud-hitboxes)
->        8.2 [Widget Components](#widget-components)
->              8.2.1 [Widget Interaction Components](#widget-interaction-components)
->              8.2.2 [How Widget Components are Rendered](#widget-components-rendering)
->  9.0 [Development &amp; Debug Tools for UMG/Slate](#dev-debug-tools)
->        9.1 [Debug Console Commands](#debug-console-commands)
->        9.2 [Widget Reflector](#widget-reflector)
->        9.3 [Slate Console Debugger](#slate-console-debugger)
->  10.0 [Input Framework of Unreal Engine(relating to UMG/Slate)](#input-framework-of-unreal-engine)
->        10.1 [Input Flow of Unreal Engine](#input-flow-of-unreal-engine)
->        10.2 [Input Components](#input-components)
->        10.3 [Input Event Types](#input-event-types)
->        10.4 [Input Modes](#input-modes)
->  11.0 [Unreal's Focusing System](#unreals-focusing-system)
->        11.1 [Navigation Grid Explanation](#navigation-grid-explanation)
->        11.2 [Navigation Genesis](#navigation-genesis)
->  12.0 [Split Screen](#split-screen)
->        12.1 [Game Layer Manager](#game-layer-manager)
->        12.2 [Viewport Layout](#viewport-layout)
->        12.3 [Local Players](#local-players)
->              12.3.1 [Gamepad ID(Controller ID)](#gamepad-id)
->  13.0 [Important File Names](#important-file-names)
+> 1.0[简介](#introduction)
+> 2.0[性能和设计考虑](#performance--design-considerations)
+> 2.1 [CPU注意事项](#cpu-considerations)
+> 2.1.1[动画性能](#perf-animations)
+> 2.1.2 [Widget 组件的性能](#perf-widget-components)
+> 2.2 [GPU注意事项](#gpu-considerations)
+> 3.0[虚幻中的 Slate 和 UMG](#slate--umg-in-unreal)
+>  4.0[板岩](#slate)
+> 4.1 [Slate Widget 投射和存储](#slate-widget-casting--storing)
+> 4.2 [Slate 单位和 DPI 缩放](#slate-units--dpi-scaling)
+> 4.3[石板用户](#slate-users)
+> 4.4[小部件布局](#widget-layout)
+> 4.5[关于油漆](#on-paint)
+> 4.6[小部件勾选](#widget-ticking)
+> 4.7[小部件层次结构](#widget-hierarchy)
+> 4.8[无效](#invalidation)
+> 4.9[板岩属性和事件](#slate-attributes-and-events)
+> 4.10 [Slate 小部件示例（Slate 测试套件/Starship）](#slate-widget-examples)
+>  4.11 [Slate 有用的控制台命令](#helpful-console-commands-for-slate)
+> 5.0 [UMG（虚幻动态图形）](#umg)
+>  5.1[用户小部件层次结构](#user-widget-hierarchy)
+> 5.2[用户部件动画](#user-widget-animation)
+> 5.3[用户小部件事件](#user-widget-events)
+> 6.0[常用小部件](#common-widgets)
+> 7.0[常用小部件功能](#common-widget-functionality)
+> 8.0 [UMG 与关卡/世界的关系](#umg-in-relation-to-levels-worlds)
+> 8.1 [HUD 参与者](#hud-actors)
+> 8.1.1 [HUD 绘图](#hud-drawing)
+> 8.1.2 [HUD 碰撞盒](#hud-hitboxes)
+> 8.2[小部件组件](#widget-components)
+> 8.2.1 [Widget交互组件](#widget-interaction-components)
+> 8.2.2 [Widget组件如何渲染](#widget-components-rendering)
+> 9.0 [UMG/Slate 开发和调试工具](#dev-debug-tools)
+> 9.1[调试控制台命令](#debug-console-commands)
+> 9.2[部件反射器](#widget-reflector)
+> 9.3 [Slate 控制台调试器](#slate-console-debugger)
+> 10.0 [Unreal Engine输入框架（涉及UMG/Slate）](#input-framework-of-unreal-engine)
+>  10. [虚幻引擎的输入流程](#input-flow-of-unreal-engine)
+> 10.2[输入组件](#input-components)
+> 10.3[输入事件类型](#input-event-types)
+> 10.4[输入模式](#input-modes)
+> 11.0 [Unreal的聚焦系统](#unreals-focusing-system)
+> 11.1[导航网格说明](#navigation-grid-explanation)
+> 11.2[导航起源](#navigation-genesis)
+> 12.0[分屏](#split-screen)
+> 12.1[游戏层管理器](#game-layer-manager)
+> 12.2[视口布局](#viewport-layout)
+> 12.3[本地玩家](#local-players)
+> 12.3.1[手柄ID（控制器ID）](#gamepad-id)
+>  13. [重要文件名](#important-file-names)
 
 <a name="introduction"></a>
 
-## 1.0 Introduction
+## 1.0 简介
 
-This compendium is intended to teach the basics of UMG &amp; Slate and to provide a base understanding of how to work with Unreal Engine’s UI framework. PLEASE let me know if there is anything about this document that can be improved upon because this is meant to help the community!
+本纲要旨在教授 UMG 和 Slate 的基础知识，并提供对如何使用虚幻引擎的 UI 框架的基本了解。如果本文档有任何需要改进的地方，请告诉我，因为这旨在帮助社区！
 
-Please refer to the [FAQ Page](FAQ.md)(also linked at the top of the document) if you have further questions regarding the document(or anything relating to the document).
+如果您对本文档（或与本文档相关的任何内容）有其他疑问，请参阅常见问题[解答页面](FAQ.md)（也链接在文档顶部）。
 
-> An important note about skill level in programming and how its used in this document: usually when somebody refers to a concept as *“high level”* they mean its very complicated and requires a high skill level or a lot of experience, **BUT** in programming its flipped; where a *“high level”* concept is actually extremely easy to use and is a simple concept with little to no experience and the more *“low level”* it gets, the more complicated the concept becomes and requires a larger amount of experience. For example; **Blueprint** is a *“high level”* coding language, **C++** is a *“low level”* coding language.
+> 关于编程技能水平及其在本文档中的使用方式的重要说明：通常，当有人将一个概念称为*“高水平”*时，他们的意思是它非常复杂，需要高技能水平或大量经验，**但**在编程中，它翻转了; *“高级”*概念实际上非常容易使用，并且是一个简单的概念，几乎没有经验，而*“低级”*概念越多，概念就变得越复杂，需要更多的经验。例如; **Blueprint**是一种*“高级”*编码语言， **C++**是一种*“低级”*编码语言。
 >
-> GeeksForGeeks has a great and simple article explaining the difference:
->  *<u>https://www.geeksforgeeks.org/difference-between-high-level-and-low-level-languages/ </u>*
+> GeeksForGeeks 有一篇很棒而简单的文章解释了其中的区别：
+>  *<u>https://www.geeksforgeeks.org/difference- Between-high-level-and-low-level-languages/</u>*
 
-> An important note about the two types of Unreal Engine:
+> 关于两种类型的虚幻引擎的重要说明：
 >
-> - **Launcher Version**: The version of the engine that you would download from the Epic Games Launcher; the engine is exposed to view but is not able to be modified, and is not able to submit code changes to Epic via GitHub.
-> - **Source Code Version**: The version of the engine that you would clone/download from GitHub; this gives full modifiable access to Unreal Engine as well as being able to submit code changes to Epic via GitHub Pull Request's for them to integrate into Unreal Engine’s future releases.
+> - **启动器版本**：您将从 Epic Games 启动器下载的引擎版本；该引擎公开可见，但无法修改，并且无法通过 GitHub 向 Epic 提交代码更改。
+> - **源代码版本**：您将从 GitHub 克隆/下载的引擎版本；这提供了对虚幻引擎的完全可修改的访问，并能够通过 GitHub Pull 请求向 Epic 提交代码更改，以便将它们集成到虚幻引擎的未来版本中。
 
-*All pictures of the editor in this document are from the launcher version of the engine.*
+*本文档中编辑器的所有图片均来自引擎的启动器版本。*
 
-What this compendium covers:
+本纲要涵盖的内容：
 
-- **Performance &amp; Design considerations**
-- **Slate Framework**
-- **UMG Framework**
-- **The input framework of Unreal Engine(relating to UMG/Slate)**
-- **How the built in focusing system works**
-- **How split screen generally works**
+- **性能和设计考虑因素**
+- **板岩框架**
+- **UMG框架**
+- **Unreal Engine的输入框架（涉及UMG/Slate）**
+- **内置对焦系统的工作原理**
+- **分屏通常如何工作**
 
-It is **NOT** intended to teach beginners how to use Unreal Engine in general, just this specific aspect of the engine which encompasses a lot of the engine.
+它**并不是**为了教初学者如何一般性地使用虚幻引擎，而是为了教初学者如何使用虚幻引擎，只是包含了引擎的许多特定方面。
 
-This compendium requires you to have a basic understanding of these areas of Unreal Engine:
+本纲要要求您对虚幻引擎的这些领域有基本的了解：
 
-- **How to use Blueprint and Unreal’s C++**
-- **Unreal Engine’s garbage collection framework**
-- **Unreal Engine’s gameplay framework**
+- **如何使用Blueprint和Unreal的C++**
+- **虚幻引擎的垃圾收集框架**
+- **虚幻引擎的游戏框架**
 
-This compendium will contain information that is taken from official documentation but is intended to shed light on what some of the official documentation means BUT it is not a redefinition of something that is already explained.
+本纲要将包含取自官方文档的信息，但旨在阐明一些官方文档的含义，但它并不是对已经解释过的内容的重新定义。
 
-*At the bottom of the document is a list of helpful links and files for you to refer back to
- (you can reach them easily using the [External Links Page](EXTERNAL_LINKS.md) link at the top of the file).*
+*文档底部是有用的链接和文件列表，供您参考
+（您可以使用文件顶部的[外部链接页面](EXTERNAL_LINKS.md)链接轻松访问它们）。*
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="performance--design-considerations"></a>
 
-## 2.0 Performance &amp; Design Considerations
+## 2.0 性能和设计考虑
 
-[Epic's Official Documentation on Performance and Optimization Guidelines for Slate &amp; UMG](https://docs.unrealengine.com/latest/INT/optimization-guidelines-for-umg-in-unreal-engine/)
+[Epic 关于 Slate 和 UMG 性能和优化指南的官方文档](https://docs.unrealengine.com/latest/INT/optimization-guidelines-for-umg-in-unreal-engine/)
 
-**UMG** &amp; **Slate** are extremely performant frameworks for both the rendering (GPU) and computation (CPU) aspects. But both aspects should be considered when building out you're UI to have the best experience for the User.
+**UMG**和**Slate**是渲染 (GPU) 和计算 (CPU) 方面都具有极高性能的框架。但是在构建 UI 时应该考虑这两方面，以便为用户提供最佳体验。
 
-> This is not a "how to improve performance" guide, these are considerations to be aware of when building your application with UMG/Slate and possible avenues to help improve performance.
+> 这不是“如何提高性能”指南，这些是使用 UMG/Slate 构建应用程序时需要注意的注意事项以及帮助提高性能的可能途径。
 
-UI Complexity is usually in relation to the number of active and visible widgets (so offscreen widgets don’t tick and should not run functionality if not on screen). A common technical design with UI is to be reactive to gameplay code(it is also suggested if you're game isn't UI dependent) but not to drive the gameplay code so it is performant and reusable, normally its fine for the UI to be the entry point for executing the gameplay code but then it should listen to how the gameplay code responded and to react to it.
+UI 复杂性通常与活动和可见小部件的数量有关（因此屏幕外小部件不会勾选，如果不在屏幕上，则不应运行功能）。 UI 的常见技术设计是对游戏代码做出反应（如果您的游戏不依赖于 UI，也建议这样做），但不驱动游戏代码，因此它是高性能且可重用的，通常情况下 UI 可以是执行游戏代码的入口点，但它应该监听游戏代码如何响应并做出反应。
 
 <a name="cpu-considerations"></a>
 
-### 2.1 CPU Considerations
+### 2.1 CPU注意事项
 
-Slate/UMG use the concept of [Invalidation](#invalidation) and caching rather than constantly polling the data. The reason for this is because sometimes polling is either not performant or functionally incorrect(for example when using multi-threaded code). Typically performant UI in Unreal is intended to be **event based**. UMG has **Property Binds** but they should not be used because they will be updated every frame which is significantly more taxing on the CPU than using an event based framework.
+Slate/UMG 使用[失效](#invalidation)和缓存的概念，而不是不断轮询数据。原因是有时轮询要么性能不佳，要么功能不正确（例如，当使用多线程代码时）。通常，Unreal 中的高性能 UI 旨在**基于事件**。 UMG 具有**属性绑定**，但不应使用它们，因为它们将在每帧更新，这比使用基于事件的框架对 CPU 的负担要大得多。
 
-**CPU Technical Design Scenario**
+**CPU技术设计场景**
 :-:
-In an RTS you need to have a UI marker for seeing where to place a squad of soldiers in the world,<br>the player selects a valid spot in the world for where to place the UI marker and then the troops will move to it.
+在 RTS 中，你需要有一个 UI 标记来查看在世界上放置一队士兵的位置，<br>玩家在世界中选择一个有效的位置来放置 UI 标记，然后部队将移动到该位置。
 
-**Good Example** | **Bad Example**
+**好例子** | **坏榜样**
 :-: | :-:
-A player manager object creates the UI marker widget and manages where to move the troops.<br>The world position that is chosen by the player is fed into the UI marker’s widget(from the player manager object) and the widget itself handles positioning itself in screen space. | The player picks a world position and feeds that directly to the UI marker, the UI marker then directly tells the troops where to move to and handles their movement.
+玩家管理器对象创建 UI 标记小部件并管理将部队移动到哪里。<br>玩家选择的世界位置被馈送到 UI 标记的小部件（来自玩家管理器对象），并且小部件本身负责在屏幕空间中定位自身。 | 玩家选择一个世界位置并将其直接提供给 UI 标记，然后 UI 标记直接告诉部队移动到哪里并处理他们的移动。
 
 <a name="perf-animations"></a>
 
-#### 2.1.1 Performance regarding Animations
+#### 2.1.1 动画性能
 
-Invalidating the desired size of multiple widgets by animating a large amount of widgets can have downstream effects of spending a lot of CPU time re-calculating the [Widget Layout](#widget-layout).
+通过对大量小部件进行动画处理来使多个小部件的所需大小无效可能会产生下游影响，即花费大量 CPU 时间重新计算[小部件布局](#widget-layout)。
 
-- In previous versions of Unreal Engine when playing an animation with a UMG widget they would be separate from Sequencer(after Sequencers release it was quickly updated to use Sequencer as the underlying animation system).
-- In previous versions of Unreal Engine post Sequencer update, the UMG widget would be set to volatile when animating.
-- In current versions of Unreal Engine UMG widgets do not switch to volatile when animating.
+- 在虚幻引擎的早期版本中，当使用 UMG 小部件播放动画时，它们将与 Sequencer 分开（在 Sequencers 发布后，它很快更新为使用 Sequencer 作为底层动画系统）。
+- 在 Sequencer 更新后的虚幻引擎早期版本中，UMG 小部件在动画时将被设置为易失性。
+- 在虚幻引擎 UMG 的当前版本中，动画处理时小部件不会切换到易失性。
 
-Why should I use volatile?
+为什么我应该使用易失性？
 
-> Honestly its not the answer everytime, what happens when you animate a UMG widget or change its visual state it will invalidate the widget for this frame and re-cache its new state until it is invalided again later on. Setting it to volatile will not invalidate or cache the widget, it goes through a separate code path for volatile widgets which is a case-by-case basis of improving performance. Some avenues to use volatile for is by turning it on for a period of time and then turning it off when you no longer need it to be volatile.
+> 老实说，这并不是每次的答案，当您为 UMG 小部件设置动画或更改其视觉状态时会发生什么，它将使该帧的小部件无效并重新缓存其新状态，直到稍后再次无效。将其设置为易失性不会使小部件失效或缓存，它会为易失性小部件通过单独的代码路径，这是提高性能的具体情况的基础。使用易失性的一些途径是将其打开一段时间，然后在不再需要它处于易失性时将其关闭。
 
-- Some reminders about using volatile:
-    - It does not cache the widget state, it is polled every frame it is on screen.
-    - It tends to affect the widget hierarchy so be aware of downstream effects to parent widgets AND child widgets as well.
+- 关于使用 volatile 的一些提醒：
+    - 它不缓存小部件状态，它在屏幕上的每一帧都会被轮询。
+    - 它往往会影响小部件层次结构，因此请注意对父小部件和子小部件的下游影响。
 
 <a name="perf-widget-components"></a>
 
-#### 2.1.2 Performance regarding Widget Components
+#### 2.1.2 Widget 组件的性能
 
-Widget Components are great for prototyping and for in world VR/AR UI. They are not great when trying to have the UI be within the world while still respecting screen size, logic controlling layout, etc.
- Typically its good to use widget component if you have available texture budget because each widget component is really a static mesh plane with a render target texture applied to its material slot zero.
- Each widget component will create the UMG widget object and then render it out to a texture to show it in the world.
+Widget 组件非常适合原型设计和现实 VR/AR UI。当试图让 UI 处于现实世界中，同时仍然尊重屏幕尺寸、逻辑控制布局等时，它们并不是很好。
+通常，如果您有可用的纹理预算，则最好使用小部件组件，因为每个小部件组件实际上都是一个静态网格平面，渲染目标纹理应用于其材质槽零。
+每个小部件组件将创建 UMG 小部件对象，然后将其渲染为纹理以将其显示在世界中。
 
-It is recommended to not use Widget Components heavily(excluding VR/AR) due to texture memory use. An alternative(which is more complicated) is to create a custom Slate Widget to handle rendering multiple "Widgets" at once you can do this using `SMeshWidget` which is 1 draw call per widget but it requires competent technical art skills to be able to draw multiple widget elements as 1 texture.
+由于纹理内存的使用，建议不要大量使用 Widget 组件（不包括 VR/AR）。另一种选择（更复杂）是创建一个自定义 Slate Widget 来处理渲染多个“Widget”，您可以使用`SMeshWidget`来完成此操作，每个小部件 1 次绘制调用，但它需要熟练的技术艺术技能才能绘制多个小部件元素作为 1 个纹理。
 
-What is a `SMeshWidget`?
- It is a widget that has rendering capability of 1 draw call, it was used in Paragon to draw each status bar and icon on screen. It is extremely powerful but also requires a good understanding of how to draw these elements in code which is why you don't see it oftenly used, this is intended to not be exclusive to just textures or particles but can be used with 3D models/meshes or anything you want to render.
+什么是`SMeshWidget` ？
+它是一个具有 1 个绘制调用渲染能力的小部件，在 Paragon 中使用它来绘制屏幕上的每个状态栏和图标。它非常强大，但也需要很好地理解如何在代码中绘制这些元素，这就是为什么你看不到它经常使用的原因，这不仅仅限于纹理或粒子，而是可以与 3D 模型/网格或任何你想要渲染的东西。
 
-Nick Darnell actually put together an example of using `SMeshWidget` to draw particles in UE4:
+Nick Darnell 实际上整理了一个在 UE4 中使用`SMeshWidget`绘制粒子的示例：
 
-- [Forum Link](https://forums.unrealengine.com/t/smeshwidget-hardware-instanced-slate-meshes-thread/58020/5)
-- [Dan Treble was kind enough to turn the example project into a Github Repository](https://github.com/dantreble/MeshWidgetExample)
+- [论坛链接](https://forums.unrealengine.com/t/smeshwidget-hardware-instanced-slate-meshes-thread/58020/5)
+- [Dan Treble 非常友善地将示例项目变成了 Github 存储库](https://github.com/dantreble/MeshWidgetExample)
 
-Carey Hickling gave an Unreal Fest talk "Optimizing and Building UI for AAA Games" and talks about the Pros/Cons of `SMeshWidget`: [YouTube Link](https://youtu.be/OyY3OYbNK7s)
+Carey Hickling 发表了 Unreal Fest 演讲“为 AAA 游戏优化和构建 UI”，并讨论了`SMeshWidget`的优点/缺点： [YouTube 链接](https://youtu.be/OyY3OYbNK7s)
 
-For another possible avenue, recommend taking a look at Epic's Lyra example project and at the indicator system, related files in that project:
+对于另一个可能的途径，建议查看 Epic 的 Lyra 示例项目和指标系统以及该项目中的相关文件：
 
-- `SActorCanvas`.h/.cpp
-- `IndicatorLayer`.h/.cpp
-- `IActorIndicatorWidget`.h/.cpp
-- `IndicatorDescription`.h/.cpp
-- `IndicatorLibrary`.h./cpp
-- `LyraIndicatorManagerComponent`.h/.cpp
+- `SActorCanvas` /.cpp
+- `IndicatorLayer` .h/.cpp
+- `IActorIndicatorWidget` /.cpp
+- `IndicatorDescription` .h/.cpp
+- `IndicatorLibrary` .h./cpp
+- `LyraIndicatorManagerComponent` .h/.cpp
 
 <a name="gpu-considerations"></a>
 
-### 2.2 GPU Considerations
+### 2.2 GPU注意事项
 
-Most of the general GPU considerations you would have to worry about are the same when working in 3D space, such as:
+在 3D 空间中工作时，您需要担心的大多数 GPU 一般注意事项都是相同的，例如：
 
-- **Texture memory sizes**
-- **Computational complexity of material shader**
-- **Draw calls**
+- **纹理内存大小**
+- **材质着色器的计算复杂度**
+- **绘制调用**
 
-If your framework is built out properly, GPU optimization wouldn’t be an issue when it comes to Slate/UMG due to it using some of Unreal’s 3D rendering features to unify some of the work.
+如果您的框架构建正确，那么当涉及到 Slate/UMG 时，GPU 优化不会成为问题，因为它使用了一些 Unreal 的 3D 渲染功能来统一一些工作。
 
-An important gotcha with Unreal Engine is that it does not have a robust method of swapping between different textures depending on platform type.
- For example; switching from Mobile to PC, you will have to build those systems out yourself so that unused textures are not cooked, loaded,
- referenced, or even stored on the hard disk on the platform that you do not want them to be on.
+虚幻引擎的一个重要问题是它没有根据平台类型在不同纹理之间进行交换的可靠方法。
+例如;从移动设备切换到 PC，您将必须自己构建这些系统，以便未使用的纹理不会被烘焙、加载、
+引用，甚至存储在您不希望它们所在的平台上的硬盘上。
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="slate--umg-in-unreal"></a>
 
-## 3.0 Slate &amp; UMG in Unreal
+## 3.0 虚幻中的 Slate 和 UMG
 
-Unreal Engine uses **Slate**; its custom **UI Programming Framework**. It is used for both game and non-game applications using Slate Widgets.
- Some examples include:
+虚幻引擎使用**Slate** ；其定制的**UI 编程框架**。它可用于使用 Slate Widget 的游戏和非游戏应用程序。
+一些例子包括：
 
-- The Unreal Editor is built entirely using Slate.
-- (Credit to Nick Darnell for explaining this) The Epic Games Launcher uses Slate as a frame and displays a chromium app.
-- The Halo Master Chief Collection uses UMG/Slate(TBD) for its UI(this is based off public announcements and not insider knowledge).
+- 虚幻编辑器完全使用 Slate 构建。
+- （感谢 Nick Darnell 的解释）Epic Games Launcher 使用 Slate 作为框架并显示 Chromium 应用程序。
+- Halo Master Chief Collection 使用 UMG/Slate（TBD）作为其 UI（这是基于公开公告而不是内部知识）。
 
-**Slate** is entirely used only within C++ using declarative syntax and is **<u>NOT</u>** derived from the `UObject` hierarchy.
+**Slate**完全仅在使用声明性语法的 C++ 中使用，并且**<u>不是</u>**从`UObject`层次结构派生的。
 
-Pros of Slate:
+板岩的优点：
 
-- **Performance gains from entirely being in C++**
-- **Usable for generic application usage** (an example of this is that the Epic Game’s Launcher and the Unreal Editor itself is entirely built with Slate)
-- **Used to extend the editor** (this is due to the Unreal Editor being built from Slate in the first place)
-- **Not used with Unreal’s Garbage Collection System**
+- **完全使用 C++ 可以提​​高性能**
+- **可用于通用应用程序**（例如 Epic Game 的启动器和虚幻编辑器本身完全是用 Slate 构建的）
+- **用于扩展编辑器**（这是因为虚幻编辑器首先是从 Slate 构建的）
+- **不与虚幻的垃圾收集系统一起使用**
 
-Cons of Slate:
+板岩的缺点：
 
-- **Entirely within C++** (there’s no visual designer, this is what the UMG Designer is for really)
-- **Not able to have sequencer animations** (everything is hard coded so longer iteration times)
-- **Requires thorough knowledge to be able to use it for full production**
-- **Not usable with Blueprints**
-- **Not used with Unreal’s Reflection System, meaning it doesn't work with Unreal's Garbage Collection System**
+- **完全使用 C++** （没有视觉设计器，这才是 UMG Designer 的真正用途）
+- **无法拥有音序器动画**（一切都是硬编码的，因此迭代时间更长）
+- **需要全面的知识才能将其用于全面生产**
+- **不能与蓝图一起使用**
+- **不与虚幻的反射系统一起使用，这意味着它不能与虚幻的垃圾收集系统一起使用**
 
-![Starship Gallery Example](images/starship_gallery.png)
- *Slate Test Suite (In UE5 its called Starship Gallery)*
+![星舰画廊示例](images/starship_gallery.png)<br> *Slate 测试套件（在 UE5 中称为 Starship Gallery）*
 
-**UMG** (**Unreal Motion Graphics**) is derived from the `UObject` hierarchy but aren't `Actor`’s and is used to create &amp; display Slate Widgets (basically a Unreal Engine friendly wrapper for Slate to work with Blueprint).
+**UMG** ( **Unreal Motion Graphics** ) 源自`UObject`层次结构，但不是`Actor`的层次结构，用于创建和显示 Slate Widget（基本上是 Slate 与蓝图配合使用的虚幻引擎友好包装器）。
 
-Pros of UMG:
+UMG的优点：
 
-- **Can be used with Blueprints and C++**
-- **Allows for artist driven animation’s**
-- **Has a visual designer**
-- **Used with Unreal's Reflection System, meaning it works with Unreal’s Garbage Collection System**
-- **Able to extend the editor** (Unreal Engine 4.23+ using Editor Utility Widgets)
+- **可与蓝图和 C++ 一起使用**
+- **允许艺术家驱动的动画**
+- **拥有视觉设计师**
+- **与虚幻的反射系统一起使用，意味着它与虚幻的垃圾收集系统一起使用**
+- **能够扩展编辑器**（虚幻引擎 4.23+ 使用编辑器实用工具小部件）
 
-Cons of UMG:
+UMG的缺点：
 
-- **Restricted to Unreal Engine** (not usable outside the engine for regular OS applications)
-- **Ease of use also can cause developers to cause technical debt and for the UI to get messy**
+- **仅限于虚幻引擎**（无法在常规操作系统应用程序的引擎之外使用）
+- **易用性还会导致开发人员承担技术债务并导致 UI 变得混乱**
 
-![UMG Designer Example](images/umg_designer.png)
+![UMG 设计器示例](images/umg_designer.png)
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="slate"></a>
 
-## 4.0 Slate
+## 4.0 板岩
 
-The Slate Framework has two core parts:
+Slate 框架有两个核心部分：
 
-- **Slate Renderer**
-    - Slate Widgets are displayed using its own renderer called the Slate Renderer, it handles rendering UI elements in front of the game’s viewport as well as combining with Unreal’s world rendering pipeline to display UI elements.
-- **Slate Application**
-    - The Slate Application is an object that manages all the CPU related tasks of Slate Widgets such as their viewport positions, user focus navigation, widget hierarchy placement and tracking, receiving input and routing that input to either Slate Widgets or to the rest of the game engine (yes this is where the raw inputs are received before UI element’s get them) and registering (creating)/tracking the Slate Users.
+- **板岩渲染器**
+    - Slate Widgets 使用自己的渲染器（称为 Slate Renderer）显示，它处理游戏视口前面的 UI 元素渲染，并与 Unreal 的世界渲染管道结合来显示 UI 元素。
+- **板岩应用**
+    - Slate 应用程序是一个管理 Slate Widgets 的所有 CPU 相关任务的对象，例如它们的视口位置、用户焦点导航、小部件层次结构放置和跟踪、接收输入并将输入路由到 Slate Widgets 或游戏引擎的其余部分（是的，这是在 UI 元素获取原始输入之前接收原始输入的地方）并注册（创建）/跟踪 Slate 用户。
 
 <a name="slate-widget-casting--storing"></a>
 
-### 4.1 Slate Widget Casting &amp; Storing
+### 4.1 Slate Widget 投射和存储
 
-Since **Slate Widgets** are **<u>NOT</u>** derived from `UObject`, that means you can’t use Unreal’s object casting system to get specific Slate types as well as not being able to take advantage of `UObject`'s garbage collection. Instead Slate uses Unreal's Shared Pointers(also known as Smart Pointers) Framework for its memory management of Widgets.
+由于**Slate Widgets****<u>不是</u>**从`UObject`派生的，这意味着您无法使用 Unreal 的对象转换系统来获取特定的 Slate 类型，也无法利用`UObject`的垃圾回收。相反，Slate 使用 Unreal 的共享指针（也称为智能指针）框架来管理 Widget 的内存。
 
-There are three shared pointer template types:
+共有三种共享指针模板类型：
 
-- `TSharedRef`: Non-nullable, reference counted, non-intrusive authoritative smart pointer.
-- `TSharedPtr`: Reference counted, non-intrusive authoritative smart pointer.
-- `TWeakPtr`: Reference counted, non-intrusive weak pointer reference.
+- `TSharedRef` ：不可空、引用计数、非侵入式权威智能指针。
+- `TSharedPtr` ：引用计数、非侵入式权威智能指针。
+- `TWeakPtr` ：引用计数、非侵入式弱指针引用。
 
-> An important note is that when all reference counts are gone for a shared reference; the object will be deleted and a limitation is that it will only call the default destructor so custom destructors with parameters are not usable.
+> 一个重要的注意事项是，当共享引用的所有引用计数都消失时；该对象将被删除，并且一个限制是它只会调用默认析构函数，因此带有参数的自定义析构函数不可用。
 
-Using shared pointers allows you to assume ownership of these slate widgets without having to call delete on them.
- *I recommend taking a look at [Epic's Documentation on Smart Pointers](https://docs.unrealengine.com/5.0/en-US/smart-pointers-in-unreal-engine/)*
+使用共享指针允许您取得这些 slate 小部件的所有权，而不必对它们调用删除。
+*我建议您查看[Epic 的智能指针文档](https://docs.unrealengine.com/5.0/en-US/smart-pointers-in-unreal-engine/)*
 
-> An important note that when casting Slate Widget's it is totally fine to use standard casting such as `static_cast` and `const_cast`, but I do recommend using Unreal's templated cast versions listed below to save time.
+> 需要注意的是，在转换 Slate Widget 时，使用`static_cast`和`const_cast`等标准转换是完全可以的，但我建议使用下面列出的 Unreal 模板化转换版本来节省时间。
 
-There are also helper classes and functions to make life easier regarding using Unreal's Shared Pointers framework and this includes working with Slate.
+还有一些辅助类和函数可以让使用 Unreal 的共享指针框架变得更加轻松，其中包括使用 Slate。
 
-- `MakeShareable`: Used to initialize shared pointers from C++ pointers.
+- `MakeShareable` ：用于从 C++ 指针初始化共享指针。
     ```c++
     TSharedPtr<FMyCustomCalculator> calculator = MakeShareable(new FMyCustomCalculator());
     ```
-- `TSharedFromThis`: Used with custom C++ classes as something you inherit from to allow it to be used with Unreal's Shared Pointers framework.
+- `TSharedFromThis` ：与自定义 C++ 类一起使用，作为您继承的对象，以允许它与 Unreal 的共享指针框架一起使用。
     ```c++
     /** Special class to handle custom calculations */
     class FMyCustomCalculator : public TSharedFromThis<FMyCustomCalculator>
@@ -346,7 +345,7 @@ There are also helper classes and functions to make life easier regarding using 
       // ...
     };
     ```
-- `StaticCastSharedRef`: Static cast utility function, typically used to downcast to a derived type when getting a smart reference.
+- `StaticCastSharedRef` ：静态转换实用函数，通常用于在获取智能引用时向下转换为派生类型。
     ```c++
     void MyFunction(FMySubCalculator& CalculatorItem)
     {
@@ -354,7 +353,7 @@ There are also helper classes and functions to make life easier regarding using 
       // ...
     }
     ```
-- `ConstCastSharedRef`: Converts a `const` reference to `mutable` smart reference.
+- `ConstCastSharedRef` ：将`const`引用转换为`mutable`智能引用。
     ```c++
     void MyFunction(TSharedRef<const FMyCustomCalculator> CalculatorItem)
     {
@@ -362,7 +361,7 @@ There are also helper classes and functions to make life easier regarding using 
       // ...
     }
     ```
-- `StaticCastSharedPtr`: Dynamic cast utility function, typically used to downcast to a derived type. This is what you would use instead of `static_cast`(its not a requirement but it requires less typing).
+- `StaticCastSharedPtr` ：动态转换实用函数，通常用于向下转换为派生类型。这就是您将使用的而不是`static_cast` （它不是必需的，但需要更少的输入）。
     ```c++
     void MyFunction(TWeakPtr<FMyCustomCalculator> CalculatorItem)
     {
@@ -370,7 +369,7 @@ There are also helper classes and functions to make life easier regarding using 
       // ...
     }
     ```
-- `ConstCastSharedPtr`: Converts a `const` smart pointer to `mutable` smart pointer. This is what you would use instead of `const_cast<>`(its not a requirement but it requires less typing).
+- `ConstCastSharedPtr` ：将`const`智能指针转换为`mutable`智能指针。这就是您将使用的而不是`const_cast<>` （它不是必需的，但需要更少的输入）。
     ```c++
     void MyFunction(TSharedPtr<const FMyCustomCalculator> CalculatorItem)
     {
@@ -379,33 +378,33 @@ There are also helper classes and functions to make life easier regarding using 
     }
     ```
 
-For more information please refer to these files:
+有关更多信息，请参阅这些文件：
 
-- Examples using the different utility functions and templates: `Engine/Source/Runtime/Core/Public/Templates/SharedPointerTesting.ini`
-- Explanation of Unreal Engine's Shared Pointer System: `Engine/Source/Runtime/Core/Public/Templates/SharedPointer.h`
+- 使用不同实用程序函数和模板的示例： `Engine/Source/Runtime/Core/Public/Templates/SharedPointerTesting.ini`
+- 虚幻引擎的共享指针系统说明： `Engine/Source/Runtime/Core/Public/Templates/SharedPointer.h`
 
 <a name="slate-units--dpi-scaling"></a>
 
-### 4.2 Slate Units &amp; DPI Scaling
+### 4.2 Slate 单位和 DPI 缩放
 
-- **Slate Units**: Unreal’s way of making a UI that is independent of pixel density so your application can support multiple platforms easily. This allows for it to be more precise and independent of the pixel density of the user’s monitor. A single slate unit can vary in physical size but by default it is conveniently set to 1 pixel for each slate unit. To set the default value; it is recommended to adjust the base DPI Scaling instead.
-- **DPI Scaling**: How Unreal modifies the slate units conversion at runtime by scaling each slate unit by this value, so for example if you’re slate units are set to 1 unit = 1 pixel, and the dpi scaling is set to a value of 2.5 then each slate unit would be 1 unit = 2.5 pixels. You can change the DPI scaling depending on the resolution via a curve table in the project settings under the “Engine-User Interface” category.
+- **Slate Units** ：Unreal 制作独立于像素密度的 UI 的方式，因此您的应用程序可以轻松支持多个平台。这使得它更加精确并且独立于用户显示器的像素密度。单个板岩单元的物理尺寸可能有所不同，但默认情况下，每个板岩单元可以方便地设置为 1 像素。设置默认值；建议改为调整基本 DPI 缩放比例。
+- **DPI 缩放**：Unreal 如何在运行时通过按此值缩放每个板岩单位来修改板岩单位转换，例如，如果您将板岩单位设置为 1 单位 = 1 像素，并且 dpi 缩放设置为值 2.5那么每个板岩单位将为 1 单位 = 2.5 像素。您可以通过“引擎-用户界面”类别下的项目设置中的曲线表根据分辨率更改 DPI 缩放比例。
 
-Epic themselves admits it’s not perfect but it works well for most-all use cases.
- [Epic's AnswerHub explaining Slate Units](https://forums.unrealengine.com/t/what-are-slate-units/310703)
+Epic 自己承认它并不完美，但它适用于大多数用例。
+ [Epic 的 AnswerHub 解释 Slate 单位](https://forums.unrealengine.com/t/what-are-slate-units/310703)
 
 <a name="slate-users"></a>
 
-### 4.3 Slate Users
+### 4.3 石板用户
 
-**Slate Users** are classes that represent that a local individual input-providing user (for example; in split screen co-op with 3 players then there are 3 Slate Users, but in an online game with 32 players and no split screen then the only local player is the only Slate User on this device). Each **Platform’s SDK** will tell the **Slate Application** to register (create) a new Slate User when a new connection is added (for example when a new controller is plugged in). When a new connection is added, a new Slate User is created but not when a connection is removed to account for a controller disconnecting accidentally (to keep the settings for that controller just in case they reconnect). When a connection is removed, that Slate User is just not updated. The Slate User instance keeps track of the widget that the user is currently focusing on, and controls the cursor/has pointer information to account for gestures (this is only for the first Slate User because you can’t plug in multiple mouses and if you are… why?).
+**Slate 用户**是表示本地个人输入提供用户的类（例如，在 3 名玩家的分屏合作游戏中，则有 3 个 Slate 用户，但在有 32 名玩家且没有分屏的在线游戏中，则只有本地用户玩家是该设备上唯一的 Slate 用户）。每个**平台的 SDK**都会告诉**Slate 应用程序**在添加新连接时（例如插入新控制器时）注册（创建）新的 Slate 用户。添加新连接时，会创建一个新的 Slate 用户，但在删除连接时不会创建新的 Slate 用户，以防止控制器意外断开连接（保留该控制器的设置，以防它们重新连接）。当连接被删除时，该 Slate 用户不会更新。 Slate User 实例跟踪用户当前关注的小部件，并控制光标/具有指针信息以考虑手势（这仅适用于第一个 Slate User，因为您无法插入多个鼠标，并且如果您是……为什么？）。
 
-You can access the Slate User via 2 primary ways:
+您可以通过 2 种主要方式访问 Slate 用户：
 
-- From the Slate Application using an integer index for that local Slate User.
-- From a `ULocalPlayer` object which you can get from any Player Controller.
+- 从 Slate 应用程序使用该本地 Slate 用户的整数索引。
+- 来自`ULocalPlayer`对象，您可以从任何播放器控制器获取该对象。
 
-> An important thing to note is that Local Player’s can exist before the Player Controller is spawned (there’s functions in Player Controllers for when their Local Player is set that you can override), and Local Player’s exist between levels instead of per level like Player Controllers since they are UObjects and not Actors.
+> 需要注意的重要一点是，本地玩家可以在玩家控制器生成之前存在（玩家控制器中有一些函数，当设置本地玩家时您可以覆盖），并且本地玩家存在于级别之间，而不是像玩家控制器那样存在于每个级别，因为它们是 UObject，而不是 Actor。
 
 ```c++
 // The way you get the local player is dependent on your own needs
@@ -433,141 +432,141 @@ if(FSlateApplication::IsInitialized())
 }
 ```
 
-*Code example for how to get the Slate User using the player controller's local player object*
+*有关如何使用玩家控制器的本地玩家对象获取 Slate User 的代码示例*
 
 <a name="widget-layout"></a>
 
-### 4.4 Widget Layout
+### 4.4 小部件布局
 
-The way a Slate Widgets layout is calculated is done in two passes (listed in order of execution):
+Slate Widgets 布局的计算方式分两遍完成（按执行顺序列出）：
 
-1. **Cache Desired Size**: Calculate how much space each widget wants to occupy, this occurs through a *Bottom-Up* approach where it guarantees when this pass happens for a widget, its children have already computed and cached their desired size.
+1. **缓存所需大小**：计算每个小部件想要占用多少空间，这是通过*自下而上的*方法发生的，它保证当小部件发生此传递时，其子级已经计算并缓存了它们所需的大小。
 
-![Cache Desired Size Example](images/cache_desired_size.png)
- *Example of Desired Size for a Horizontal Box with Textblock and Image widget's*
+![缓存所需大小示例](images/cache_desired_size.png)
+*具有文本块和图像小部件的水平框所需尺寸的示例*
 
-For the desired size example we have a horizontal box holding a text block and an image widget. In this case we compute the desired size for the text block (which is measured by the string that is displaying) and the image widget (which is measured based on the image data that is shown). Then the horizontal box is computed by combining the text block and image widget’s(we are assuming that the text block is 14 slate units and the image widget is 8 slate units) desired sizes, so for this example 14 slate units + 8 slate units = 22 Slate Units.
+对于所需大小的示例，我们有一个水平框，其中包含文本块和图像小部件。在这种情况下，我们计算文本块（通过显示的字符串测量）和图像小部件（根据显示的图像数据测量）所需的大小。然后通过组合文本块和图像小部件（我们假设文本块是 14 个 slate 单位，图像小部件是 8 个 slate 单位）所需的大小来计算水平框，因此在本例中 14 个 slate 单位 + 8 个 slate 单位 = 22 个石板单元。
 
-1. **Arrange Children**: This occurs in a *Top-Down* approach where the widget is asked to arrange its children based on their desired sizes and the desired size of this widget (which all occurred in the first pass).
+1. **排列子项**：这发生在*自上而下的*方法中，其中要求小部件根据所需的大小和该小部件的所需大小（全部发生在第一遍中）来排列其子项。
 
-![Arrange Children](images/arrange_children.png)
- *Example of Arranged Children using Allotted Size for a Horizontal Box with Textblock and Image widget’s*
+![安排孩子](images/arrange_children.png)
+*使用文本块和图像小部件的水平框的分配大小来排列子项的示例*
 
-For the arranged children example the horizontal box was allotted 25 slate units by its parent widget (not shown to keep things simple). The first horizontal box slot indicates that it wants the desired size of the child which is 14 slate units from the text block, while the second slot wants to fill the available width which is 11 slate units remaining for the image widget.
+对于排列的子示例，水平框由其父窗口小部件分配了 25 个板岩单元（为了简单起见，未显示）。第一个水平框槽表示它想要子项的所需大小，即距离文本块 14 个石板单位，而第二个槽想要填充可用宽度，即图像小部件剩余的 11 个石板单位。
 
 <a name="on-paint"></a>
 
-### 4.5 On Paint
+### 4.5 关于油漆
 
-**Drawing Slate** is the process where Slate will iterate over all visible widgets and create a list of **Draw Elements** to send to the rendering system, this list is created every frame.
+**绘制 Slate**是 Slate 迭代所有可见小部件并创建**绘制元素**列表以发送到渲染系统的过程，该列表每帧都会创建。
 
-This occurs in an On Paint function where it will do two things:
+这发生在 On Paint 函数中，它将执行两件事：
 
-- Arrange all the children based on their **Geometry** (desired size).
-- Paint the actual visuals related to this widget.
+- 根据所有孩子的**几何形状**（所需尺寸）排列他们。
+- 绘制与此小部件相关的实际视觉效果。
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="widget-ticking"></a>
 
-### 4.6 Widget Ticking
+### 4.6 小部件勾选
 
-Slate Widget's(which also means UMG widget's) themselves do not tick, they do not have tick components and do not have tick groups. The order that Slate Widget's tick occurs is during the Paint pass with these calls originating from the Slate Application, so that a widget's tick function will only be called when it is on screen and being rendered:
+Slate Widget（也意味着 UMG Widget）本身没有刻度，它们没有刻度组件，也没有刻度组。 Slate Widget 的刻度发生的顺序是在 Paint 过程中，这些调用源自 Slate 应用程序，因此只有当小部件位于屏幕上并正在渲染时才会调用它的刻度函数：
 
 1. `FSlateApplication::Tick`
-2. `FSlateApplication::TickAndDrawWidgets`...
+2. `FSlateApplication::TickAndDrawWidgets` ...
 3. `SWidget::Paint`
-4. `SWidget::OnPaint`...
+4. `SWidget::OnPaint` ...
 5. `SObjectWidget::Tick`
-6. `UUserWidget::NativeTick`(this is when Blueprint will receive tick too)
+6. `UUserWidget::NativeTick` （此时蓝图也将收到刻度）
 
 <a name="widget-hierarchy"></a>
 
-### 4.7 Widget Hierarchy
+### 4.7 小部件层次结构
 
-The concept of the **Widget Hierarchy** is done using child slots, which are optional objects that can be tied to a Slate Widget (because some Widgets are not designed to have children such as the Image widget(**Leaf Widget**)) but requires the slot to be custom build for tracking each widgets child such as how the Button widget(**Compound Widget**) only accepts 1 child widget meanwhile an Overlay widget can have multiple child widgets.
+**Widget 层次结构**的概念是使用子槽完成的，子槽是可以绑定到 Slate Widget 的可选对象（因为某些 Widget 没有设计为具有子项，例如 Image widget（ **Leaf Widget** ）），但要求槽是用于跟踪每个小部件子部件的自定义构建，例如按钮小部件（**复合小部件**）如何仅接受 1 个子小部件，同时覆盖小部件可以有多个子小部件。
 
-Widgets usually come in 3 main types:
+小部件通常有 3 种主要类型：
 
-- **Leaf Widgets**: Widgets with no child slots.
-     ![Leaf Widgets Example](images/leaf_widgets.png)
-- **Panels Widgets**: with a dynamic number of child slots.
-     ![Panel Widgets Example](images/panel_widgets.png)
-- **Compound Widgets**: Widgets with a fixed number of explicitly named child slots.
-     ![Compound Widgets Example](images/compound_widgets.png)
+- **Leaf Widgets** ：没有子槽的小部件。
+    ![叶小部件示例](images/leaf_widgets.png)
+- **面板小部件**：具有动态数量的子插槽。
+    ![面板小部件示例](images/panel_widgets.png)
+- **复合小部件**：具有固定数量的显式命名子槽的小部件。
+    ![复合小部件示例](images/compound_widgets.png)
 
-The key elements of any Slate Widget (also known as an SWidget, where every Slate Widget is prefixed with a capital ‘S’ in C++) are a mix of functions and values:
+任何 Slate Widget（也称为 SWidget，其中每个 Slate Widget 在 C++ 中都以大写“S”为前缀）的关键元素是函数和值的组合：
 
-- **Compute Desired Size** (Function): Responsible for calculating the desired size as the first pass for layouting.
-    - **Slate Rect** (Value): A rectangle with its origin at the top left corner, defined by upper-left and lower-right corners. The origin is in the top-left with the Y-axis going downwards and X-axis going to the right. This is used with calculations for desired size and for the bounds.
-- **Arrange Children** (Function): Responsible for arranging child widgets as the second pass for layout's.
-- **On Paint** (Function): Responsible for the actual rendered appearance of the widget.
-- **Event Handlers** (Delegate values and/or Functions): These are the event based hooks for the UI elements to change at runtime usually in the form of “OnSomething”.
+- **计算所需尺寸**（函数）：负责计算所需尺寸，作为布局的第一遍。
+    - **Slate 矩形**（值）：原点位于左上角的矩形，由左上角和右下角定义。原点位于左上角，Y 轴向下，X 轴向右。这用于计算所需的大小和边界。
+- **排列子组件**（函数）：负责排列子组件作为布局的第二遍。
+- **On Paint** （函数）：负责小部件的实际渲染外观。
+- **事件处理程序**（委托值和/或函数）：这些是基于事件的钩子，用于 UI 元素在运行时更改，通常以“OnSomething”的形式。
 
 <a name="invalidation"></a>
 
-### 4.8 Invalidation
+### 4.8 无效
 
-[Epic's Official Documentation on Invalidation with Slate &amp; UMG](https://docs.unrealengine.com/latest/INT/invalidation-in-slate-and-umg-for-unreal-engine/)
+[Epic 关于 Slate 和 UMG 失效的官方文档](https://docs.unrealengine.com/latest/INT/invalidation-in-slate-and-umg-for-unreal-engine/)
 
-To avoid having to calculate the desired size of the widget every frame (which can tax the CPU if it’s happening to a lot of Widgets at once), Widgets have the concept of caching their desired size, but at runtime if the size of the widget changes (either through an animation or through game code) then it will **Invalidate** the widget to tell Slate that this widget needs to recalculate its **Desired Size** and then **Rearrange the Layout** that widget is in (or has). This is an optimization to avoid polling for each widget's desired size every frame when it doesn’t need to recalculate it.
+为了避免必须每帧计算小部件的所需大小（如果同时发生在许多小部件上，这可能会加重 CPU 负担），小部件具有缓存其所需大小的概念，但在运行时如果小部件的大小如果发生更改（通过动画或游戏代码），那么它将使小部件**无效**，以告诉 Slate 该小部件需要重新计算其**所需大小**，然后**重新排列该小部件所在（或具有）的布局**。这是一种优化，以避免在不需要重新计算时每帧轮询每个小部件的所需大小。
 
-There are different types of invalidation reasons that you can specify when invalidating a widget located in `InvalidateWidgetReason.h`:
+使`InvalidateWidgetReason.h`中的小部件失效时，您可以指定不同类型的失效原因：
 
-- Layout: Use Layout invalidation if your widget needs to change desired size. This is an expensive invalidation so do not use if all you need to do is redraw a widget.
-- Paint: Use when the painting of widget has been altered, but nothing affecting sizing.
-- Volatility: Use if just the volatility of the widget has been adjusted.
-- ChildOrder: A child was added or removed(this implies prepass and layout).
-- RenderTransform: A Widgets render transform changed.
-- Visibility: Changing visibility (this implies layout).
-- AttributeRegistration: Attributes got bound or unbound (it's used by the SlateAttributeMetaData).
-- Prepass: Re-cache desired size of all of this widget's children recursively (this implies layout).
-- PaintAndVolatility: Use Paint invalidation if you're changing a normal property involving painting or sizing. Additionally if the property that was changed affects Volatility in anyway, it's important that you invalidate volatility so that it can be recalculated and cached.
-- LayoutAndVolatility: Use Layout invalidation if you're changing a normal property involving painting or sizing. Additionally if the property that was changed affects Volatility in anyway, it's important that you invalidate volatility so that it can be recalculated and cached.
+- 布局：如果您的小部件需要更改所需的大小，请使用布局失效。这是一个昂贵的失效，所以如果您需要做的只是重绘一个小部件，请不要使用。
+- Paint：当小部件的绘制已更改但不影响大小时使用。
+- 波动性：如果仅调整了小部件的波动性，则使用。
+- ChildOrder：添加或删除子项（这意味着预传递和布局）。
+- RenderTransform：小部件渲染变换已更改。
+- 可见性：更改可见性（这意味着布局）。
+- AttributeRegistration：属性已绑定或未绑定（由 SlateAttributeMetaData 使用）。
+- Prepass：递归地重新缓存该小部件的所有子部件的所需大小（这意味着布局）。
+- PaintAndVolatility：如果您要更改涉及绘画或大小调整的普通属性，请使用绘画失效。此外，如果更改的属性无论如何都会影响波动性，那么重要的是使波动性无效，以便可以重新计算和缓存它。
+- LayoutAndVolatility：如果您要更改涉及绘画或大小调整的普通属性，请使用布局失效。此外，如果更改的属性无论如何都会影响波动性，那么重要的是使波动性无效，以便可以重新计算和缓存它。
 
 <a name="slate-attributes-events"></a>
 
-### 4.9 Slate Attributes and Events
+### 4.9 板岩属性和事件
 
-Slate(and through Slate; UMG) support the usage of Attribute's for binding properties/functions/lambdas to a widget's property(s). Widget Attributes are only updated if the widget is visible/not collapsed, so setting its visibility to hidden will cause it not to update.
+Slate（以及通过 Slate；UMG）支持使用属性将属性/函数/lambda 绑定到小部件的属性。仅当小部件可见/未折叠时，小部件属性才会更新，因此将其可见性设置为隐藏将导致其不更新。
 
-Attributes are particularly useful with widget styling where you can specify the different visual styles of widgets across the project as general theme. Which improves productivity across the project for both engineering and art teams.
+属性对于小部件样式特别有用，您可以将整个项目中小部件的不同视觉样式指定为通用主题。这提高了工程和艺术团队整个项目的生产力。
 
-- `TAttribute`: Base attribute type of Unreal Engine, do not use for member properties in SWidget's.
-    - Not compatible with invalidation because it does not broadcast when the data changes.
-    - Not cache-friendly(which means it can be slower for the CPU).
-    - If you use `TAttribute` to change state of an SWidget then you need to override `ComputeVolatility`(this is not needed for `TSlateAttribute` &amp; `TSlateManagedAttribute`).
-- `TSlateAttribute`: Should be used with SWidget member properties, allows the property to work with Slate's invalidation system and is more performant for Slate specific code while keeping attributes safe across the engine.
-    - Does not inherit from `TAttribute`, this inherits from `FSlateAttributeBase`/`TSlateMemberAttribute`.
-    - Not copyable but if you need it to be movable then it is recommended to use `TSlateManagedAttribute` instead.
-    - Updated once per frame in the PrePass update phase and because of this are more performance friendly.
-    - Member attributes are updated in the order that the variables are defined in the SWidget definition(by default).
-    - Allows for the invalidation reason to be a predicate and/or can be overriden per SWidget but use this with precaution since it can break invalidation for parent widget's.
-- `TSlateManagedAttribute`: Should be used with SWidget member properties that are inside arrays OR other moving data structures.
-    - Does not inherit from `TAttribute`, this inherits from `FSlateAttributeBase`/`TSlateMemberAttribute`.
-    - Can only be moved and not copied, they consume more memory because of this.
+- `TAttribute` ：虚幻引擎的基本属性类型，不用于 SWidget 中的成员属性。
+    - 与失效不兼容，因为数据更改时不会广播。
+    - 不适合缓存（这意味着 CPU 可能会变慢）。
+    - 如果您使用`TAttribute`更改 SWidget 的状态，则需要覆盖`ComputeVolatility` （ `TSlateAttribute`和`TSlateManagedAttribute`不需要）。
+- `TSlateAttribute` ：应与 SWidget 成员属性一起使用，允许属性与 Slate 的失效系统一起使用，并且对于 Slate 特定代码具有更高的性能，同时保持属性在引擎中的安全。
+    - 不继承自`TAttribute` ，它继承自`FSlateAttributeBase` / `TSlateMemberAttribute` 。
+    - 不可复制，但如果您需要它可移动，则建议使用`TSlateManagedAttribute` 。
+    - 在 PrePass 更新阶段每帧更新一次，因此性能更加友好。
+    - 成员属性按照 SWidget 定义中定义变量的顺序更新（默认情况下）。
+    - 允许失效原因作为谓词和/或可以被每个 SWidget 覆盖，但要谨慎使用，因为它可能会破坏父小部件的失效。
+- `TSlateManagedAttribute` ：应与数组或其他移动数据结构内部的 SWidget 成员属性一起使用。
+    - 不继承自`TAttribute` ，它继承自`FSlateAttributeBase` / `TSlateMemberAttribute` 。
+    - 只能移动而不能复制，因此它们会消耗更多内存。
 
-> - `TAttributes` have a high memory overhead and are not cache friendly. So use at your own discretion.
-> - All slate attributes are saved inside `SlateAttributeMetaData` for easy access in each SWidget.
+> - `TAttributes`具有较高的内存开销并且不适合缓存。所以请根据您的判断使用。
+> - 所有 slate 属性都保存在`SlateAttributeMetaData`中，以便在每个 SWidget 中轻松访问。
 
-When declaring event and attribute macros inside an SWidget you need to have them be between two other macros:
+在 SWidget 内声明事件和属性宏时，您需要将它们放在其他两个宏之间：
 
-- `SLATE_BEGIN_ARGS` OR `SLATE_USER_ARGS`: The difference is that `SLATE_USER_ARGS` requires the user to have all widget implementation within the source file, so the header can only hold declaration information where all handlers are essentially truly private and can be inlined(so less boilerplate code).
+- `SLATE_BEGIN_ARGS`或`SLATE_USER_ARGS` ：区别在于`SLATE_USER_ARGS`要求用户在源文件中实现所有小部件，因此标头只能保存声明信息，其中所有处理程序本质上都是真正私有的并且可以内联（因此更少的样板代码）。
 - `SLATE_END_ARGS`
 
-Using these macros allows the widget authors to add support for widget construction via `SNew` and `SAssignNew`.
+使用这些宏允许小部件作者通过`SNew`和`SAssignNew`添加对小部件构造的支持。
 
-Attributes in Slate also have specific macros that must be used when declaring them and must be used if you want to expose these properties when creating a Slate Widget at runtime.
+Slate 中的属性还具有在声明它们时必须使用的特定宏，并且如果您想在运行时创建 Slate Widget 时公开这些属性，则必须使用这些宏。
 
-- `SLATE_ATTRIBUTE`:
-    - Allows the attribute to be used with a value OR a function.
-    - Takes the attribute type as the first parameter and the name of the attribute for the second parameter(recommend matching the member property to avoid confusion).
-- `SLATE_ARGUMENT`:
-    - Allows the attribute to only be used with a value.
-    - Takes the attribute type as the first parameter and the name of the attribute for the second parameter(recommend matching the member property to avoid confusion).
-- `SLATE_ARGUMENT_DEFAULT`: Same as `SLATE_ARGUMENT` but also supports default values, syntax: `SLATE_ARGUMENT_DEFAULT(float, WheelScrollMultiplier) = 1.0f;`
-- `SLATE_STYLE_ARGUMENT`: Same as `SLATE_ARGUMENT` but they can only be used with types that inherit from `FSlateWidgetStyle` for a widget's visual styling purposes.
+- `SLATE_ATTRIBUTE` ：
+    - 允许属性与值或函数一起使用。
+    - 将属性类型作为第一个参数，将属性名称作为第二个参数（建议匹配成员属性以避免混淆）。
+- `SLATE_ARGUMENT` ：
+    - 允许属性仅与值一起使用。
+    - 将属性类型作为第一个参数，将属性名称作为第二个参数（建议匹配成员属性以避免混淆）。
+- `SLATE_ARGUMENT_DEFAULT` ：与`SLATE_ARGUMENT`相同，但也支持默认值，语法： `SLATE_ARGUMENT_DEFAULT(float, WheelScrollMultiplier) = 1.0f;`
+- `SLATE_STYLE_ARGUMENT` ：与`SLATE_ARGUMENT`相同，但它们只能与继承自`FSlateWidgetStyle`类型一起使用，以实现小部件的视觉样式目的。
 
-Here is an example where we're making a custom button widget using these macros.
+这是我们使用这些宏制作自定义按钮小部件的示例。
 
 ```c++
 class SMyButtonWidget : public SMyParentWidget
@@ -626,11 +625,11 @@ private:
 }
 ```
 
-Slate Events are basically delegates in SWidgets for binding on widget creation, you would declare your delegate in C++ with this macro in the Arguments range macro declaration.
+Slate 事件基本上是 SWidget 中用于绑定小部件创建的委托，您可以在 C++ 中使用参数范围宏声明中的宏来声明您的委托。
 
-- `SLATE_EVENT`: Adds event handler support for this widget with a specific member variable, this exposes delegates for binding on creation. Expects that the widget has a delegate of the `EventDelegateType` that is named the same as the event's name that was inputted in.
+- `SLATE_EVENT` ：使用特定成员变量为此小部件添加事件处理程序支持，这公开了用于在创建时绑定的委托。期望小部件具有`EventDelegateType`的委托，其名称与输入的事件名称相同。
 
-Here is an example widget that is using the event macro for when it is hovered.
+下面是一个示例小部件，它在悬停时使用事件宏。
 
 ```c++
 class SMyWidget : public SMyParentWidget
@@ -655,86 +654,86 @@ private:
 
 <a name="slate-widget-examples"></a>
 
-### 4.10 Slate Widget Examples(Slate Test Suite/Starship Suite)
+### 4.10 Slate 小部件示例（Slate 测试套件/Starship 套件）
 
-The **Slate Widget Examples** (also known as **Slate Test Suite** if using UE4/ **Starship Suite** if using UE5) is a collection of Slate built examples such as radio buttons, responsive grid, color wheel, etc.
+**Slate Widget Examples** （如果使用 UE4，也称为**Slate Test Suite；**如果使用 UE5，则称为**Starship Suite** ）是 Slate 构建示例的集合，例如单选按钮、响应式网格、色轮等。
 
-You can access the test suite within the Unreal Editor by going to:
+您可以通过以下方式访问虚幻编辑器中的测试套件：
 
-1. This is different depending on whether you’re using UE4/UE5
-    - UE4: `Window>Developer Tools>Debug Tools`
-    - UE5: `Tools/Debug/Debug Tools`
-         ![Slate Widget Examples Step 1](images/slate_widget_examples_step1.png)
-2. Select `Test Suite`
-     ![Slate Widget Examples Step 2](images/slate_widget_examples_step2.png)
+1. 根据您是否使用 UE4/UE5，这会有所不同
+    - UE4： `Window>Developer Tools>Debug Tools`
+    - UE5： `Tools/Debug/Debug Tools`
+        ![Slate 小部件示例第 1 步](images/slate_widget_examples_step1.png)
+2. 选择`Test Suite`
+    ![Slate 小部件示例第 2 步](images/slate_widget_examples_step2.png)
 
-You can also run the Test Suite as its own application without the Unreal Editor open if you have the source code version of the engine and build the Test Suite program(which will create the executable in `[EnginePath]/Engine/Binaries/Win64/`).
+如果您有引擎的源代码版本并构建测试套件程序（这将在`[EnginePath]/Engine/Binaries/Win64/`中创建可执行文件），您还可以将测试套件作为其自己的应用程序运行，而无需打开虚幻编辑器。
 
-- UE4
+- 虚幻引擎4
     - `[EnginePath]/Engine/Source/Runtime/AppFramework/Public/Widgets/Testing/STestSuite.h`
     - `[EnginePath]/Engine/Source/Runtime/AppFramework/Private/Widgets/Testing/STestSuite.cpp`
-- UE5
+- 虚幻引擎5
     - `[EnginePath]/Engine/Source/Runtime/AppFramework/Public/Widgets/Testing/SStarshipSuite.h`
     - `[EnginePath]/Engine/Source/Runtime/AppFramework/Private/Widgets/Testing/SStarshipSuite.cpp`
 
-![UE4 Test Suite Example](images/ue4_test_suite.png)
- *Test Suite from UE4, currently the UE4 version of the test suite is more feature rich than Starship Suite in UE5.*
+![UE4 测试套件示例](images/ue4_test_suite.png)
+*来自UE4的测试套件，目前UE4版本的测试套件比UE5中的Starship Suite功能更丰富。*
 
 <a name="helpful-console-commands-for-slate"></a>
 
-### 4.11 Helpful Console Commands for Slate
+### 4.11 Slate 有用的控制台命令
 
-> For debug console commands please navigate to [Debug Console Commands](#debug-console-commands) of the [Development &amp; Debug Tools for UMG/Slate](#dev-debug-tools) section.
+> 对于调试控制台命令，请导航至[UMG/Slate 开发和调试工具](#dev-debug-tools)部分的[调试控制台命令](#debug-console-commands)。
 
-- `Slate.GlobalScrollAmount [float value]` (default = 32.0): The amount used for scrolling for each click of the mouse wheel(in Slate Units).
+- `Slate.GlobalScrollAmount [float value]` （默认 = 32.0）：每次单击鼠标滚轮时用于滚动的量（以 Slate 单位为单位）。
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="umg"></a>
 
-## 5.0 UMG (Unreal Motion Graphics)
+## 5.0 UMG（虚幻动态图形）
 
-The UMG framework are UObject’s that have to be tied to a specific **Player Controller** known as the **Owning Player**(to account for split screen), if nothing is inputted for the owning player then it will automatically be connected to the first local player in the level.
+UMG 框架是 UObject，必须绑定到称为**拥有玩家的**特定**玩家控制器**（以考虑分屏），如果没有为拥有玩家输入任何内容，那么它将自动连接到关卡中的第一个本地玩家。
 
-The hierarchy of UMG’s object types is laid out below:
+UMG 对象类型的层次结构如下所示：
 
-- **UVisual**: The base class for elements in UMG Slots and Widgets.
-    - **UWidget**: The base class for all Widgets, they create Slate Widgets and handle routing functionality from Blueprint/UObject based classes to Slate. These are widgets like TextBlock, ScrollBox, Button, etc.
-    - **UUserWidget**: The base class for designing UI, animating UI, and connecting that functionality to game code.
+- **UVisual** ：UMG 插槽和小部件中元素的基类。
+    - **UWidget** ：所有 Widget 的基类，它们创建 Slate Widget 并处理从基于 Blueprint/UObject 的类到 Slate 的路由功能。这些是 TextBlock、ScrollBox、Button 等小部件。
+    - **UUserWidget** ：用于设计 UI、动画 UI 以及将该功能连接到游戏代码的基类。
 
-User Widgets are built out of Widgets except how a User Widget does not require a root widget, basically like how Actors are built out of multiple Actor Components and require a root Actor Component(known as Root Component).
+用户小部件是由小部件构建而成的，除了用户小部件不需要根小部件之外，基本上就像演员如何由多个演员组件构建并需要根演员组件（称为根组件）。
 
-User Widgets cannot inherit their **Widget Hierarchy** like how Actors do with Components but they can inherit class functionality (so making a User Widget abstract will allow for other classes to inherit from it or creating the class in C++ will allow for inheritance).
+用户小部件无法像 Actor 处理组件那样继承其**小部件层次结构**，但它们可以继承类功能（因此，使用户小部件抽象将允许其他类继承它，或者在 C++ 中创建类将允许继承）。
 
 <a name="user-widget-hierarchy"></a>
 
-### 5.1 User Widget Hierarchy
+### 5.1 用户控件层次结构
 
-Each **User Widget** is the root `UWidget` by design, so a User Widget can have no widgets inside it and is by default a **Compound Widget** that can only have 1 child, but that child can have other children under it and causes the cascading effect of child widgets within each User Widget's **Tree Hierarchy**.
+每个**用户控件**在设计上都是根`UWidget` ，因此用户控件内部不能有任何控件，并且默认情况下是一个**复合控件**，只能有 1 个子控件，但该子控件下面可以有其他子控件，并导致子控件的级联效果每个用户小部件的**树层次结构**中的小部件。
 
-Designer/Hierarchy Editor View | Runtime Result
+设计器/层次结构编辑器视图 | 运行时结果
 :-: | :-:
-![User Widget Hierarchy Example](images/user_widget_hierarchy.png)<br>*`Health_Bar` and `Health_Text` are **bold** because they have their `Is Variable` flag enabled*<br>![Is Variable Flag](images/is_variable.png) | ![User Widget Hierarchy Example Result](images/user_widget_hierarchy_result.png)
+![用户小部件层次结构示例](images/user_widget_hierarchy.png)<br> *`Health_Bar`和`Health_Text`为**粗体**，因为它们启用了`Is Variable`标志*<br>![是变量标志](images/is_variable.png) | ![用户小部件层次结构示例结果](images/user_widget_hierarchy_result.png)
 
-![User Widget Hierarchy Example Diagram](images/umg_hierarchy_diagram.png) *Example of that hierarchy as a diagram*
+![用户小部件层次结构示例图](images/umg_hierarchy_diagram.png)*该层次结构的图表示例*
 
 <a name="user-widget-animation"></a>
 
-### 5.2 User Widget Animation
+### 5.2 用户部件动画
 
-Every User Widget is able to create custom animations using the widgets within that User Widget via **Sequencer**. You can create these animations inside the Widget Designer and you’re able to modify things relating to that widget specifically such as render transform, widget visibility, etc. You can also modify properties of widgets such as material parameters, runtime values within the widget, etc.
+每个用户小部件都能够通过**Sequencer**使用该用户小部件内的小部件创建自定义动画。您可以在小部件设计器中创建这些动画，并且可以专门修改与该小部件相关的内容，例如渲染变换、小部件可见性等。您还可以修改小部件的属性，例如材质参数、小部件内的运行时值， ETC。
 
-![User Widget Animation Designer Example](images/umg_animation_designer.gif)
- *Example of the animation designer in UMG*
+![用户小部件动画设计器示例](images/umg_animation_designer.gif)
+ *UMG中的动画设计器示例*
 
-If a User Widgets **Tick Frequency** is set to **Never** instead of **Auto** in the class defaults then it will never run animation’s because for an animation to play at all, the user widget needs to be able to tick that animation and if the user widgets ability to tick is turned off(by setting its tick frequency to never) then it will not tick the animation object.
+如果用户小部件的**刻度频率**在类默认值中设置为**“从不”**而不是**“自动**”，那么它将永远不会运行动画，因为要播放动画，用户小部件需要能够勾选该动画，并且如果用户小部件能够勾选关闭（通过将其勾选频率设置为从不），则它将不会勾选动画对象。
 
 <a name="user-widget-events"></a>
 
-### 5.3 User Widget Events
+### 5.3 用户小部件事件
 
-Every user widget has built in events that you can implement and add your own functionality from;
+每个用户小部件都有内置事件，您可以从中实现和添加自己的功能；
 
-- **Pre Construct**: This occurs both in editor in the designer and before the widget is actually created, similar to the Construction Script found on Actors.
+- **预构造**：这会发生在设计器的编辑器中以及实际创建小部件之前，类似于 Actor 上的构造脚本。
 
 ```c++
 virtual void UUserWidget::NativePreConstruct()
@@ -744,9 +743,9 @@ virtual void UUserWidget::NativePreConstruct()
 }
 ```
 
-![Pre Construct](images/user_widget_events/preconstruct.png)
+![预构建](images/user_widget_events/preconstruct.png)
 
-- **On Initialized**: This occurs only once at runtime when the non template instance is created(when you spawn a user widget).
+- **初始化时**：这只在运行时创建非模板实例时（当您生成用户小部件时）发生一次。
 
 ```c++
 virtual void UUserWidget::NativeOnInitialized()
@@ -761,9 +760,9 @@ virtual void UUserWidget::NativeOnInitialized()
 }
 ```
 
-![On Initialized](images/user_widget_events/oninitialized.png)
+![初始化时](images/user_widget_events/oninitialized.png)
 
-- **Construct**: This can occur multiple times on a single user widget because it is based on when it is Constructed to the screen (Add to Viewport or Add to Player Screen). So if you're removing the widget from parent and re-adding it later then it's recommended not to put first time initialization code in this but instead put that in “On Initialized”.
+- **构造**：这可以在单个用户小部件上多次发生，因为它基于它何时构造到屏幕（添加到视口或添加到播放器屏幕）。因此，如果您要从父级中删除小部件并稍后重新添加它，那么建议不要将首次初始化代码放入其中，而是将其放入“初始化时”中。
 
 ```c++
 virtual void UUserWidget::NativeConstruct()
@@ -774,9 +773,9 @@ virtual void UUserWidget::NativeConstruct()
 }
 ```
 
-![Construct](images/user_widget_events/construct.png)
+![构造](images/user_widget_events/construct.png)
 
-- **Destruct**: Occurs when this widget is no longer on screen, can be called multiple times as its the inverse of Construct where it occurs when this widget is removed from parent.
+- **Destruct** ：当此小部件不再在屏幕上时发生，可以多次调用，因为它与从父级中删除此小部件时发生的构造相反。
 
 ```c++
 virtual void UUserWidget::NativeDestruct()
@@ -787,9 +786,9 @@ virtual void UUserWidget::NativeDestruct()
 }
 ```
 
-![Destruct](images/user_widget_events/destruct.png)
+![破坏](images/user_widget_events/destruct.png)
 
-- **On Paint**: Occurs when this widget is painted every frame, different from Tick as it is meant to handle Paint Context information.
+- **On Paint** ：每帧绘制此小部件时发生，与 Tick 不同，因为它旨在处理 Paint Context 信息。
 
 ```c++
 virtual int32 UUserWidget::NativePaint(const FPaintArgs& Args, const FGeometry& AllottedGeometry, const FSlateRect& MyCullingRect, FSlateWindowElementList& OutDrawElements, int32 LayerId, const FWidgetStyle& InWidgetStyle, bool bParentEnabled ) const
@@ -808,9 +807,9 @@ virtual int32 UUserWidget::NativePaint(const FPaintArgs& Args, const FGeometry& 
 }
 ```
 
-![On Paint](images/user_widget_events/onpaint.png)
+![在油漆上](images/user_widget_events/onpaint.png)
 
-- **Tick**: This will occur every frame that this widget is on screen, it will not tick if the widget is not being shown(even if it still exists, the only thing that matters is that it is being shown then its ticking).
+- **勾选**：此小部件在屏幕上的每一帧都会发生这种情况，如果小部件未显示，则不会勾选（即使它仍然存在，唯一重要的是它正在显示，然后勾选）。
 
 ```c++
 virtual void UUserWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
@@ -826,9 +825,9 @@ virtual void UUserWidget::NativeTick(const FGeometry& MyGeometry, float InDeltaT
 }
 ```
 
-![Tick](images/user_widget_events/tick.png)
+![打钩](images/user_widget_events/tick.png)
 
-- **On Animation Started**: Occurs when an widget animation starts playing, it will give you that widget that started playing in case you need to check against it or use it later. (For Blueprint users; recent versions of Unreal require animation finished events to be in the event graph while prior ones allow for them to show up as overridable functions)
+- **动画开始时**：当小部件动画开始播放时发生，它会为您提供开始播放的小部件，以便您需要检查它或稍后使用它。 （对于蓝图用户；虚幻的最新版本要求动画完成事件位于事件图中，而之前的版本允许它们显示为可重写函数）
 
 ```c++
 virtual void UUserWidget::OnAnimationStartedPlaying(UUMGSequencePlayer& Player)
@@ -840,9 +839,9 @@ virtual void UUserWidget::OnAnimationStartedPlaying(UUMGSequencePlayer& Player)
 }
 ```
 
-![On Animation Started](images/user_widget_events/animation_started.png)
+![动画开始时](images/user_widget_events/animation_started.png)
 
-- **On Animation Finished**: Occurs when an widget animation finishes playing, it will give you that widget finished playing in case you need to check against it or use it later. (For Blueprint users; recent versions of Unreal require animation finished events to be in the event graph while prior ones allow for them to show up as overridable functions)
+- **动画完成时**：当小部件动画完成播放时发生，它会告诉您该小部件已完成播放，以便您需要检查它或稍后使用它。 （对于蓝图用户；虚幻的最新版本要求动画完成事件位于事件图中，而之前的版本允许它们显示为可重写函数）
 
 ```c++
 virtual void UUserWidget::OnAnimationFinishedPlaying(UUMGSequencePlayer& Player)
@@ -868,9 +867,9 @@ virtual void UUserWidget::OnAnimationFinishedPlaying(UUMGSequencePlayer& Player)
 }
 ```
 
-![On Animation Finished](images/user_widget_events/animation_finished.png)
+![动画完成时](images/user_widget_events/animation_finished.png)
 
-- **On Focus Received**: (If you're having trouble finding it in Blueprint, it has to return an Event Reply struct so you have to override it in the functions list and not in the event graph) Occurs when focus is given to this User Widget(only this widget). It requires that you return an Event Reply struct which you can choose to either return Handled or Unhandled.
+- **On Focus Received** ：（如果您在蓝图中找不到它，它必须返回一个事件回复结构，因此您必须在函数列表中而不是在事件图中覆盖它）当焦点被授予此用户小部件时发生（仅限此小部件）。它要求您返回一个事件回复结构，您可以选择返回已处理或未处理。
 
 ```c++
 virtual FReply UUserWidget::NativeOnFocusReceived( const FGeometry& InGeometry, const FFocusEvent& InFocusEvent )
@@ -880,9 +879,9 @@ virtual FReply UUserWidget::NativeOnFocusReceived( const FGeometry& InGeometry, 
 }
 ```
 
-![On Focus Received](images/user_widget_events/focus_received.png) ![On Focus Received with Both Handling](images/user_widget_events/focus_received_both.png)
+![焦点收到](images/user_widget_events/focus_received.png)![两种处理方式均获得焦点](images/user_widget_events/focus_received_both.png)
 
-- **On Added to Focus Path**: Occurs when this widget or a child widget within this User Widget is added to the focus path(or focused) and wasn’t previously part of it.
+- **添加到焦点路径时**：当此小部件或此用户小部件中的子小部件添加到焦点路径（或聚焦）并且以前不是其中的一部分时发生。
 
 ```c++
 virtual void UUserWidget::NativeOnAddedToFocusPath(const FFocusEvent& InFocusEvent)
@@ -892,9 +891,9 @@ virtual void UUserWidget::NativeOnAddedToFocusPath(const FFocusEvent& InFocusEve
 }
 ```
 
-![On Added to Focus Path](images/user_widget_events/added_to_focus_path.png)
+![添加到焦点路径](images/user_widget_events/added_to_focus_path.png)
 
-- **On Focus Lost**: Occurs when this User Widget(only this widget) loses focus.
+- **On Focus Lost** ：当此用户小部件（仅此小部件）失去焦点时发生。
 
 ```c++
 virtual void UUserWidget::NativeOnFocusLost( const FFocusEvent& InFocusEvent )
@@ -904,9 +903,9 @@ virtual void UUserWidget::NativeOnFocusLost( const FFocusEvent& InFocusEvent )
 }
 ```
 
-![On Focus Lost](images/user_widget_events/focus_lost.png)
+![关于失去焦点](images/user_widget_events/focus_lost.png)
 
-- **On Removed from Focus Path**: Similar to On Focus Lost except it can occur when a child widget within this User Widget or this widget itself is no longer part of the focus path.
+- **从焦点路径中删除时**：与焦点丢失时类似，但当此用户小部件内的子小部件或此小部件本身不再是焦点路径的一部分时，可能会发生这种情况。
 
 ```c++
 virtual void UUserWidget::NativeOnRemovedFromFocusPath(const FFocusEvent& InFocusEvent)
@@ -916,313 +915,313 @@ virtual void UUserWidget::NativeOnRemovedFromFocusPath(const FFocusEvent& InFocu
 }
 ```
 
-![On Removed from Focus Path](images/user_widget_events/removed_from_focus_path.png)
+![从焦点路径中移除](images/user_widget_events/removed_from_focus_path.png)
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="common-widgets"></a>
 
-## 6.0 Common Widgets
+## 6.0 常用小部件
 
-There is a large amount of commonly used widgets in Unreal Engine, at its basic core elements.
- Most/All of your UI that used UMG/Slate will probably be built from a combination of these widgets:
+虚幻引擎中存在大量常用的小部件，其基本核心元素。
+大多数/所有使用 UMG/Slate 的 UI 可能都是由这些小部件的组合构建的：
 
-- **Text Block** *[Leaf Widget]*: Handles displaying static text that can be changed at runtime by setting it to another text value. TextBlock widgets allow for a custom font to be used(including its typeface if the font has any others), customizing its text size, letter spacing(also known as kerning), its outline settings(this will offset the rendered text), apply materials to the letters themselves, add a shadow offset(this will offset the rendered text), set its justification(how the text is aligned), etc.
-     ![Text Block Widget](images/common_widgets/w_textblock.png)
-- **Rich Text Block** *[Leaf Widget]*: Works similarly to TextBlock widgets but allows for the use of custom images, glyphs, multiple fonts, etc to be used within the same text value at once.
-     ![Rich Text Block Widget](images/common_widgets/w_richtextblock.png)
-- **Image** *[Leaf Widget]*: Handles displaying either a texture or a material that uses the UI domain to display it.
-     ![Image Widget](images/common_widgets/w_image.png)
-- **Border** *[Compound Widget]*: Can only have 1 child widget. Displays child widget in front of this widget, basically an Image widget that can have a child.
-     ![Border Widget](images/common_widgets/w_border.png)
-- **Button** *[Compound Widget]*: Can only have 1 child widget. Displays that child in front of this widget, can be interacted with and focused. Returns when it is clicked/pressed/released/hovered/unhovered. You can also set its click(mouse button) method, touch(touch screen’s) method, and press(keyboard &amp; gamepad) method.
-     ![Button Widget](images/common_widgets/w_button.png)
-- **Check Box** *[Leaf Widget]*: Handles displaying a specific image/material depending on what state the check box is in, it can be clicked(or set to a specific state) and meant to show if something is on/off.
-     ![Checkbox Widget](images/common_widgets/w_checkbox.png)
-- **Progress Bar** *[Leaf Widget]*: Handles displaying an image/material in front of this widget via a scaled 0-1 fill percentage value via its Bar Fill Type &amp; Bar Fill Style.
-    - Fill Types:
-        - **Left to Right**: Fills the progress bar from left to right.
-               <img src="images/common_widgets/progress_bars/w_progressbar_left_right_mask.png" width="305" height="144">
-               *Masked Version*
-               <img src="images/common_widgets/progress_bars/w_progressbar_left_right_scale.png" width="318" height="146.5">
-               *Scaled Version*
-    - **Right to Left**: Fills the progress bar from right to left.
-           <img src="images/common_widgets/progress_bars/w_progressbar_right_left_mask.png" width="299" height="144.5">
-           *Masked Version*
-           <img src="images/common_widgets/progress_bars/w_progressbar_right_left_scale.png" width="295.5" height="144.5">
-           *Scaled Version*
-    - **Fill from Center**: Linearly fills the progress bar on both X and Y from the center towards the edges.
-           <img src="images/common_widgets/progress_bars/w_progressbar_center_mask.png" width="297.5" height="136.5">
-           *Masked Version*
-           <img src="images/common_widgets/progress_bars/w_progressbar_center_scale.png" width="290" height="140">
-           *Scaled Version*
-    - **Fill from Center Horizontal**: Linearly fills the progress bar on the X axis from the center towards the edges.
-           <img src="images/common_widgets/progress_bars/w_progressbar_center_horizontal_mask.png" width="283.5" height="134.5">
-           *Masked Version*
-           <img src="images/common_widgets/progress_bars/w_progressbar_center_horizontal_scale.png" width="298" height="144">
-           *Scaled Version*
-    - **Fill from Center Vertical**: Linearly fills the progress bar on the Y axis from the center towards the edges.
-           <img src="images/common_widgets/progress_bars/w_progressbar_center_vertical_mask.png" width="298" height="147.5">
-           *Masked Version*
-           <img src="images/common_widgets/progress_bars/w_progressbar_center_vertical_scale.png" width="290" height="133">
-           *Scaled Version*
-    - **Top to Bottom**: Fills the progress bar from top to bottom.
-           <img src="images/common_widgets/progress_bars/w_progressbar_top_bottom_mask.png" width="300" height="138.5">
-           *Masked Version*
-           <img src="images/common_widgets/progress_bars/w_progressbar_top_bottom_scale.png" width="303.5" height="140.5">
-           *Scaled Version*
-    - **Bottom to Top**: Fills the progress bar from bottom to top.
-           <img src="images/common_widgets/progress_bars/w_progressbar_bottom_top_mask.png" width="297.5" height="136">
-           *Masked Version*
-           <img src="images/common_widgets/progress_bars/w_progressbar_bottom_top_scale.png" width="293" height="142.5">
-           *Scaled Version*
-    - Fill Styles:
-        - **Mask**: The progress bar's fill image is masked out based on the fill percentage and fill type.
-        - **Scale**: The progress bar's fill image is scaled and stretched/squished based on the fill percentage and fill type.
-    - **Slider** *[Leaf Widget]*: Similar to the progress bar except it is interactable and you can change the orientation of it from horizontal to vertical and set its step size(for keyboard/gamepad presses).
-         ![Slider Widget](images/common_widgets/w_slider.png)
-- **Editable Text** *[Leaf Widget]*: A field for the user to be able to type in one line of text, allows for hint text and can be set to read only, is password(so it only shows a dot instead of the actual text), as well as being able to adjust settings on it like a normal text block widget.
-     ![Editable Text Widget](images/common_widgets/w_editable_text.png)
-- **Editable Text(Multi-Line)** *[Leaf Widget]*: Same as Editable Text widget except the user can type in multiple lines of text instead of one.
-     ![Editable Text (Multi-Line) Widget](images/common_widgets/w_editable_text_multi.png)
-- **Text Box** *[Leaf Widget]*: Same as Editable Text except it is wrapped with an image/material behind the text.
-     ![Text Box Widget](images/common_widgets/w_textbox.png)
-- **Text Box(Multi-Line)** *[Leaf Widget]*: Same as Editable Text(Multi-Line) except it is wrapped with an image/material behind the text.
-     ![Text Box (Multi-Line) Widget](images/common_widgets/w_textbox_multi.png)
-- **Spin Box** *[Leaf Widget]*: Displays a number(can be set to allow decimals or not) that the user can input or use the mouse and interact with it to slide and increase/decrease the number.
-     ![Spin Box Widget](images/common_widgets/w_spinbox.png)
-- **Combo Box(String)** *[Leaf Widget]*: A drop down box widget that displays a string(NOT TEXT, so its not localizable) value when selected and displays its options as well.
-     ![Combo Box Widget](images/common_widgets/w_combobox.png)
-- **Invalidation Box** *[Compound Widget]*: Can only have 1 child widget. This will control when that child widget is invalided for its layout/geometry passes, very useful for performance optimization. *Can't really use a picture for this because it wraps entirely around the widget and is invisible*.
-- **Retainer Box** *[Compound Widget]*: Can only have 1 child widget. This will render a material over its child widget and only its child widget so it will not render that material over background space that the child widget does not occupy with its render.
-     For example if you wrap a Text Block with a Retainer Box, the material will only apply over the text and not the space between each letter.
-     ![Retainer Box Widget](images/common_widgets/w_retainerbox.png)
-     *The retainer box's hierarchy in the designer*
-     ![Retainer Box Material Widget](images/common_widgets/w_retainerbox_material.png)
-     *The retainer box's material*
-     ![Retainer Box Result Widget](images/common_widgets/w_retainerbox_result.png)
-     *The retainer box at runtime(when running play in editor)*
-- **Throbber** *[Leaf Widget]*: Displays an image/material in a specific animated pattern. Useful for showing something is loading.
-     ![Throbber Widget](images/common_widgets/w_throbber.png)
-- **Circular Throbber** *[Leaf Widget]*: A version of the throbber that moves the images/materials in a circle.
-     ![Circular Throbber Widget](images/common_widgets/w_throbber_circular.png)
-    - > *A note from the author; “Please change the throbber’s image with something other than the default image in your final products if possible. I'm tired of seeing the default throbber in full release products, you can do better! Thank you.”*
-- **Spacer** *[Leaf Widget]*: This widget does not have a visual representation and it just provides padding and space between other widgets, recommended to use this rather than padding within slots if your UI design is changing constantly to make rapid iteration easier.
-- **Background Blur** *[Compound Widget]*: Can only have 1 child widget. Basically an image widget with its child rendered behind it, and blurs the rendered result of that child widget using Gaussian Blur.
-     Recommended to use this with proper clipping area’s setup otherwise use a custom material to make it easier for artists to modify.
-     ![Background Blur Widget](images/common_widgets/w_background_blur.png)
-- **Input Key Selector** *[Leaf Widget]*: Allows for the user to press an input while focusing this widget and it will display what input that is.
-     ![Input Key Selector Widget](images/common_widgets/w_input_key_selector.png)
-- **Canvas Panel** *[Panel Widget]*: This is the default widget found in newly created User Widgets, allows for the designer to place child widgets at arbitrary locations, anchored and z-ordered with other children of this canvas.
-     It uses absolute layout for its placement so it's good for on screen indicators that follow a specific in-world object or something that can move around the entire screen.
-     ![Canvas Panel Widget](images/common_widgets/w_canvas_panel.png)
-- **Horizontal Box** *[Panel Widget]*: Allows for its child widgets to be laid out in a horizontal flow moving from left to right with 0 index as the farthest left and its last widget being farthest right.
-     ![Horizontal Box Widget](images/common_widgets/w_horizontalbox.png)
-- **Vertical Box** *[Panel Widget]*: Works the same as horizontal boxes except it lays out its children in a vertical flow moving from top to bottom, with 0 index as the farthest top widget and its last widget being the farthest bottom widget.
-     *Vertical Box and Horizontal Box do not scroll, to allow for that you would have to use a scroll box widget or something similar.*
-     ![Vertical Box Widget](images/common_widgets/w_verticalbox.png)
-- **Scroll Box** *[Panel Widget]*: Works the same way as the vertical box AND the horizontal box(has to be set to either vertical or horizontal) but allows them to be scrollable. Does not support virtualization.
-     ![Scroll Box Widget](images/common_widgets/w_scrollbox.png)
-- **Size Box** *[Compound Widget]*: Can only have 1 child widget. Allows for this widget to specify the desired size of its child widget(since not all widgets will report a desired size because they are dependent on their own child widgets).
-     ![Size Box Widget](images/common_widgets/w_sizebox.png)
-- **Scale Box** *[Compound Widget]*: Can only have 1 child widget. Allows for this widget to have its child scaled to fit a constrained size on this box's allotted area.
-     ![Scale Box Widget](images/common_widgets/w_scalebox.png)
-     *In this example the scale box is resizing the image to fit uniformly*
-- **Overlay** *[Panel Widget]*: Displays widgets stacked on top of each other based on their index within the child widgets. This widget is extremely useful to quickly overlay a widget over another widget quickly.
-     ![Overlay Widget](images/common_widgets/w_overlay.png)
-     *The text and the image are children of the overlay widget*
-- **Grid Panel** *[Panel Widget]*: Allows child widgets to automatically be placed in a grid like pattern resembling a table that retains the width of every column.
-     ![Grid Panel Widget](images/common_widgets/w_gridpanel.png) *This grid has been configured to fill the space between each column and row, yours may look different depending on how you configured it*
-- **Uniform Grid Panel** *[Panel Widget]*: Basically the grid panel but it will evenly divide up available space between all of its children.
-     ![Uniform Grid Panel Widget](images/common_widgets/w_uniformgrid.png)
-- **Widget Switcher** *[Panel Widget]*: This will only display one of its child widgets at a time via its child index but it will load all of them(not good for main pages, just smaller stuff) and initialize, construct all of them when the widget switcher is loaded, initialized, constructed.
-- **Safe Zone** *[Compound Widget]*: Can only have 1 child widget. This widget is special where it will apply padding to the top/bottom/left/right sides of its child widget inwards to account for what device this widget is being shown on, so for example on some mobile devices with a notch on one side, the safe zone will account for that and add padding to its child widget so it does not get cut off by the notch, as well as accounting for tv’s with extra pixels under the bezel, projectors having extra columns of pixels hidden behind the black border, etc. A good example is for certain phones that have a notch(you know which ones I’m talking about), the safe zone will pad out that side of the screen for you so your widgets are not being covered by the notch.
+- **文本块***[Leaf Widget]* ：处理显示静态文本，可以通过将其设置为另一个文本值在运行时进行更改。 TextBlock 小部件允许使用自定义字体（如果该字体有其他字体，则包括其字体）、自定义其文本大小、字母间距（也称为字距调整）、其轮廓设置（这将偏移渲染的文本）、应用材质对于字母本身，添加阴影偏移（这将偏移渲染的文本），设置其对齐方式（文本如何对齐）等。
+    ![文本块小部件](images/common_widgets/w_textblock.png)
+- **富文本块***[Leaf Widget]* ：与 TextBlock 小部件类似，但允许在同一文本值中同时使用自定义图像、字形、多种字体等。
+    ![富文本块小部件](images/common_widgets/w_richtextblock.png)
+- **图像***[Leaf Widget]* ：处理显示纹理或使用 UI 域来显示它的材质。
+    ![图片小工具](images/common_widgets/w_image.png)
+- **边框***[复合小部件]* ：只能有 1 个子小部件。在此小部件前面显示子小部件，基本上是可以有子部件的图像小部件。
+    ![边框小工具](images/common_widgets/w_border.png)
+- **按钮***[复合小部件]* ：只能有 1 个子小部件。在此小部件前面显示该子项，可以与之交互并获得焦点。单击/按下/释放/悬停/取消悬停时返回。您还可以设置其单击（鼠标按钮）方法、触摸（触摸屏）方法和按下（键盘和游戏手柄）方法。
+    ![按钮小部件](images/common_widgets/w_button.png)
+- **复选框***[Leaf Widget]* ：根据复选框所处的状态来处理显示特定图像/材料，可以单击它（或设置为特定状态），并用于显示某些内容是否打开/关闭。
+    ![复选框小部件](images/common_widgets/w_checkbox.png)
+- **进度条***[Leaf Widget]* ：通过其条形填充类型和条形填充样式，通过缩放的 0-1 填充百分比值来处理在此小部件前面显示图像/材料。
+    - 填充类型：
+        - **从左到右**：从左到右填充进度条。
+            <img src="images/common_widgets/progress_bars/w_progressbar_left_right_mask.png" width="305" height="144">
+            *蒙面版*
+            <img src="images/common_widgets/progress_bars/w_progressbar_left_right_scale.png" width="318" height="146.5">
+            *缩放版本*
+    - **从右到左**：从右到左填充进度条。
+        <img src="images/common_widgets/progress_bars/w_progressbar_right_left_mask.png" width="299" height="144.5">
+        *蒙面版*
+        <img src="images/common_widgets/progress_bars/w_progressbar_right_left_scale.png" width="295.5" height="144.5">
+        *缩放版本*
+    - **从中心填充**：从中心向边缘线性填充 X 和 Y 上的进度条。
+        <img src="images/common_widgets/progress_bars/w_progressbar_center_mask.png" width="297.5" height="136.5">
+        *蒙面版*
+        <img src="images/common_widgets/progress_bars/w_progressbar_center_scale.png" width="290" height="140">
+        *缩放版本*
+    - **从中心水平填充**：在 X 轴上从中心向边缘线性填充进度条。
+        <img src="images/common_widgets/progress_bars/w_progressbar_center_horizontal_mask.png" width="283.5" height="134.5">
+        *蒙面版*
+        <img src="images/common_widgets/progress_bars/w_progressbar_center_horizontal_scale.png" width="298" height="144">
+        *缩放版本*
+    - **从中心垂直填充**：在 Y 轴上从中心向边缘线性填充进度条。
+        <img src="images/common_widgets/progress_bars/w_progressbar_center_vertical_mask.png" width="298" height="147.5">
+        *蒙面版*
+        <img src="images/common_widgets/progress_bars/w_progressbar_center_vertical_scale.png" width="290" height="133">
+        *缩放版本*
+    - **从上到下**：从上到下填充进度条。
+        <img src="images/common_widgets/progress_bars/w_progressbar_top_bottom_mask.png" width="300" height="138.5">
+        *蒙面版*
+        <img src="images/common_widgets/progress_bars/w_progressbar_top_bottom_scale.png" width="303.5" height="140.5">
+        *缩放版本*
+    - **从下到上**：从下到上填充进度条。
+        <img src="images/common_widgets/progress_bars/w_progressbar_bottom_top_mask.png" width="297.5" height="136">
+        *蒙面版*
+        <img src="images/common_widgets/progress_bars/w_progressbar_bottom_top_scale.png" width="293" height="142.5">
+        *缩放版本*
+    - 填充样式：
+        - **Mask** ：根据填充百分比和填充类型遮盖进度条的填充图像。
+        - **缩放**：进度条的填充图像根据填充百分比和填充类型进行缩放和拉伸/压缩。
+    - **滑块***[Leaf Widget]* ：与进度条类似，但它是可交互的，您可以将其方向从水平更改为垂直并设置其步长（对于键盘/游戏手柄按下）。
+        ![滑块小部件](images/common_widgets/w_slider.png)
+- **可编辑文本***[Leaf Widget]* ：用户能够输入一行文本的字段，允许提示文本并且可以设置为只读，是密码（因此它只显示一个点而不是实际文本） ，以及能够像普通文本块小部件一样调整其设置。
+    ![可编辑文本小部件](images/common_widgets/w_editable_text.png)
+- **可编辑文本（多行）** *[叶小部件]* ：与可编辑文本小部件相同，只是用户可以输入多行文本而不是一行。
+    ![可编辑文本（多行）小部件](images/common_widgets/w_editable_text_multi.png)
+- **文本框***[Leaf Widget]* ：与可编辑文本相同，只是它在文本后面用图像/材料包裹。
+    ![文本框小部件](images/common_widgets/w_textbox.png)
+- **文本框（多行）** *[叶小部件]* ：与可编辑文本（多行）相同，只不过它在文本后面用图像/材料包裹。
+    ![文本框（多行）小部件](images/common_widgets/w_textbox_multi.png)
+- **Spin Box** *[Leaf Widget]* ：显示一个数字（可以设置是否允许小数），用户可以输入或使用鼠标与其交互来滑动和增加/减少数字。
+    ![旋转框小部件](images/common_widgets/w_spinbox.png)
+- **Combo Box(String)** *[Leaf Widget]* ：一个下拉框小部件，在选择时显示字符串（非文本，因此不可本地化）值并显示其选项。
+    ![组合框小部件](images/common_widgets/w_combobox.png)
+- **失效框***[复合小部件]* ：只能有 1 个子小部件。这将控制子窗口部件何时因其布局/几何通道而无效，这对于性能优化非常有用。*不能真正为此使用图片，因为它完全围绕小部件并且是不可见的*。
+- **Retainer Box** *[复合小部件]* ：只能有 1 个子小部件。这将在其子窗口小部件上渲染材质，并且仅在其子窗口小部件上渲染材质，因此不会在子窗口小部件渲染时不占用的背景空间上渲染该材质。
+    例如，如果您使用固定框包裹文本块，则材质将仅应用于文本，而不应用于每个字母之间的空间。
+    ![固定盒小部件](images/common_widgets/w_retainerbox.png)
+    *设计器中固定盒的层次结构*
+    ![固定盒材质小部件](images/common_widgets/w_retainerbox_material.png)
+    *固定盒材质*
+    ![固定盒结果小部件](images/common_widgets/w_retainerbox_result.png)
+    *运行时的固定框（在编辑器中运行游戏时）*
+- **Throbber** *[Leaf Widget]* ：以特定的动画图案显示图像/材质。对于显示某些内容正在加载很有用。
+    ![颤动小部件](images/common_widgets/w_throbber.png)
+- **Circular Throbber** *[Leaf Widget]* ：一个以圆形方式移动图像/材质的 throbber 版本。
+    ![圆形颤动小部件](images/common_widgets/w_throbber_circular.png)
+    - > *作者的注释； “如果可能的话，请在最终产品中使用默认图像以外的其他图像来更改颤动者的图像。我厌倦了在完整发布的产品中看到默认的 throbber，你可以做得更好！谢谢。”*
+- **Spacer** *[Leaf Widget]* ：此小部件没有视觉表示，它仅提供其他小部件之间的填充和空间，如果您的 UI 设计不断变化以使快速迭代更容易，建议使用此功能而不是在插槽内填充。
+- **背景模糊***[复合小部件]* ：只能有 1 个子小部件。基本上是一个图像小部件，其子部件在其后面渲染，并使用高斯模糊模糊该子部件的渲染结果。
+    建议将此功能与适当的剪切区域设置一起使用，否则使用自定义材质以使艺术家更容易修改。
+    ![背景模糊小部件](images/common_widgets/w_background_blur.png)
+- **输入键选择器***[Leaf Widget]* ：允许用户在聚焦此小部件时按下输入，它将显示是什么输入。
+    ![输入键选择器小部件](images/common_widgets/w_input_key_selector.png)
+- **画布面板***[面板小部件]* ：这是新创建的用户小部件中的默认小部件，允许设计者将子小部件放置在任意位置，与该画布的其他子部件锚定并按 z 顺序排列。
+    它使用绝对布局来放置，因此它非常适合跟随特定的世界中对象或可以在整个屏幕上移动的对象的屏幕指示器。
+    ![画布面板小部件](images/common_widgets/w_canvas_panel.png)
+- **Horizo​​ntal Box** *[Panel Widget]* ：允许其子部件以从左到右的水平流布局，索引 0 为最左边，最后一个部件为最右边。
+    ![水平框小部件](images/common_widgets/w_horizontalbox.png)
+- **垂直框***[面板小部件]* ：与水平框工作方式相同，只是它将其子项布置在从上到下移动的垂直流中，其中 0 索引作为最远的顶部小部件，其最后一个小部件是最远的底部小部件。
+    *垂直框和水平框不滚动，为了允许您必须使用滚动框小部件或类似的东西。*
+    ![垂直框小部件](images/common_widgets/w_verticalbox.png)
+- **滚动框***[面板小部件]* ：与垂直框和水平框的工作方式相同（必须设置为垂直或水平），但允许它们可滚动。不支持虚拟化。
+    ![滚动框小部件](images/common_widgets/w_scrollbox.png)
+- **大小框***[复合小部件]* ：只能有 1 个子小部件。允许此小部件指定其子小部件所需的大小（因为并非所有小部件都会报告所需的大小，因为它们依赖于自己的子小部件）。
+    ![尺寸框小部件](images/common_widgets/w_sizebox.png)
+- **比例框***[复合小部件]* ：只能有 1 个子小部件。允许此小部件对其子级进行缩放，以适应此框分配区域的约束尺寸。
+    ![比例框小部件](images/common_widgets/w_scalebox.png)
+    *在此示例中，缩放框正在调整图像大小以均匀地适合*
+- **覆盖***[面板小部件]* ：根据子小部件中的索引显示彼此堆叠的小部件。这个小部件对于快速将一个小部件快速覆盖在另一个小部件上非常有用。
+    ![叠加小部件](images/common_widgets/w_overlay.png)
+    *文本和图像是覆盖小部件的子项*
+- **网格面板***[面板小部件]* ：允许子小部件自动放置在类似于表格的网格图案中，保留每列的宽度。
+    ![网格面板小部件](images/common_widgets/w_gridpanel.png)*该网格已配置为填充每列和行之间的空间，您的网格可能看起来有所不同，具体取决于您的配置方式*
+- **统一网格面板***[面板小部件]* ：基本上是网格面板，但它将在其所有子面板之间均匀划分可用空间。
+    ![统一网格面板小部件](images/common_widgets/w_uniformgrid.png)
+- **小部件切换器***[面板小部件]* ：这将通过其子索引一次仅显示其子小部件之一，但它将加载所有这些小部件（对主页不好，只是较小的东西）并初始化，当小部件切换器被加载、初始化、构造。
+- **安全区***[复合小部件]* ：只能有 1 个子小部件。该小部件很特殊，它将向内向其子小部件的顶部/底部/左侧/右侧应用填充，以说明该小部件显示在什么设备上，例如在某些一侧有凹口的移动设备上，安全区域将考虑到这一点，并为其子小部件添加填充，这样它就不会被凹口切断，并考虑到边框下有额外像素的电视、隐藏在黑色边框后面的额外像素列的投影仪，一个很好的例子是，对于某些带有凹口的手机（您知道我在谈论哪些手机），安全区域将为您填充屏幕的那一侧，这样您的小部件就不会被凹口覆盖。
 
-> You can also use some helpful debug console commands for simulating the safe zone on PC in the editor located in [Debug Console Commands](#debug-console-commands) of the [Development &amp; Debug Tools for UMG/Slate](#dev-debug-tools) section.
+> 您还可以使用一些有用的调试控制台命令在[UMG/Slate 开发和调试工具](#dev-debug-tools)的[调试控制台命令](#debug-console-commands)部分的编辑器中模拟 PC 上的安全区域。
 
-![Safe Zone Widget](images/common_widgets/w_safezone.png)
- *In this example we wrapped a canvas panel with a save zone so it pushes the canvas away from the area of the screen that would be inaccessible due to the screen's notch or operating system*
+![安全区小部件](images/common_widgets/w_safezone.png)
+*在此示例中，我们用保存区域包裹了画布面板，以便它将画布推离屏幕区域，该区域由于屏幕的凹口或操作系统而无法访问*
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="common-widget-functionality"></a>
 
-## 7.0 Common Widget Functionality
+## 7.0 常用小部件功能
 
-Each widget has its own functionality and use while still containing a common functionality across all the widgets such as:
+每个小部件都有自己的功能和用途，同时仍然包含所有小部件的通用功能，例如：
 
-- **Accessibility**: Each widget will listen to the project’s default settings for accessibility, these settings can be overridden for each widget and can affect its own children,
-     going over accessibility is out of scope for this document but here is an official Epic approved course going over it:
-     [Epic Approved Course for Introduction to Accessible Design](https://www.unrealengine.com/en-US/onlinelearning-courses/introduction-to-accessible-design-with-unreal-engine).
-     ![Accessibility Fields Overview](images/common_widget_func/accessibility_overview.png)
-    - **Override Accessible Defaults**: When enabled will override the default accessibility behavior and text for this widget.
-        - **Can Children be Accessible**: Flag to know if children of this widget should be as distinct accessible widgets.
-        - **Accessible Behavior**: Setting for whether or not this widget is accessible, including how to describe it. When using the "custom" option, you're able to enter in your own accessible text. ![Accessibility Behavior Overview](images/common_widget_func/accessibility_behavior.png)
-        - **Accessible Summary Behavior**: Setting for how to describe this widget when it's being presented via a summary of a parent widget. When using the "custom" option, you're able to enter in your own accessible text. ![Accessibility Summary Behavior Overview](images/common_widget_func/accessibility_summary_behavior.png)
-- **Tool Tip Text**: A tool tip text widget that is either using the default widget or your own custom one, to show when the user hovers over the widget with the mouse.
-     ![Tool Tip Text field](images/common_widget_func/tooltip_text.png)
-- **Is Enabled**: Flag to know if this widget is enabled/disabled and if it can be modified interactively by the user.
-     ![Is Enabled Checkbox](images/common_widget_func/is_enabled.png)
-- **Visibility**: The render visibility and interactivity visibility of the widget.
-    - **Visible**: Renders the widget and allows it to be intractable with the cursor.
-    - **Collapsed**: Does not render, not interactable, and takes up no space in the layout.
-    - **Hidden**: Does not render and is not interactable but occupies layout space.
-    - **Not Hit-Testable/Hit Test Invisible(Self &amp; All Children)**: Does render the widget but cannot be interacted with and does not allow its children to be interactable.
-    - **Not Hit-Testable/Hit Test Invisible(Self Only)**: Does render the widget but only this widget cannot be interacted with.
-         ![Visibility Enumerator Overview](images/common_widget_func/visibility_overview.png)
-- **Render Opacity**: The render opacity of this widget and does affect its children’s opacity as well. 0 = Invisible, 1 = Fully Visible.
-     ![Render Opacity](images/common_widget_func/render_opacity.png)
-- **Render Transform**: Each widget has a render transform, which can affect the collision shape of the widget, but not override the original layout and paint information.
-     Think of it like it’s a modifier to the original transform information but it does not change its layout.
-    - **Translation**: The X and Y location offset.
-    - **Scale**: The X and Y scale of the widget.
-    - **Shear**: The X and Y shear of the widget, also known as skew.
-    - **Angle**: The rotation of the widget. You only need 1 axis to rotate on in a 2D space but it can go between -180 and 180 degrees.
-    - **Pivot**: The pivot offset of the widget that controls the location for where transforms are applied from.
-         The actual value is a normalized amount starting at 0.5 on X/Y to be the center of the widget, 0.0 = Left/Top and 1.0 = Right/Bottom directions.
-         ![Render Transform](images/common_widget_func/render_transform.png)
-- **Is Volatile**: This flag when set to true will mark this widget as non-cacheable so it always has to update its layout and geometry collision, it is defaulted to false because it is not commonly used but it is exposed in case you need it. ![Is Volatile](images/common_widget_func/is_volatile.png)
-- **Clipping**: This is in regards to layout and geometry information where you can specify how the widget is clipped,
-     this does not batch together clipping spaces so this can have a performance cost depending on how many overlapping and clipping widgets you have on screen.
-     ![Clipping Overview](images/common_widget_func/clipping_overview.png)
-    - **Inherit**: This clipping space does not allow the widget to clip its children, but this widget and all its children inherit the clipping area of the last widget that was clipped above it.
-         ![Inherit Clipping Example](images/common_widget_func/clipping_inherit.png)
-         *In this example there is a `Scroll Box` widget with its clipping set to `Inherit` and it is a child of a `Canvas Panel` widget that has its clipping set to `Clip to Bounds`.*
-    - **Clip to Bounds**: This clipping space clips to the bounds of this widget, it intersects those bounds with any previous clipping area from above it.
-         ![Clip to Bounds Example](images/common_widget_func/clipping_clip_to_bounds.png)
-         *In this example there is a `Scroll Box` widget with its clipping set to `Clip to Bounds` so its child widgets which are `Button`'s will be intersected when they go out of bounds of the `Scroll Box`*
-    - **Clip to Bounds - Without Intersecting(Advanced)**: This clipping area clips to its bounds as well but it does **<u>NOT</u>** intersect with any existing clipping geometry, it will always push its own new clipping state.
-         Allowing this widget to render outside the bounds of the hierarchy that does clip it. This will **<u>NOT</u>** allow you to ignore the clipping zone that is set to *"Always"* though.
-         ![Clip to Bounds Without Intersecting Example](images/common_widget_func/clipping_clip_to_bounds_intersect.png)
-         *In this example there is a `Scroll Box` widget with its clipping set to `Clip to Bounds` and one of its child widgets has its clipping set to `Clip to Bounds - Without Intersecting(Advanced)`*
-    - **Clip to Bounds - Always(Advanced)**: This clipping area clips to bounds as well and it always intersects those bounds with any previous clipping area.
-         This clipping area **<u>CANNOT</u>** be ignored, it will always clip its children. Useful for hard barriers in the UI where you never want animations or other effects to break into/out of that region.
-         ![Clip to Bounds Always Example](images/common_widget_func/clipping_clip_to_bounds_always.png)
-         *In this example there are 3 main widgets;
-         `Canvas Panel` with its clipping set to `Clip to Bounds - Always(Advanced)`
-         `Scroll Box` within `Canvas Panel` with its clipping set to `Clip to Bounds`
-         `Button` within `Scroll Box` with its clipping set to `Clip to Bounds - Without Intersecting(Advanced)`*
-    - **On Demand(Advanced)**: This clipping area clips to its bound when its Desired Size is larger than the allocated geometry in the layout.
-         If it does occur where it needs to be clipped, then it will be treated like *“Always”*. According to the source code, this mode was primarily added for Text for when it is placed inside a container that eventually is resized to not be able to support the length of the text.
-         ![Clipping On Demand Example](images/common_widget_func/clipping_on_demand.gif)
-         *In this example we have a `Vertical Box` widget with clipping set to `Inherit` and a custom `Textblock` widget from Epic's Common UI Plugin that has its clipping set to `On Demand(Advanded)` so the text can scroll and be clipped properly(this example is also found in Epic's Context Examples project in the Common UI example map)*
-- **Navigation**: This is where you would add your navigation hooks for what widget to navigate to when using Unreal’s focusing framework. You can set these at runtime in Blueprint and in C++.
-     Please refer to the [Unreal's Focusing System](#unreals-focusing-system) section for a more detailed explanation of the navigation flow.
-     ![Navigation Overview](images/common_widget_func/navigation_overview.png)
-    - **Escape**: This navigation type will navigate to either another widget or try to reach any other widget and escape out of the bounds of this widget when navigated out in that direction.
-         ![Escape Navigation Example](images/common_widget_func/navigation_escape.png)
-    - **Stop**: Navigation stops when trying to navigate out of this widget in that direction.
-         ![Stop Navigation Example](images/common_widget_func/navigation_stop.png)
-    - **Wrap**: Navigation will attempt to wrap to the opposite bounds of this widget(for example in a vertical box, navigating to the bottom widget and having a wrap setting for down on the last widget will send navigation to the top widget of the vertical box).
-         ![Wrap Navigation Example](images/common_widget_func/navigation_wrap.png)
-    - **Explicit**: Navigates to a specifically chosen widget when navigating out of this widget in that direction.
-         ![Explicit Navigation Example](images/common_widget_func/navigation_explicit.png)
-         *You can only select other widgets that have their name edited in the editor when selecting it in the designer, otherwise in code you can just provide the widget itself regardless of if its been renamed or not.*
-    - **Custom**: Allows you to override what widget to navigate to using a function that can either return a widget or no widget(simulating the *“Stop”* navigation type). Intended for when navigating **FROM** or out of this widget to another widget in that specific direction.
-         ![Custom Navigation Example](images/common_widget_func/navigation_custom.png)
-    - **Custom Boundary**: Allows you to override what widget to navigate to using a function that can either return a widget or no widget(simulating the *“Stop”* navigation type). Intended for when navigating **TO** this widget from another widget in that specific direction,
-         so if the direction is Left and you have it set to Custom Boundary then when you navigate from another widget to this one and it was a Left direction then it will run this function that it's bound to.
-         ![Custom Boundary Navigation Example](images/common_widget_func/navigation_custom_boundary.png)
-- **Flow Direction**: For localization, allows you to set the flow direction of this widget regarding whether it is from left to right, or right to left.
-     Only certain widgets actually use it but it is in all widgets in case you want to add your own functionality based on flow direction. For example text widgets can flip from left to right/right to left depending on its flow direction and the language that specifies its flow direction to that.
-    - **Inherit**: Inherits the flow direction set by the parent widget.
-    - **Culture**: Begins laying out widgets using the current cultures layout direction preference, flipping the directionality of flows.
-    - **Left to Right**: Forces a Left to Right layout flow.
-    - **Right to Left**: Forces a Right to Left layout flow.
-         ![Flow Direction Preference](images/common_widget_func/flow_direction_preference.png)
+- **可访问性**：每个小部件将侦听项目的默认可访问性设置，每个小部件都可以覆盖这些设置，并且可以影响其自己的子项，
+    讨论可访问性超出了本文档的范围，但这里有一个 Epic 官方批准的课程来讨论它：
+     [史诗级认可的无障碍设计入门课程](https://www.unrealengine.com/en-US/onlinelearning-courses/introduction-to-accessible-design-with-unreal-engine)。
+    ![辅助功能字段概述](images/common_widget_func/accessibility_overview.png)
+    - **覆盖可访问默认值**：启用后将覆盖此小部件的默认可访问行为和文本。
+        - **子项是否可访问**：标记以了解此小部件的子项是否应作为不同的可访问小部件。
+        - **Accessible Behaviour** ：设置此小部件是否可访问，包括如何描述它。使用“自定义”选项时，您可以输入自己的可访问文本。 ![辅助功能行为概述](images/common_widget_func/accessibility_behavior.png)
+        - **可访问摘要行为**：设置当通过父窗口小部件的摘要呈现该窗口小部件时如何描述该窗口小部件。使用“自定义”选项时，您可以输入自己的可访问文本。 ![辅助功能摘要行为概述](images/common_widget_func/accessibility_summary_behavior.png)
+- **工具提示文本**：一种工具提示文本小部件，它使用默认小部件或您自己的自定义小部件，当用户将鼠标悬停在小部件上时显示。
+    ![工具提示文本字段](images/common_widget_func/tooltip_text.png)
+- **已启用**：标记以了解此小部件是否已启用/禁用以及用户是否可以交互修改。
+    ![已启用复选框](images/common_widget_func/is_enabled.png)
+- **可见性**：小部件的渲染可见性和交互可见性。
+    - **Visible** ：渲染小部件并使其难以用光标处理。
+    - **Collapsed** ：不渲染，不可交互，并且不占用布局空间。
+    - **Hidden** ：不渲染且不可交互，但占用布局空间。
+    - **Not Hit-Testable/Hit Test Invisible(Self &amp; All Children)** ：渲染小部件但不能与其交互，并且不允许其子项可交互。
+    - **Not Hit-Testable/Hit Test Invisible(Self Only)** ：渲染小部件，但只有此小部件无法与之交互。
+        ![可见性枚举器概述](images/common_widget_func/visibility_overview.png)
+- **渲染不透明度**：此小部件的渲染不透明度也会影响其子级的不透明度。 0 = 不可见，1 = 完全可见。
+    ![渲染不透明度](images/common_widget_func/render_opacity.png)
+- **渲染变换**：每个小部件都有一个渲染变换，它可以影响小部件的碰撞形状，但不会覆盖原始布局和绘制信息。
+    可以将其视为原始变换信息的修改器，但不会更改其布局。
+    - **翻译**：X 和 Y 位置偏移。
+    - **比例**：小部件的 X 和 Y 比例。
+    - **剪切**：小部件的 X 和 Y 剪切，也称为倾斜。
+    - **角度**：小部件的旋转。您只需要 1 个轴即可在 2D 空间中旋转，但它可以在 -180 到 180 度之间旋转。
+    - **Pivot** ：小部件的枢轴偏移量，用于控制应用变换的位置。
+        实际值是一个标准化量，从 X/Y 上的 0.5 开始，作为小部件的中心，0.0 = 左/上方向，1.0 = 右/下方向。
+        ![渲染变换](images/common_widget_func/render_transform.png)
+- **Is Volatile** ：此标志设置为 true 时将将此小部件标记为不可缓存，因此它始终必须更新其布局和几何碰撞，它默认为 false，因为它不常用，但会在您需要时公开。![不稳定](images/common_widget_func/is_volatile.png)
+- **Clipping** ：这与布局和几何信息有关，您可以在其中指定小部件的裁剪方式，
+    这不会将剪切空间批处理在一起，因此这可能会产生性能成本，具体取决于屏幕上有多少重叠和剪切小部件。
+    ![剪辑概述](images/common_widget_func/clipping_overview.png)
+    - **Inherit** ：此剪切空间不允许窗口小部件剪切其子级，但此窗口小部件及其所有子级继承在其上方剪切的最后一个窗口小部件的剪切区域。
+        ![继承剪辑示例](images/common_widget_func/clipping_inherit.png)
+        *在此示例中，有一个`Scroll Box`小部件，其剪辑设置为`Inherit` ，并且它是`Canvas Panel`小部件的子项，其剪辑设置为`Clip to Bounds` 。*
+    - **剪切到边界**：此剪切空间剪切到该小部件的边界，它使这些边界与其上方的任何先前剪切区域相交。
+        ![剪辑到边界示例](images/common_widget_func/clipping_clip_to_bounds.png)
+        *在此示例中，有一个`Scroll Box`部件，其剪辑设置为`Clip to Bounds` ，因此其子小部件（即`Button` ）在超出`Scroll Box`的边界时将被相交*
+    - **剪切到边界 - 不相交（高级）** ：此剪切区域也剪切到其边界，但它**<u>不</u>**与任何现有的剪切几何体相交，它将始终推送自己的新剪切状态。
+        允许此小部件在剪辑它的层次结构的边界之外进行渲染。但这**<u>不会</u>**让您忽略设置为*“始终”的*剪切区域。
+        ![剪辑到边界而不相交示例](images/common_widget_func/clipping_clip_to_bounds_intersect.png)
+        *在此示例中，有一个`Scroll Box`部件，其剪辑设置为`Clip to Bounds` ，其子小部件之一的剪辑设置为`Clip to Bounds - Without Intersecting(Advanced)`*
+    - **剪切到边界 - 始终（高级）** ：此剪切区域也剪切到边界，并且它始终与任何先前的剪切区域相交。
+        这个剪切区域**<u>不能</u>**被忽略，它总是会剪切它的子区域。对于用户界面中的硬障碍很有用，您永远不希望动画或其他效果闯入/冲出该区域。
+        ![始终剪辑到边界示例](images/common_widget_func/clipping_clip_to_bounds_always.png)
+        *在此示例中，有 3 个主要小部件；
+         `Canvas Panel`的裁剪设置为`Clip to Bounds - Always(Advanced)`
+         `Canvas Panel`中的`Scroll Box` ，其剪辑设置为`Clip to Bounds`
+         `Scroll Box`的`Button` ，其剪辑设置为`Clip to Bounds - Without Intersecting(Advanced)`*
+    - **按需（高级）** ：当所需大小大于布局中分配的几何图形时，此剪切区域将剪切到其边界。
+        如果它确实发生在需要剪裁的地方，那么它将被视为*“始终”* 。根据源代码，此模式主要是为文本添加的，因为当文本被放置在容器内时，容器最终会调整大小以无法支持​​文本的长度。
+        ![按需剪辑示例](images/common_widget_func/clipping_on_demand.gif)
+        *在此示例中，我们有一个`Vertical Box`小部件，其剪辑设置为`Inherit` ”，还有一个来自 Epic 通用 UI 插件的自定义`Textblock`小部件，该小部件的剪辑设置为`On Demand(Advanded)` ，以便文本可以滚动并正确剪辑（此示例也可找到）在 Epic 的 Context Examples 项目中的 Common UI 示例图中）*
+- **导航**：您可以在此处添加导航挂钩，以便在使用虚幻的聚焦框架时导航到哪个小部件。您可以在运行时在蓝图和 C++ 中设置这些。
+    有关导航流程的更详细说明，请参阅[虚幻的聚焦系统](#unreals-focusing-system)部分。
+    ![导航概览](images/common_widget_func/navigation_overview.png)
+    - **Escape** ：此导航类型将导航到另一个小部件或尝试到达任何其他小部件，并在朝该方向导航时逃出此小部件的边界。
+        ![退出导航示例](images/common_widget_func/navigation_escape.png)
+    - **Stop** ：当尝试朝该方向导航出此小部件时，导航将停止。
+        ![停止导航示例](images/common_widget_func/navigation_stop.png)
+    - **Wrap** ：导航将尝试换行到该小部件的相反边界（例如，在垂直框中，导航到底部小部件并在最后一个小部件上设置向下的换行设置会将导航发送到垂直框的顶部小部件） 。
+        ![环绕导航示例](images/common_widget_func/navigation_wrap.png)
+    - **Explicit** ：当沿该方向导航到特定选择的小部件时，导航到该小部件。
+        ![显式导航示例](images/common_widget_func/navigation_explicit.png)
+        *在设计器中选择它时，您只能选择在编辑器中编辑了名称的其他小部件，否则在代码中您可以只提供小部件本身，无论它是否被重命名。*
+    - **自定义**：允许您使用可以返回小部件或不返回小部件（模拟*“停止”*导航类型）的函数来覆盖要导航到的小部件。适用于从该**小部件**导航或从该小部件导航到该特定方向的另一个小部件时。
+        ![自定义导航示例](images/common_widget_func/navigation_custom.png)
+    - **自定义边界**：允许您使用可以返回小部件或不返回小部件（模拟*“停止”*导航类型）的函数来覆盖要导航到的小部件。用于从特定方向的另一个小部件导航**到此**小部件时，
+        因此，如果方向是向左并且您将其设置为自定义边界，那么当您从另一个小部件导航到这个小部件并且它是向左方向时，它将运行它绑定到的这个函数。
+        ![自定义边界导航示例](images/common_widget_func/navigation_custom_boundary.png)
+- **流向**：对于本地化，允许您设置此小部件的流向是从左到右还是从右到左。
+    只有某些小部件实际使用它，但它存在于所有小部件中，以防您想根据流向添加自己的功能。例如，文本小部件可以从左到右/从右到左翻转，具体取决于其流向以及指定其流向的语言。
+    - **Inherit** ：继承父窗口小部件设置的流向。
+    - **文化**：开始使用当前文化布局方向首选项来布局小部件，翻转流的方向性。
+    - **从左到右**：强制从左到右的布局流。
+    - **从右到左**：强制从右到左布局流。
+        ![流向偏好](images/common_widget_func/flow_direction_preference.png)
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="umg-in-relation-to-levels-worlds"></a>
 
-## 8.0 UMG in relation to Levels/Worlds
+## 8.0 UMG 与关卡/世界的关系
 
 <a name="hud-actors"></a>
 
-### 8.1 HUD Actors
+### 8.1 HUD 参与者
 
-HUD Actors are actors that are only spawned into the level by the Game Mode(I do not recommend spawning them manually unless you are overriding Game Mode functionality and know what you're doing). These actors do not replicate, are hidden by default, and are only spawned per local player controller(to account for split screen) and does not spawn on dedicated servers.
+HUD Actor 是仅通过游戏模式生成到关卡中的演员（我不建议手动生成它们，除非您要覆盖游戏模式功能并知道自己在做什么）。这些参与者不会复制，默认情况下隐藏，并且仅在每个本地玩家控制器上生成（以考虑分屏），并且不会在专用服务器上生成。
 
-The purpose of HUD Actors has changed with the release of Unreal Engine 4(it has stayed the same for Unreal Engine 5) from how it was in Unreal Engine 3 where it used to be the main source of functionality for UI elements in a level for a player, but with the release of UMG and Slate this caused HUD actors to become manager objects for UMG/Slate UI elements rather than driving every aspect of the UI's functionality but they are completely optional to how you want to architect your code.
+随着虚幻引擎 4 的发布，HUD Actor 的用途发生了变化（虚幻引擎 5 保持不变），而在虚幻引擎 3 中，HUD Actor 曾经是关卡中 UI 元素功能的主要来源。一个播放器，但随着 UMG 和 Slate 的发布，这导致 HUD Actor 成为 UMG/Slate UI 元素的管理器对象，而不是驱动 UI 功能的各个方面，但它们对于您想要如何构建代码来说是完全可选的。
 
 <a name="hud-drawing"></a>
 
-#### 8.1.1 HUD Drawing
+#### 8.1.1 HUD 绘图
 
-HUD Actors are tied to a specific player controller and have debug mode information, as well as the functionality to manually draw UI elements to the screen. Here is the list of drawable UI elements:
+HUD Actor 与特定的玩家控制器绑定，并具有调试模式信息，以及手动将 UI 元素绘制到屏幕的功能。以下是可绘制 UI 元素的列表：
 
-- Text: Draws a string on the viewport canvas.
-- Line: Draws a 2D line on the viewport canvas in 2D screenspace.
-    - 2D Line: Draws a 2D line on the viewport canvas using pixel coordinates(which can be less accurate than screenspace due to how Unreal uses Slate Units).
-    - 3D Line: Tells the debug line drawing system for the world to draw a line in world space.
-- Rect: Draws an untextured quad(square/rectangle) on the viewport canvas.
-- Texture: Draws a textured quad(square/rectangle) on the viewport canvas.
-    - Texture Simple: Draws a textured quad(square/rectangle) assuming 1:1 texel density on the viewport canvas.
-- Material: Draws a material-textured quad(square/rectangle) on the viewport canvas.
-    - Material Simple: Draws a material-textured quad(square/rectangle) on the viewport canvas but assumes UV's are (0.0, 0.0) and (1.0, 1.0).
-    - Material Triangle: Draws a material-textured triangle shape on the viewport canvas.
+- 文本：在视口画布上绘制字符串。
+- 线：在 2D 屏幕空间中的视口画布上绘制 2D 线。
+    - 2D 线：使用像素坐标在视口画布上绘制 2D 线（由于 Unreal 使用 Slate 单位，其精度可能低于屏幕空间）。
+    - 3D Line：告诉世界的调试画线系统在世界空间中画一条线。
+- 矩形：在视口画布上绘制无纹理的四边形（正方形/矩形）。
+- 纹理：在视口画布上绘制带纹理的四边形（正方形/矩形）。
+    - 简单纹理：在视口画布上绘制纹理四边形（正方形/矩形），假设纹理像素密度为 1:1。
+- 材质：在视口画布上绘制材质纹理的四边形（正方形/矩形）。
+    - 材质简单：在视口画布上绘制材质纹理的四边形（正方形/矩形），但假设 UV 为 (0.0, 0.0) 和 (1.0, 1.0)。
+    - 材质三角形：在视口画布上绘制材质纹理的三角形。
 
-> A important note is that the way that the HUD Actor draws images and other UI elements is by skipping a few steps of how UMG does it by directly getting the canvas and telling it to draw items.
+> 需要注意的是，HUD Actor 绘制图像和其他 UI 元素的方式是跳过 UMG 的一些步骤，直接获取画布并告诉它绘制项目。
 
 <a name="hud-hitboxes"></a>
 
-#### 8.1.2 HUD HitBoxes
+#### 8.1.2 HUD 碰撞盒
 
-An interesting feature that HUD Actors have is they have the ability to know if portions of the screen are moused over/clicked/pressed and released. The way they do this is by using a class called `FHUDHitBox`.
+HUD Actor 的一个有趣功能是，它们能够知道屏幕的某些部分是否被鼠标悬停/单击/按下和释放。他们这样做的方法是使用一个名为`FHUDHitBox`的类。
 
-`FHUDHitBox` is a C++ only class that has these properties:
+`FHUDHitBox`是一个仅 C++ 的类，具有以下属性：
 
-- Coords `FVector2D`: Coordinates of top left of the hit box.
-- Size `FVector2D`: Size of the hit box.
-- Name `FName`: The name of the hit box.
-- bConsumesInput `boolean`: Does not consume actual input from the game.
-    - True: Prevents hit checks to other hit boxes.
-    - False: Allows the hit check to pass through to other hit boxes.
-- Priority `int32`: The priority of the hit box(could also be considered the Z-Order). Higher hit boxes are given priority first.
+- Coords `FVector2D` ：命中框左上角的坐标。
+- Size `FVector2D` ：命中框的大小。
+- 名称`FName` ：命中框的名称。
+- bConsumesInput `boolean` ：不消耗游戏的实际输入。
+    - True：防止对其他命中框进行命中检查。
+    - False：允许命中检查传递到其他命中框。
+- Priority `int32` : 命中框的优先级（也可以被认为是 Z-Order）。较高的命中框优先。
 
-The benefits of using a `FHUDHitBox` is that the HUD has mouse events that work with it, each event provides the name of the HitBox:
+使用`FHUDHitBox`的好处是 HUD 具有与之配合的鼠标事件，每个事件提供 HitBox 的名称：
 
-- Click: Occurs when a hit box is clicked on.
-- Release: Occurs when a hit box is no longer clicked.
-- Begin Cursor Over: Occurs when a hit box is moused over.
-- End Cursor Over: Occurs when a hit box no longer has a mouse over it.
+- 单击：单击命中框时发生。
+- 释放：当不再单击点击框时发生。
+- 开始光标悬停：当鼠标悬停在命中框上时发生。
+- End Cursor Over：当鼠标不再位于命中框上时发生。
 
-The HUD Actor essentially has an array of HUD HitBoxes that can be added/removed at runtime. The array is a public variable in all HUD Actors but can only be accessed in C++: `HitBoxMap`(I know it says map but its not a map array).
- There is two ways of adding a HitBox:
+HUD Actor 本质上有一个 HUD HitBox 数组，可以在运行时添加/删除。该数组是所有 HUD Actor 中的公共变量，但只能在 C++ 中访问： `HitBoxMap` （我知道它说的是地图，但它不是地图数组）。
+添加 HitBox 有两种方法：
 
-- Calling `AddHitBox` and feeding in the parameters to create a `FHUDHitBox` class inside the function.
-- Manually creating the `FHUDHitBox` class and adding it to the `HitBoxMap` array.
+- 调用`AddHitBox`并输入参数以在函数内创建`FHUDHitBox`类。
+- 手动创建`FHUDHitBox`类并将其添加到`HitBoxMap`数组中。
 
-To remove a HitBox you can simply remove it from the `HitBoxMap` array.
+要删除 HitBox，只需将其从`HitBoxMap`数组中删除即可。
 
 <a name="widget-components"></a>
 
-### 8.2 Widget Components
+### 8.2 小部件组件
 
-Widget Components are `UMeshComponent`'s(actor components that are primitive components that can render a mesh) that basically creates a procedural static mesh in the world with its texture being the widget's drawn texture(you can access that render target using `GetRenderTarget`).
+Widget 组件是`UMeshComponent` （actor 组件，是可以渲染网格的原始组件），它基本上在世界中创建一个程序静态网格，其纹理是 widget 的绘制纹理（您可以使用`GetRenderTarget`访问该渲染目标）。
 
-> Widget Components DO NOT TICK on Dedicated Servers.
->  This is obvious since most of the functionality of the component is updating rendering of the User Widget.
->  The component also deals with collision based on the User Widget, so if the widget is not spawning on Dedicated Servers then the component's collision will not work properly.
+> 小部件组件在专用服务器上不勾选。
+> 这是显而易见的，因为组件的大部分功能是更新用户小部件的呈现。
+> 该组件还处理基于用户小部件的碰撞，因此如果该小部件未在专用服务器上生成，则该组件的碰撞将无法正常工作。
 
-An important performance impact of using widget component's is that each widget component is a render target being updated on the component's tick.
- So if you have 100 widget component's at high resolutions then that's 100 render targets being updated every frame(you can have the component tick when drawn but that still takes up GPU memory).
- To avoid these kinds of GPU memory impacts, here are some common situations and solutions(THESE ARE NOT THE ONLY WAY TO SOLVE THESE ISSUES, THESE ARE JUST RECOMMENDATIONS FROM MY OWN EXPERIENCE):
+使用小部件组件的一个重要性能影响是每个小部件组件都是在组件的更新时更新的渲染目标。
+因此，如果您有 100 个高分辨率的小部件组件，那么每帧都会更新 100 个渲染目标（您可以在绘制时让组件勾选，但这仍然占用 GPU 内存）。
+为了避免此类 GPU 内存影响，以下是一些常见情况和解决方案（这些不是解决这些问题的唯一方法，这些只是我自己的经验的建议）：
 
-- Situation 1: Large amount of images or progress bars that are above NPC's head's
-    - Solution: Using static mesh components with materials with a texture parameter for the image, and a material for creating the progress bar either via a texture or math based approach(recommend looking up SDF's with Unreal for examples).
-- Situation 2: Rendering indicators through the world but scales as the player's camera moves closer/farther from the indicator's location.
-    - Solution: Creating a material to ignore the depth pass, in recent versions of Unreal Engine there is also a boolean to skip the motion blur pass but you can do this by modifying the engine in previous versions. You can do this with either static mesh components or particle systems drawing the static mesh, profile and come to your own conclusions.
+- 情况一：NPC头顶上方有大量图片或进度条
+    - 解决方案：使用具有图像纹理参数的材质的静态网格物体组件，以及通过基于纹理或基于数学的方法创建进度条的材质（例如，建议使用 Unreal 查找 SDF）。
+- 情况 2：在世界范围内渲染指示器，但随着玩家的摄像机靠近/远离指示器位置而缩放。
+    - 解决方案：创建一个材质来忽略深度通道，在最新版本的虚幻引擎中还有一个布尔值来跳过运动模糊通道，但您可以通过修改以前版本中的引擎来做到这一点。您可以使用静态网格物体组件或粒子系统来绘制静态网格物体、轮廓并得出您自己的结论。
 
-For building materials to work with Widget Components, here are texture parameters that work automatically with Widget Components:
+对于与小部件组件一起使用的建筑材料，以下是自动与小部件组件一起使用的纹理参数：
 
-- `SlateUI`: Inputs the widget's Render Target.
-- `TintColorAndOpacity`: Inputs the widget component's TintColorAndOpacity property.
-- `OpacityFromTexture`: Inputs the widget component's OpacityFromTexture property.
+- `SlateUI` ：输入小部件的渲染目标。
+- `TintColorAndOpacity` ：输入小部件组件的 TintColorAndOpacity 属性。
+- `OpacityFromTexture` ：输入小部件组件的 OpacityFromTexture 属性。
 
-An important aspect to remember is that while this is a component it does actually create a User Widget.
- To access the User Widget you can use `GetUserWidgetObject`(you can also use `GetSlateWidget` to get the `SWidget` that it is tied to).
+需要记住的一个重要方面是，虽然这是一个组件，但它实际上创建了一个用户小部件。
+要访问用户小部件，您可以使用`GetUserWidgetObject` （您也可以使用`GetSlateWidget`来获取它所绑定的`SWidget` ）。
 
-> You cannot use `GetUserWidgetObject` in an actor's construction script due to the widget only being valid from `BeginPlay`.
+> 您不能在 actor 的构建脚本中使用`GetUserWidgetObject` ，因为该小部件仅在`BeginPlay`中有效。
 
-By default it gets the first local player from the game instance:
+默认情况下，它从游戏实例中获取第一个本地玩家：
 
 ```c++
 if (UWorld* LocalWorld = GetWorld())
@@ -1234,66 +1233,66 @@ if (UWorld* LocalWorld = GetWorld())
 }
 ```
 
-This can be changed by calling `SetOwnerPlayer` and inputting a `ULocalPlayer`.
+这可以通过调用`SetOwnerPlayer`并输入`ULocalPlayer`来更改。
 
-For getting the 2D plane widget space location from a world location on the widget component you can use `GetLocalHitLocation` which calculates it out by doing these math operations:
+要从小部件组件上的世界位置获取 2D 平面小部件空间位置，您可以使用`GetLocalHitLocation` ，它通过执行以下数学运算来计算出来：
 
-> 1. By converting the world location into relative space of the widget component using `InverseTransformPosition`
-> 2. Builds a simple 2D location with X-axis being the relative location's negative Y-axis and relative location's negative Z-axis for the 2D Y-axis.
-> 3. Offsets(adds) the 2D X-axis by the current draw size's X-axis * Pivot's X-axis.
-> 4. Offsets(adds) the 2D Y-axis by the current draw size's Y-axis * Pivot's Y-axis.
-> 5. Caches a normalized location of the 2D location divided by the current draw size.
-> 6. Updates the 2D location's Y-axis to be the current draw size's Y-axis * normalized location's Y-axis, this is to account parabola distortion.
+> 1. 通过使用`InverseTransformPosition`将世界位置转换为小部件组件的相对空间
+> 2. 构建一个简单的 2D 位置，其中 X 轴为相对位置的负 Y 轴，相对位置的负 Z 轴为 2D Y 轴。
+> 3. 将 2D X 轴偏移（添加）当前绘制尺寸的 X 轴 * 枢轴的 X 轴。
+> 4. 将 2D Y 轴偏移（添加）当前绘制尺寸的 Y 轴 * 枢轴的 Y 轴。
+> 5. 缓存 2D 位置除以当前绘制尺寸的标准化位置。
+> 6. 将 2D 位置的 Y 轴更新为当前绘制尺寸的 Y 轴 * 标准化位置的 Y 轴，这是为了考虑抛物线失真。
 
 <a name="widget-interaction-components"></a>
 
-#### 8.2.1 Widget Interaction Components
+#### 8.2.1 Widget交互组件
 
-For being able to interact with widget component's there is the Widget Interaction Component that is
- meant to simulate user inputs and mouse pointer(or virtual finger tip) inputs as a laser pointer style of interacting with widget.
+为了能够与小部件组件进行交互，有一个小部件交互组件
+旨在模拟用户输入和鼠标指针（或虚拟指尖）输入作为与小部件交互的激光笔风格。
 
-Each widget interaction component has a virtual user associated with it that handles providing input to slate widgets.
- When activated the component will create an actual `FSlateUser` to simulate input and such.
- By default the engine will use Slate User index 8(the maximum allowed amount of slate users) instead of 0 and increments up from there,
- allowing for slate users and virtual users to not have conflicts.
+每个小部件交互组件都有一个与之关联的虚拟用户，负责向平板小部件提供输入。
+激活后，该组件将创建一个实际的`FSlateUser`来模拟输入等。
+默认情况下，引擎将使用 Slate 用户索引 8（允许的最大 Slate 用户数量）而不是 0 并从那里递增，
+允许板岩用户和虚拟用户不发生冲突。
 
-Widget Interaction Components will trace on tick to determine what widget its interacting with.
- Here is the order of the tick frame for the component to figure out the component its line tracing against in `UWidgetInteractionComponent::TickComponent`:
+小部件交互组件将跟踪滴答声以确定其与哪个小部件交互。
+以下是组件的刻度帧顺序，用于确定`UWidgetInteractionComponent::TickComponent`中其线路跟踪所针对的组件：
 
 > 1. `UWidgetInteractionComponent::SimulatePointerMovement`
->     1. Check if we can even hit test by checking `bEnableHitTesting`
->     2. Check if the component is able to send input in `CanSendInput`
->         1. If the slate application is initialized &amp; if the virtual user has been setup.
+>     1. 检查我们是否可以通过检查`bEnableHitTesting`进行命中测试
+>     2. 检查组件是否能够在`CanSendInput`中发送输入
+>         1. slate 应用程序是否已初始化且虚拟用户是否已设置。
 >     3. `UWidgetInteractionComponent::DetermineWidgetUnderPointer`
->         1. Cache the previously hovered widget component.
+>         1. 缓存之前悬停的小部件组件。
 >         2. `UWidgetInteractionComponent::PerformTrace`
->             1. Line trace based on the type of `InteractionSource`:
->             - World: Multi-Line Trace by `TraceChannel` in the forward direction of the interaction component's location,
->                  ignores any components in the owning actor so it doesn't hit itself(excluding widget components).
->             - Mouse: Multi-Line Trace by `TraceChannel` from the mouse position deprojected from screen to world.
->             - Center Screen: Multi-Line Trace by `TraceChannel` from the viewport's center position deprojected from screen to world.
->             - Custom: Uses `CustomHitResult`'s properties which can be set at runtime.
->                  An important note about this struct is in the first tick frame it might not have been set yet since Blueprint tick might occur after this is called.
->                  You can set it in BeginPlay and will have been setup ahead of time for that first tick frame.
->             1. If we're not using the custom `InteractionSource` type then filter through invisible widgets.
->             2. Gets the hit widget component and feeds in the hit result, from there the widget component will return the 2D hit location in widget space.
->             3. Finds the `FWidgetPath` from the returned widget space hit location.
->             4. Returns the trace result of `PerformTrace`.
->         3. Tell the newly hovered widget component to redraw.
->         4. Iterate through an arranged list of widgets from the retrieved widget path from the trace and update these flags based on the final widget:
->             - `bIsHoveredWidgetInteractable`: If the widget is interactable.
->             - `bIsHoveredWidgetFocusable`: If the widget is keyboard focusable.
->             - `bIsHoveredWidgetHitTestVisible`: If the widget is hit testable.
->         5. If the newly hovered widget component is different from the previously hovered widget component then tell that previous component to redraw. And broadcast `OnHoveredWidgetChanged` for other systems.
->         6. Return widget path from the trace.
->     4. Notify the slate application(to send to the rest of the engine) that an input is being simulated on that widget or if we're not hovering anything anymore then tell it that the pointer has moved off that old widget.
+>             1. 基于`InteractionSource`类型的线路跟踪：
+>             - World：通过`TraceChannel`在交互组件位置的正向方向上进行多线跟踪，
+>                 忽略拥有者 Actor 中的任何组件，因此它不会击中自身（不包括小部件组件）。
+>             - 鼠标：通过`TraceChannel`从从屏幕到世界的鼠标位置进行多线跟踪。
+>             - 中心屏幕：通过`TraceChannel`从视口的中心位置进行多线跟踪，从屏幕到世界进行反投影。
+>             - Custom：使用`CustomHitResult`的属性，可以在运行时设置。
+>                 关于此结构的一个重要注意事项是，在第一个刻度帧中，它可能尚未设置，因为调用此结构后可能会发生蓝图刻度。
+>                 您可以在 BeginPlay 中设置它，并且会提前为第一个刻度帧设置好。
+>             1. 如果我们不使用自定义`InteractionSource`类型，则通过不可见的小部件进行过滤。
+>             2. 获取命中小部件组件并输入命中结果，小部件组件将从那里返回小部件空间中的 2D 命中位置。
+>             3. 从返回的小部件空间命中位置查找`FWidgetPath` 。
+>             4. 返回`PerformTrace`的跟踪结果。
+>         3. 告诉新悬停的小部件组件重绘。
+>         4. 从跟踪中检索到的小部件路径中迭代排列的小部件列表，并根据最终的小部件更新这些标志：
+>             - `bIsHoveredWidgetInteractable` ：如果小部件是可交互的。
+>             - `bIsHoveredWidgetFocusable` ：如果小部件是键盘可聚焦的。
+>             - `bIsHoveredWidgetHitTestVisible` ：如果小部件是可测试的。
+>         5. 如果新悬停的小部件组件与先前悬停的小部件组件不同，则告诉先前的组件重绘。并为其他系统广播`OnHoveredWidgetChanged` 。
+>         6. 从跟踪中返回小部件路径。
+>     4. 通知 slate 应用程序（发送到引擎的其余部分）正在该小部件上模拟输入，或者如果我们不再悬停任何内容，则告诉它指针已移离旧小部件。
 
 <a name="widget-components-rendering"></a>
 
-#### 8.2.2 How Widget Components are Rendered
+#### 8.2.2 Widget组件如何渲染
 
-For drawing a user widget to a `UTextureRenderTarget2D` the general process of it that Widget Component's do(along with extra work because it is a component and thus has to provide a scene proxy and such); is by creating a `FWidgetRenderer` and then getting the slate widget from the user widget and having the widget renderer draw it as a texture.
- Here is example code of using the widget renderer to create a texture from a `UUserWidget`(there are multiple implementations of `FWidgetRenderer::DrawWindow` &amp; `FWidgetRenderer::DrawWidget`so this is one of the ways):
+为了将用户小部件绘制到`UTextureRenderTarget2D` ，小部件组件执行的一般过程（以及额外的工作，因为它是一个组件，因此必须提供场景代理等）；方法是创建一个`FWidgetRenderer` ，然后从用户小部件获取板岩小部件，并让小部件渲染器将其绘制为纹理。
+以下是使用小部件渲染器从`UUserWidget`创建纹理的示例代码（ `FWidgetRenderer::DrawWindow`和`FWidgetRenderer::DrawWidget`有多种实现，因此这是方法之一）：
 
 ```c++
 bool UExampleFunctionLibrary::DrawWidgetToTarget(UTextureRenderTarget2D*& DrawnWidgetRenderTarget,
@@ -1339,105 +1338,105 @@ bool UExampleFunctionLibrary::DrawWidgetToTarget(UTextureRenderTarget2D*& DrawnW
 }
 ```
 
-For drawing the widget in world space it uses the above approach but instead of `DrawWidget` it uses `DrawWindow` directly.
+为了在世界空间中绘制小部件，它使用上述方法，但它不是直接使用`DrawWidget`而是使用`DrawWindow` 。
 
-For drawing the widget in screen space it will add the user widget to a second game layer widget that is meant to only handle widget components called `FWorldWidgetScreenLayer` that talks directly to `SWorldWidgetScreenLayer`.
+为了在屏幕空间中绘制小部件，它将把用户小部件添加到第二个游戏层小部件，该小部件仅处理名为`FWorldWidgetScreenLayer`的小部件组件，该组件直接与`SWorldWidgetScreenLayer`通信。
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="dev-debug-tools"></a>
 
-## 9.0 Development &amp; Debug Tools for UMG/Slate
+## 9.0 UMG/Slate 开发和调试工具
 
-Unreal Engine has development and debug tools for UMG &amp; Slate that assist with creating UI and can be used in both editor and packaged development builds(including consoles).
+虚幻引擎具有用于 UMG 和 Slate 的开发和调试工具，可帮助创建 UI，并可在编辑器和打包开发版本（包括控制台）中使用。
 
 <a name="debug-console-commands"></a>
 
-### 9.1 Debug Console Commands
+### 9.1 调试控制台命令
 
-[Official Documentation for Console Slate Debugger](https://docs.unrealengine.com/latest/INT/console-slate-debugger-in-unreal-engine/)(Also located in [External Links Page](EXTERNAL_LINKS.md)).
+[Console Slate 调试器的官方文档](https://docs.unrealengine.com/latest/INT/console-slate-debugger-in-unreal-engine/)（也位于[外部链接页面](EXTERNAL_LINKS.md)）。
 
-- Please refer to the [Slate Console Debugger Console Commands](#slate-console-debugger) section for Slate Debugger specific console commands.
-- `Slate.HitTestGridDebugging [0/1]`: Flag for showing UMG/Slate focusing hit test grid.
-- `SlateDebugger.Invalidate.[Disable/Enable]`: Enables or disables the invalidation debugger visualizer.
-- Safe Zone Commands:
-    - `r.DebugSafeZone.TitleRatio 0.96`: Default is `1.0`. The safe zone ratio that will be returned by `FDisplayMetrics::GetDisplayMetrics` on platforms that don't have a defined safe zone between 0-1.
-    - `r.DebugActionZone.ActionRatio 0.96`: Default is `1.0`. The action zone ratio that will be returned by `FDisplayMetrics::GetDisplayMetrics` on platforms that don't have a defined safe zone between 0-1.
+- 请参阅[Slate 控制台调试器控制台命令](#slate-console-debugger)部分，了解 Slate 调试器特定的控制台命令。
+- `Slate.HitTestGridDebugging [0/1]` ：用于显示 UMG/Slate 聚焦命中测试网格的标志。
+- `SlateDebugger.Invalidate.[Disable/Enable]` ：启用或禁用失效调试器可视化工具。
+- 安全区命令：
+    - `r.DebugSafeZone.TitleRatio 0.96` ：默认值为`1.0` 。在没有定义安全区域的平台上`FDisplayMetrics::GetDisplayMetrics`将返回的安全区域比率介于 0-1 之间。
+    - `r.DebugActionZone.ActionRatio 0.96` ：默认值为`1.0` 。在没有定义 0-1 之间安全区域的平台上`FDisplayMetrics::GetDisplayMetrics`将返回的操作区域比率。
     - `r.DebugSafeZone.Mode [integer between 0 and 2]`
-        - `0`: Do not display the safe zone overlay
-        - `1`: Display the overlay for the title safe zone
-        - `2`: Display the overlay for the action safe zone
-- `Slate.ThrottleWhenMouseIsMoving [0/1]`: Default is `false`. Whether to attempt to increase UI responsiveness based on mouse cursor movement.
-    - `True`: Allow throttling based on mouse movement activity.
-- `Slate.TargetFrameRateForResponsiveness [integer]`: Default is `35` frames per second. Minimum sustained average frame rate required before we consider the editor to be "responsive" for a smooth UI experience.
-- `Slate.AllowSlateToSleep [0/1]`: Whether Slate should go to sleep when there are no active timers and the user is idle.
-- `Slate.SleepBufferPostInput [float]`: Default is `0.0`. The amount of time that must pass without any user action before Slate is put to sleep (provided that there are no active timers).
-- `Slate.RequireFocusForGamepadInput [0/1]`: Default is `false`. Whether gamepad input should be ignored by the engine if the application is not currently active.
-- `Slate.Transform.FullscreenMouseInput [0/1]`: Default is `true`. Set true to transform mouse input to account for viewport stretching at fullscreen resolutions not natively supported by the monitor.
-- `Slate.EnableTooltips [0/1]`: Default is `true` if the platform needs UI tooltips, defaults to `false` if otherwise. Whether to allow tooltips to spawn at all.
-- `Slate.TriggerInvalidate`: Triggers a global invalidate of all widgets. Does not run on Shipping Builds.
+        - `0` ：不显示安全区覆盖
+        - `1` ：显示标题安全区的叠加层
+        - `2` ：显示操作安全区的叠加层
+- `Slate.ThrottleWhenMouseIsMoving [0/1]` ：默认为`false` 。是否尝试根据鼠标光标移动来提高 UI 响应能力。
+    - `True` ：允许根据鼠标移动活动进行限制。
+- `Slate.TargetFrameRateForResponsiveness [integer]` ：默认值为每秒`35`帧。在我们认为编辑器能够“响应”以获得流畅的 UI 体验之前，所需的最低持续平均帧速率。
+- `Slate.AllowSlateToSleep [0/1]` ：当没有活动计时器且用户空闲时，Slate 是否应该进入睡眠状态。
+- `Slate.SleepBufferPostInput [float]` ：默认值为`0.0` 。在 Slate 进入睡眠状态之前，在没有任何用户操作的情况下必须经过的时间量（假设没有活动的计时器）。
+- `Slate.RequireFocusForGamepadInput [0/1]` ：默认为`false` 。如果应用程序当前未处于活动状态，引擎是否应忽略游戏手柄输入。
+- `Slate.Transform.FullscreenMouseInput [0/1]` ：默认值为`true` 。设置 true 来转换鼠标输入，以考虑显示器本身不支持的全屏分辨率下的视口拉伸。
+- `Slate.EnableTooltips [0/1]` ：如果平台需要 UI 工具提示，则默认为`true` ，否则默认为`false` 。是否允许生成工具提示。
+- `Slate.TriggerInvalidate` ：触发所有小部件的全局无效。不在运输版本上运行。
 
 <a name="widget-reflector"></a>
 
-### 9.2 Widget Reflector
+### 9.2 部件反射器
 
-[Official Documentation for Widget Reflector](https://docs.unrealengine.com/latest/INT/using-the-slate-widget-reflector-in-unreal-engine/)(Also located in [External Links Page](EXTERNAL_LINKS.md)).
+[Widget Reflector 的官方文档](https://docs.unrealengine.com/latest/INT/using-the-slate-widget-reflector-in-unreal-engine/)（也位于[外部链接页面](EXTERNAL_LINKS.md)）。
 
-> To open the widget reflector, you can navigate to `Tools/Debug/Widget Reflector` or build the widget reflector as a separate application when using the Source version of Unreal Engine.
+> 要打开小部件反射器，您可以导航到`Tools/Debug/Widget Reflector` ，或者在使用虚幻引擎的源版本时将小部件反射器构建为单独的应用程序。
 
-The widget reflector tool is intended to help developers optimize and debug UI that allows the developers to debug:
+widget Reflector工具旨在帮助开发者优化和调试UI，允许开发者调试：
 
-- Widget Hierarchy: The hierarchy of widgets that displays the parents and children of widgets. You can inspect the following properties when using the widget hierarchy:
-    - Widget Name
-    - Foreground Visibility(FG Visibility)
-    - Focus
-    - Clipping
-    - Source: The source code location of the widget for ease of access.
-    - Address: The raw widget path that slate uses when calculating widget hierarchy and trees.
-- Widget Details: Widget details that such as visibility, focus, etc(anything that the slate widget exposes as an exposed property).
-- Widget Events:
-    - Input
-    - Focus
-    - Navigation
-    - Warnings
-    - Mouse Capture
-- Widget Navigation and the Hit Test Grid
-- Invalidation
-- Widget Update
-- Widget Paint
-- Clipping
-- Culling
-- Caching
+- 小部件层次结构：小部件的层次结构，显示小部件的父级和子级。使用小部件层次结构时，您可以检查以下属性：
+    - 小部件名称
+    - 前景可见度(FG Visibility)
+    - 重点
+    - 剪裁
+    - 来源：小部件的源代码位置，以便于访问。
+    - 地址：slate 在计算小部件层次结构和树时使用的原始小部件路径。
+- 小部件详细信息：小部件详细信息，例如可见性、焦点等（板岩小部件作为公开属性公开的任何内容）。
+- 小部件事件：
+    - 输入
+    - 重点
+    - 导航
+    - 警告
+    - 鼠标捕捉
+- 小部件导航和点击测试网格
+- 无效
+- 小部件更新
+- 小部件绘制
+- 剪裁
+- 剔除
+- 缓存
 
-![Widget Reflector Example](images/widget_reflector_example.png)
+![小部件反射器示例](images/widget_reflector_example.png)
 
-> For debugging devices such as consoles or phones, you can use the "Remote Session" plugin(formally named "Slate Remote") within the engine to connect the debugger to the device to live debug Slate &amp; UMG with the widget reflector.
+> 对于控制台或手机等调试设备，您可以使用引擎内的“远程会话”插件（正式名称为“Slate Remote”）将调试器连接到设备，以使用小部件反射器实时调试 Slate 和 UMG。
 
 <a name="slate-console-debugger"></a>
 
-### 9.3 Slate Console Debugger
+### 9.3 Slate 控制台调试器
 
-The Slate Console Debugger is a list of console commands that can be used to debug different parts of Slate for debugging purposes. Each console command is prefixed with `SlateDebugger.`, when enabling an option this will cause it's debug information to be printed to the output log.
+Slate 控制台调试器是控制台命令的列表，可用于调试 Slate 的不同部分以达到调试目的。每个控制台命令都以`SlateDebugger.` ，当启用一个选项时，这将导致其调试信息被打印到输出日志中。
 
-The good news is that you can enable these flags from the widget reflector so you don't have to type in the difference debug commands. ![Widget Reflector Slate Console Debugger Flags](images/widget_reflector_console_debugger.png)
+好消息是，您可以从小部件反射器启用这些标志，这样您就不必输入差异调试命令。 ![Widget Reflector Slate 控制台调试器标志](images/widget_reflector_console_debugger.png)
 
-Below is the list of each Slate Debugger console command:
+以下是每个 Slate 调试器控制台命令的列表：
 
-- Slate Trace, located in `SlateTrace.cpp`:
-    - `SlateDebugger.bCaptureRootInvalidationCallstacks [0/1]`: Whenever a widget is the root cause of an invalidation, capture the callstack for slate insights(another debugging tool that's a part of Unreal Insights).
-- Events, located in `ConsoleSlateDebugger.cpp`:
-    - `SlateDebugger.Event.Start` OR `SlateDebugger.Start`: Starts the debugger for events.
-    - `SlateDebugger.Event.Stop` OR `SlateDebugger.Stop`: Stops the debugger for events.
-    - `SlateDebugger.Event.LogWarning`: Logs warning events.
-    - `SlateDebugger.Event.LogInputEvent`: Logs input events.
-    - `SlateDebugger.Event.LogFocusEvent`: Logs focus events.
-    - `SlateDebugger.Event.LogAttemptNavigationEvent`: Logs attempted navigation events.
-    - `SlateDebugger.Event.LogExecuteNavigationEvent`: Logs executed navigation events.
-    - `SlateDebugger.Event.LogCaptureStateChangeEvent`: Logs when input capture state change events.
-    - `SlateDebugger.Event.LogCursorChangeEvent`: Logs cursor changed events.
-    - `SlateDebugger.Event.CaptureStack`: This toggles capturing and logging the callstack when there is an event.
-    - `SlateDebugger.Event.InputRoutingModeEnabled`: This toggles logging the route that an input event took.
-    - `SlateDebugger.Event.SetInputFilter [Filter]`: Toggles specific input filters:
-        - Filters:
+- Slate Trace，位于`SlateTrace.cpp` ：
+    - `SlateDebugger.bCaptureRootInvalidationCallstacks [0/1]` ：只要某个小部件是失效的根本原因，就捕获调用堆栈以获取 slate 见解（属于 Unreal Insights 的另一个调试工具）。
+- 事件，位于`ConsoleSlateDebugger.cpp`中：
+    - `SlateDebugger.Event.Start` OR `SlateDebugger.Start` ：启动事件调试器。
+    - `SlateDebugger.Event.Stop` OR `SlateDebugger.Stop` ：停止事件调试器。
+    - `SlateDebugger.Event.LogWarning` ：记录警告事件。
+    - `SlateDebugger.Event.LogInputEvent` ：记录输入事件。
+    - `SlateDebugger.Event.LogFocusEvent` ：记录焦点事件。
+    - `SlateDebugger.Event.LogAttemptNavigationEvent` ：记录尝试的导航事件。
+    - `SlateDebugger.Event.LogExecuteNavigationEvent` ：记录执行的导航事件。
+    - `SlateDebugger.Event.LogCaptureStateChangeEvent` ：记录输入捕获状态更改事件。
+    - `SlateDebugger.Event.LogCursorChangeEvent` ：记录光标更改事件。
+    - `SlateDebugger.Event.CaptureStack` ：当发生事件时，这会切换捕获和记录调用堆栈。
+    - `SlateDebugger.Event.InputRoutingModeEnabled` ：这会切换记录输入事件所采用的路线。
+    - `SlateDebugger.Event.SetInputFilter [Filter]` ：切换特定输入过滤器：
+        - 过滤器：
             - `MouseMove`
             - `MouseEnter`
             - `MouseLeave`
@@ -1464,18 +1463,18 @@ Below is the list of each Slate Debugger console command:
             - `AnalogInput`
             - `TouchGesture`
             - `MotionDetected`
-    - `SlateDebugger.Event.DisableAllInputFilters`: Disables all enabled input filters.
-    - `SlateDebugger.Event.EnableAllInputFilters`: Enables all input filters.
-    - `SlateDebugger.Event.SetFocusFilter [Filter]`: Toggles specific focus filters:
-        - Filters:
+    - `SlateDebugger.Event.DisableAllInputFilters` ：禁用所有启用的输入过滤器。
+    - `SlateDebugger.Event.EnableAllInputFilters` ：启用所有输入过滤器。
+    - `SlateDebugger.Event.SetFocusFilter [Filter]` ：切换特定焦点过滤器：
+        - 过滤器：
             - `FocusChanging`
             - `FocusLost`
             - `FocusReceived`
-    - `SlateDebugger.Event.ClearFocusFilters`: Disables all enabled focus filters.
-    - `SlateDebugger.Event.EnableAllFocusFilters`: Enables all focus filters.
-- Breaks, this is useful for other tools to use and requires an debugger to be attached to the editor to act as a breakpoint. Located in `ConsoleSlateDebuggerBreak.cpp`:
-    - `SlateDebugger.Break.OnWidgetInvalidation Reason=[Reason][WidgetPtr][WidgetId]`: Break when the inputted widget gets invalidated.
-        - Invalidation Reasons:
+    - `SlateDebugger.Event.ClearFocusFilters` ：禁用所有启用的焦点过滤器。
+    - `SlateDebugger.Event.EnableAllFocusFilters` ：启用所有焦点过滤器。
+- 断点，这对于其他工具的使用很有用，并且需要将调试器附加到编辑器以充当断点。位于`ConsoleSlateDebuggerBreak.cpp`中：
+    - `SlateDebugger.Break.OnWidgetInvalidation Reason=[Reason][WidgetPtr][WidgetId]` ：当输入的小部件无效时中断。
+        - 无效原因：
             - `Layout`
             - `Paint`
             - `Volatility`
@@ -1486,391 +1485,401 @@ Below is the list of each Slate Debugger console command:
             - `Prepass`
             - `PaintAndVolatility`
             - `LayoutAndVolatility`
-    - `SlateDebugger.Break.OnWidgetBeginPaint [WidgetPtr][WidgetId]`: Break before the widget starts being painted.
-    - `SlateDebugger.Break.OnWidgetEndPaint [WidgetPtr][WidgetId]`: Break when the widget was just painted.
-    - `SlateDebugger.Break.RemoveAll`: Removes all the requests to break.
-- Paint, located in `ConsoleSlateDebuggerPaint.cpp`:
-    - `SlateDebugger.Paint.Start`: Start the painted widget debug tool. Use to show widgets that have been painted this frame.
-    - `SlateDebugger.Paint.Stop`: Stops the painted widget debug tool.
-    - `SlateDebugger.Paint.Enable`: Toggles(Start/Stop) the painted widget debug tool to show widgets that are painted.
-    - `SlateDebugger.Paint.LogOnce`: Logs the names of all widgets that were painted during the last update in the tool.
-    - `SlateDebugger.Paint.MaxNumberOfWidgetDisplayedInList [MaxNumberOfWidgetsInList]`: The max number of widgets that will be displayed when DisplayWidgetNameList is active in the tool.
-    - `SlateDebugger.Paint.ToggleWidgetNameList`: Toggleable option to display the name of the widgets that have been painted in the tool.
-    - `SlateDebugger.Paint.LogWarningIfWidgetIsPaintedMoreThanOnce`: Toggles logging a warning if a widget is painted more than once in a single frame in the tool.
-    - `SlateDebugger.Paint.OnlyGameWindow`: Toggles only debugging the game window's widgets in the tool.
-- Update, located in `ConsoleSlateDebuggerUpdate.cpp`:
-    - `SlateDebugger.Update.Start`: Start the update widget debug tool to show when widgets are updated.
-    - `SlateDebugger.Update.Stop`: Stops the update widget debug tool.
-    - `SlateDebugger.Update.Enable`: Toggles(Start/Stop) the update widget debug tool to show when widgets are updated.
-    - `SlateDebugger.Update.ToggleLegend`: Toggle to display the color legend in the tool.
-    - `SlateDebugger.Update.ToggleWidgetNameList`: Toggle to display the name of the widgets that have been updated in the tool.
-    - `SlateDebugger.Update.ToggleUpdateFromPaint`: Toggle to also display the widgets that do not have an update flag but are updated as a side effect of an other widget.
-    - `SlateDebugger.Update.SetWidgetUpdateFlagsFilter`: Enable/Disable specific widget update flag filters.
-        - Filters, located in `WidgetUpdateFlags.h`:
+    - `SlateDebugger.Break.OnWidgetBeginPaint [WidgetPtr][WidgetId]` ：在小部件开始绘制之前中断。
+    - `SlateDebugger.Break.OnWidgetEndPaint [WidgetPtr][WidgetId]` ：在刚绘制小部件时中断。
+    - `SlateDebugger.Break.RemoveAll` ：删除所有要中断的请求。
+- 绘制，位于`ConsoleSlateDebuggerPaint.cpp`中：
+    - `SlateDebugger.Paint.Start` ：启动绘制的小部件调试工具。用于显示已在该框架中绘制的小部件。
+    - `SlateDebugger.Paint.Stop` ：停止绘制的小部件调试工具。
+    - `SlateDebugger.Paint.Enable` ：切换（启动/停止）绘制的小部件调试工具以显示绘制的小部件。
+    - `SlateDebugger.Paint.LogOnce` ：记录工具上次更新期间绘制的所有小部件的名称。
+    - `SlateDebugger.Paint.MaxNumberOfWidgetDisplayedInList [MaxNumberOfWidgetsInList]` ：当 DisplayWidgetNameList 在工具中处于活动状态时将显示的小部件的最大数量。
+    - `SlateDebugger.Paint.ToggleWidgetNameList` ：可切换选项，用于显示已在工具中绘制的小部件的名称。
+    - `SlateDebugger.Paint.LogWarningIfWidgetIsPaintedMoreThanOnce` ：如果在工具的单个帧中多次绘制小部件，则切换记录警告。
+    - `SlateDebugger.Paint.OnlyGameWindow` ：在工具中切换仅调试游戏窗口的小部件。
+- 更新，位于`ConsoleSlateDebuggerUpdate.cpp` ：
+    - `SlateDebugger.Update.Start` ：启动更新小部件调试工具以显示小部件何时更新。
+    - `SlateDebugger.Update.Stop` ：停止更新小部件调试工具。
+    - `SlateDebugger.Update.Enable` ：切换（启动/停止）更新小部件调试工具以显示小部件何时更新。
+    - `SlateDebugger.Update.ToggleLegend` ：切换以在工具中显示颜色图例。
+    - `SlateDebugger.Update.ToggleWidgetNameList` ：切换以显示工具中已更新的小部件的名称。
+    - `SlateDebugger.Update.ToggleUpdateFromPaint` ：切换以同时显示没有更新标志但作为其他小部件的副作用而更新的小部件。
+    - `SlateDebugger.Update.SetWidgetUpdateFlagsFilter` ：启用/禁用特定的小部件更新标志过滤器。
+        - 过滤器，位于`WidgetUpdateFlags.h` ：
             - `None`
-            - `Tick`: Widget has a tick function.
-            - `ActiveTimer`: Widget has an active timer that needs to update.
-            - `Repaint`: Needs repaint because the widget is dirty.
-            - `VolatilePaint`: Needs repaint because the widget is volatile.
+            - `Tick` ：Widget 具有勾选功能。
+            - `ActiveTimer` ：Widget 有一个需要更新的活动计时器。
+            - `Repaint` ：需要重新绘制，因为小部件脏了。
+            - `VolatilePaint` ：需要重新绘制，因为小部件是易失性的。
             - `Any`
-        - `SlateDebugger.Update.SetInvalidationRootIdFilter`: Toggle to show only the widgets that are part of an invalidation root.
-        - `SlateDebugger.Update.OnlyGameWindow`: Toggle to only show the debug info for the game window.
-- Invalidation, located in `ConsoleSlateDebuggerInvalidate.cpp`:
-    - `SlateDebugger.InvalidationRoot.Start`: Starts the invalidation widget debug tool. It shows widgets that are invalidated.
-    - `SlateDebugger.InvalidationRoot.Stop`: Stops the invalidation widget debug tool.
-    - `SlateDebugger.InvalidationRoot.Enabled`: Toggles(Start/Stop) the invalidation widget debug tool to show widgets that are invalidated.
-    - `SlateDebugger.InvalidationRoot.bShowLegend`: Toggle to display the color legend.
-    - `SlateDebugger.InvalidationRoot.bShowWidgetList`: Toggle to display the names of the invalidation widgets.
-    - `SlateDebugger.InvalidationRoot.bLogInvalidatedWidget`: Toggle to log the invalidated widget to the console.
-    - `SlateDebugger.InvalidationRoot.ThresholdPerformanceMS`: For `bUsePerformanceThreshold`, threshold in milliseconds to reach before logging and/or displaying the invalidated widgets.
-    - `SlateDebugger.InvalidationRoot.bUsePerformanceThreshold`: Only display the invalidated widgets and/or log them if performance is worst than the threshold in milliseconds.
-    - `SlateDebugger.InvalidationRoot.SetInvalidateRootReasonFilter`: Enable/Disable specific invalidate root reason filters.
-        - Filters, located in `SlateDebugging.h`:
+        - `SlateDebugger.Update.SetInvalidationRootIdFilter` ：切换以仅显示属于失效根的小部件。
+        - `SlateDebugger.Update.OnlyGameWindow` ：切换为仅显示游戏窗口的调试信息。
+- 失效，位于`ConsoleSlateDebuggerInvalidate.cpp` ：
+    - `SlateDebugger.InvalidationRoot.Start` ：启动失效小部件调试工具。它显示无效的小部件。
+    - `SlateDebugger.InvalidationRoot.Stop` ：停止失效小部件调试工具。
+    - `SlateDebugger.InvalidationRoot.Enabled` ：切换（启动/停止）失效小部件调试工具以显示失效的小部件。
+    - `SlateDebugger.InvalidationRoot.bShowLegend` ：切换以显示颜色图例。
+    - `SlateDebugger.InvalidationRoot.bShowWidgetList` ：切换以显示失效小部件的名称。
+    - `SlateDebugger.InvalidationRoot.bLogInvalidatedWidget` ：切换以将无效的小部件记录到控制台。
+    - `SlateDebugger.InvalidationRoot.ThresholdPerformanceMS` ：对于`bUsePerformanceThreshold` ，在记录和/或显示无效小部件之前要达到的阈值（以毫秒为单位）。
+    - `SlateDebugger.InvalidationRoot.bUsePerformanceThreshold` ：仅在性能低于阈值（以毫秒为单位）时才显示无效的小部件和/或记录它们。
+    - `SlateDebugger.InvalidationRoot.SetInvalidateRootReasonFilter` ：启用/禁用特定的无效根本原因过滤器。
+        - 过滤器，位于`SlateDebugging.h`中：
             - `None`
             - `ChildOrder`
             - `Root`
             - `ScreenPosition`
-- Invalidation Root, located in `ConsoleSlateDebuggerInvalidationRoot.cpp`:
-    - `SlateDebugger.InvalidationRoot.Start`: Starts the invalidation root widget debug tool. It shows when invalidation roots are using the slow or the fast path.
-    - `SlateDebugger.InvalidationRoot.Stop`: Stops the invalidation root widget debug tool.
-    - `SlateDebugger.InvalidationRoot.Enable`: Toggles(Start/Stop) the invalidation root widget debug tool to show when invalidation roots are using teh slow or the fast path.
-    - `SlateDebugger.InvalidationRoot.ToggleLegend`: Toggle to display the color legend.
-    - `SlateDebugger.InvalidationRoot.ToggleWidgetNameList`: Toggle to display the name of the invalidation root.
+- 失效根，位于`ConsoleSlateDebuggerInvalidationRoot.cpp`中：
+    - `SlateDebugger.InvalidationRoot.Start` ：启动失效根小部件调试工具。它显示无效根何时使用慢速或快速路径。
+    - `SlateDebugger.InvalidationRoot.Stop` ：停止失效根小部件调试工具。
+    - `SlateDebugger.InvalidationRoot.Enable` ：切换（启动/停止）失效根小部件调试工具以显示失效根何时使用慢速或快速路径。
+    - `SlateDebugger.InvalidationRoot.ToggleLegend` ：切换以显示颜色图例。
+    - `SlateDebugger.InvalidationRoot.ToggleWidgetNameList` ：切换以显示失效根的名称。
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="input-framework-of-unreal-engine"></a>
 
-## 10.0 Input Framework of Unreal Engine(relating to UMG/Slate)
+## 10.0 Unreal Engine输入框架（涉及UMG/Slate）
 
 <a name="input-flow-of-unreal-engine"></a>
 
-### 10.1 Input Flow of Unreal Engine
+### 10.1 虚幻引擎的输入流程
 
-This is a high level overview flow of input from the lowest level to the highest level is listed in order below in the order that an input is routed for each user (each stage calls to the next stage of the input flow of Unreal Engine):
+这是从最低级别到最高级别的输入的高级概述流程，按以下顺序列出，按照为每个用户路由输入的顺序（每个阶段都会调用虚幻引擎输入流的下一个阶段）：
 
-1. **Engine Heartbeat Tick**`FEngineLoop`: Unreal Engine’s heartbeat tick that notifies the platform SDKs to tick/update every frame.
-2. **Platform’s API**`GenericApplication` &amp; `FGenericApplicationMessageHandler`: SDK for Windows/Mac/Xbox/Playstation/etc which creates the Slate Application on engine initialization and sends inputs to it every frame per user.
-3. **Slate Application**`FSlateApplication`: Handles routing that input between Input Processors, Slate UI and the game engine for game code to receive that input.
-4. **Input Processors** *optional*`IInputProcessor`: These are C++ objects that can be dynamically added/removed from a list of Input Pre Processors within the Slate Application and receive input before anything else does and controls whether input is consumed or continues to be routed down. It’s recommended you make one for your project because it gives you full control of your inputs before anything else in the engine gets them, there’s even an Epic made example in the engine called **AnalogCursor**! This will also get input even if you're using Input Mode UI Only and receive inputs in the editor!
-5. **Slate UI Elements**`SWidget`: Any focused UI elements on screen that should be receiving input and can consume that input.
-    - This is also where **UMG Widgets**`UWidget` will receive input since UMG Widgets are just UObject based wrappers for Slate Widgets.
-6. **Game Viewport Client**`UGameViewportClient`: When looking through the code it may seem a little confusing for figuring out where the input is routed to the Game Viewport Client but basically at its core level, if the Slate Application sent it to the Slate elements and it did not get consumed then it gets routed down through to the viewport widget which is a Slate widget(which is also the visual representation of the game’s final rendered image) that is then routed to the Game Viewport Client, which handles propagating that input to the rest of the game engine and connecting with the game code. This is the point where depending on which input mode you’re using, Input Mode Game/Input Mode Game and UI will allow pawn’s to receive input.
-7. **Player Controller**`APlayerController`: Once the Game Viewport receives an input, it has to go through some checks to make sure it's usable for game code and then tells the player controller to add it to its **Input Stack** inside `ProcessPlayerInput` which is called on from the player controller’s `Tick`.
-8. **Player Input**`UPlayerInput`: A player input object that Player Controllers have for routing input to pawns and other objects that are on its Input Stack.
-9. **Input Component**`UInputComponent`: This is the commonly used method to receive input for game code that is also found in Epic's official documentation, it is an object that is on every actor that connects with the Player Controller’s Input Stack to receive input that is routed through the engine for the game code to listen to and receive inputs.
+1. **引擎心跳标记**`FEngineLoop` ：虚幻引擎的心跳标记，通知平台 SDK 标记/更新每一帧。
+2. **平台的 API** `GenericApplication`和`FGenericApplicationMessageHandler` ：适用于 Windows/Mac/Xbox/Playstation/etc 的 SDK，它在引擎初始化时创建 Slate 应用程序，并向每个用户的每一帧发送输入。
+3. **Slate 应用程序**`FSlateApplication` ：处理输入处理器、Slate UI 和游戏引擎之间的输入路由，以便游戏代码接收该输入。
+4. **输入处理器***可选*`IInputProcessor` ：这些是 C++ 对象，可以从 Slate 应用程序内的输入预处理器列表中动态添加/删除，并在其他任何操作之前接收输入，并控制输入是被消耗还是继续向下路由。建议您为您的项目制作一个，因为它可以让您在引擎中的其他任何内容获取输入之前完全控制输入，引擎中甚至有一个名为**AnalogCursor**的 Epic 制作示例！即使您使用仅输入模式 UI 并在编辑器中接收输入，这也将获得输入！
+5. **Slate UI Elements** `SWidget` ：屏幕上任何应接收输入并可以使用该输入的聚焦 UI 元素。
+    - 这也是**UMG Widgets** `UWidget`将接收输入的地方，因为 UMG Widgets 只是 Slate Widgets 的基于 UObject 的包装器。
+6. **游戏视口客户端**`UGameViewportClient` ：在查看代码时，如果 Slate 应用程序将其发送到 Slate 元素而没有将其发送到 Slate 元素，那么弄清楚输入路由到游戏视口客户端的位置可能会有点令人困惑，但基本上是在其核心级别被消耗，然后它被路由到视口小部件，这是一个 Slate 小部件（也是游戏最终渲染图像的视觉表示），然后被路由到游戏视口客户端，该客户端处理将该输入传播到其余部分游戏引擎并与游戏代码连接。此时，根据您使用的输入模式，输入模式游戏/输入模式游戏和 UI 将允许 pawn 接收输入。
+7. **玩家控制器**`APlayerController` ：一旦游戏视口接收到输入，它必须经过一些检查以确保它可用于游戏代码，然后告诉玩家控制器将其添加到`ProcessPlayerInput`内的**输入堆栈**（从玩家控制器的 ProcessPlayerInput 中调用） `Tick` 。
+8. **玩家输入**`UPlayerInput` ：玩家控制器具有的玩家输入对象，用于将输入路由到其输入堆栈上的 pawn 和其他对象。
+9. **输入组件**`UInputComponent` ：这是接收游戏代码输入的常用方法，也可以在 Epic 的官方文档中找到，它是每个与玩家控制器的输入堆栈连接的参与者上的一个对象，以接收通过游戏代码监听和接收输入的引擎。
 
-![Input Flow Diagram](images/input_flow_diagram.png)
- *Input Flow Diagram*
+![输入流程图](images/input_flow_diagram.png)
+*输入流程图*
 
 <a name="input-components"></a>
 
-### 10.2 Input Components
+### 10.2 输入组件
 
-Input Component's are `UActorComponent`'s that are present in all actors(`AActor`). These components will link with AxisMappings and ActionMappings as bindings in your project to run functionality. Each binding can consume input events which prevents other components on the input stack from processing that same input event. Input Components enable an actor to bind input events to delegate functions that are automatically handled by two classes:
+输入组件是`UActorComponent` ，存在于所有 actor( `AActor` ) 中。这些组件将与 AxisMappings 和 ActionMappings 链接作为项目中的绑定来运行功能。每个绑定都可以使用输入事件，从而阻止输入堆栈上的其他组件处理同一输入事件。输入组件使参与者能够将输入事件绑定到由两个类自动处理的委托函数：
 
-> - `APlayerController`:: Handles building the input stack and controls the order and prioritization.
-> - `UPlayerInput`:: Handles broadcasting those delegate functions and handles figuring out if an binding is being used or not.
+> - `APlayerController` :: 处理构建输入堆栈并控制顺序和优先级。
+> - `UPlayerInput` :: 处理广播这些委托函数并处理确定是否正在使用绑定。
 >
-> Here is the actual order of operations for input components every frame. *Diagram Below*
+> 这是每帧输入组件的实际操作顺序。*下图*
 >
-> 1. [`APlayerController::TickPlayerInput`]
->     1. [`UPlayerInput::Tick`]
->     2. Collects mouse over events.
->     3. Collects touch over events.
->     4. [`APlayerController::ProcessPlayerInput`]
->         1. [`APlayerController::BuildInputStack`]: Builds the stack of input components and the order that they will be processed. Can be overriden to control the order.
->         2. [`UPlayerInput::ProcessInputStack`]: Actually start processing input.
->             1. [`APlayerController::PreProcessInput`]
->             2. Copies the state of non-axis key's.
->                 1. Starts going through the stack of input components from top to bottom; one by one(now consider we're working with a single input component but in a loop until there's no more input components).
->                     1. Builds the keymap for this input component to know what actions/axis work with specific key bindings to create input cords.
->                     2. Looks for touch bindings and decide if an input action binding has occured. If that's the case then track it.
->                     3. Looks for gesture bindings and decide if an input action binding has occurred. If that's the case then track it.
->                     4. Looks for axis bindings and decide if an input axis binding has occured. If that's the case then track it.
->                     5. Decide whether to consume key or not(based off book-keeping done in between building the keymap and reaching this point).
->             3. Resets each input component's axis bindings to zero.
->             4. Broadcasts Input Actions to the input components that should have functionality run.
->             5. Broadcasts Input Axis to the input components that should have functionality run.
->             6. [`APlayerController::PostProcessInput`]
->             7. [`UPlayerInput::FinishProcessingPlayerInput`]: Finishes processing input for this frame by saving if inputs are now being held. Cleaning up values for next frame.
->             8. Clears all the bindings that were broadcast.
->         3. Resets the input stack for next frame.
->     5. [`APlayerController::ProcessForceFeedbackAndHaptics`]
+> 1. [ `APlayerController::TickPlayerInput` ]
+>     1. [ `UPlayerInput::Tick` ]
+>     2. 收集鼠标悬停事件。
+>     3. 收集触摸事件。
+>     4. [ `APlayerController::ProcessPlayerInput` ]
+>         1. [ `APlayerController::BuildInputStack` ]：构建输入组件的堆栈以及它们的处理顺序。可以覆盖以控制顺序。
+>         2. [ `UPlayerInput::ProcessInputStack` ]：实际开始处理输入。
+>             1. [ `APlayerController::PreProcessInput` ]
+>             2. 复制非轴键的状态。
+>                 1. 开始从上到下遍历输入组件堆栈；一个接一个（现在考虑我们正在使用单个输入组件，但在一个循环中，直到没有更多的输入组件）。
+>                     1. 构建此输入组件的键盘映射，以了解哪些操作/轴与特定键绑定一起使用以创建输入线。
+>                     2. 查找触摸绑定并确定是否发生了输入操作绑定。如果是这种情况，请跟踪它。
+>                     3. 查找手势绑定并确定是否发生输入操作绑定。如果是这种情况，请跟踪它。
+>                     4. 查找轴绑定并确定是否发生输入轴绑定。如果是这种情况，请跟踪它。
+>                     5. 决定是否使用密钥（基于构建键盘映射和到达此点之间完成的簿记）。
+>             3. 将每个输入组件的轴绑定重置为零。
+>             4. 将输入操作广播到应该运行功能的输入组件。
+>             5. 将输入轴广播到应该运行功能的输入组件。
+>             6. [ `APlayerController::PostProcessInput` ]
+>             7. [ `UPlayerInput::FinishProcessingPlayerInput` ]：如果现在保持输入，则通过保存来完成此帧的输入处理。清理下一帧的值。
+>             8. 清除所有广播的绑定。
+>         3. 重置下一帧的输入堆栈。
+>     5. [ `APlayerController::ProcessForceFeedbackAndHaptics` ]
 
-![Input Component Order of Operations](images/input_component_order_operations.png)
- *The order of operations for how Input is ticked and processed in levels starting from `TickPlayerInput` inside `APlayerController`*
+![输入组件操作顺序](images/input_component_order_operations.png)
+ *`APlayerController`内部从`TickPlayerInput`开始的级别中如何勾选和处理输入的操作顺序*
 
-Input Components can also have a priority stack so that input can be consumed by the higher priority actors.
- The priority stack for input components are as follows(highest priority first):
+输入组件还可以具有优先级堆栈，以便更高优先级的参与者可以使用输入。
+输入组件的优先级堆栈如下（优先级最高的在前）：
 
-1. Actors with "Accepts Input" enabled, from most-recently enabled to least-recently enabled.
-    1. To move an actor to the top of priority in this stack, you can re-enable its "Accepts Input" value and it will be moved to the top of the priority stack.
-2. Player Controllers
-3. Level Script
-4. Pawns
+1. 启用“接受输入”的参与者，从最近启用到最近最少启用。
+    1. 要将 Actor 移动到该堆栈中的优先级顶部，您可以重新启用其“接受输入”值，它将被移动到优先级堆栈的顶部。
+2. 玩家控制器
+3. 关卡脚本
+4. 棋子
 
-![Input Component Stack](images/input_component_stack.png)
- *Input Component Stack, courtesy of [Epic's Documentation](https://docs.unrealengine.com/5.0/en-US/input/)*
+![输入组件堆栈](images/input_component_stack.png)
+*输入组件堆栈，由[Epic 文档](https://docs.unrealengine.com/5.0/en-US/input/)提供*
 
 <a name="input-event-types"></a>
 
-### 10.3 Input Event Types
+### 10.3 输入事件类型
 
-Each time an input occurs a struct is used for each type of input that all inherit from **FInputEvent**:
+每次发生输入时，都会为从**FInputEvent**继承的每种类型的输入使用一个结构体：
 
-- **FInputEvent**: Base struct for all mouse, key events, Touch/Motion events.
-    - **Modifier Keys** `FModiferKeysState`: State of modifier keys when this event happened during this frame.
-    - **Is Repeat** `bool`: Flag to know if this input event was auto-repeated(held and then repeatedly fired).
-    - **User Index** `uint32`: The integer index of the **Slate User** that caused this event.
-    - **Event Path** `const FWidgetPath*`: The path of events that are sent along with this event.
+- **FInputEvent** ：所有鼠标、按键事件、触摸/运动事件的基本结构。
+    - **修饰键**`FModiferKeysState` ：在此帧期间发生此事件时修饰键的状态。
+    - **Is Repeat** `bool` ：用于了解此输入事件是否自动重复（保持然后重复触发）的标志。
+    - **用户索引**`uint32` ：引起此事件的**Slate 用户**的整数索引。
+    - **事件路径**`const FWidgetPath*` ：与此事件一起发送的事件的路径。
 
-Every other event type comes from `FInputEvent`:
+所有其他事件类型都来自`FInputEvent` ：
 
-- **FKeyEvent** `FInputEvent`: A key action for Keyboard/Gamepad being Pressed/Released. It is passed to event handlers dealing with this key input.
-    - **Key** `FKey`: The name of the key that was pressed.
-    - **CharacterCode** `uint32`: The character code that's the Unreal friendly version of the key that was pressed. If it’s not accounted for then the character key returns zero.
-    - **KeyCode** `uint32`: The original character code received from hardware/SDK.
-- **FAnalogInputEvent** `FKeyEvent`: Describes an analog key value to account for thumbsticks.
-    - **AnalogValue** `float`: 0-1 value to represent the thumbstick axis, 0 = not being pressed &amp; 1 being fully pressed.
-- **FCharacterEvent** `FInputEvent`: A keyboard action where a UTF-16 code(Unicode 16 bit encoding) is inputted, used for OnKeyChar functionality.
-    - **Character** `TCHAR`: The character that was pressed.
-- **FPointerEvent** `FInputEvent`: A Mouse/Touch input(since Touch is considered as Mouse inputs as well where they only use the Left Mouse Button as the Touch input) used for Press/Release/Move/etc. Some of these values you may not even need to use, but it provides a lot of helpful information.
-    - **ScreenSpacePosition** `FVector2D`: The current screen space position of this pointer event.
-    - **LastScreenSpacePosition** `FVector2D`: The last frame’s screen space position of this pointer event.
-    - **CursorDelta** `FVector2D`: The distance between current and last screen space positions.
-    - **PressedButtons** `const TSet<FKey>*`: The currently pressed mouse buttons that this pointer event is using.
-    - **EffectingButton** `FKey`: The mouse button that this pointer event is representing(touch events will always use Left Mouse Button).
-    - **PointerIndex** `uint32`: Which pointer(finger) index is for this Slate User.
-    - **TouchpadIndex** `uint32`: Which pointer(finger) index is for this Slate User when on laptops with touchpad mouse’.
-    - **Force** `float`: How much force is being applied on this touchpad/pointer input.
-    - **IsTouchEvent** `bool`: Is this a touch(including trackpad) based pointer event or mouse based.
-    - **GestureType** `EGestureType`: Which type of gesture this pointer event is using such as a swipe, scroll, magnify, rotate, long press, etc.
-    - **WheelOrGestureDelta** `FVector2D`: The change in gesture value since the last gesture event of the same type.
-    - **IsDirectionInvertedFromDevice** `bool`: Is the gesture delta inverted.
-    - **IsTouchForceChanged** `bool`: Is this event a special force-change touch event.
-    - **IsTouchFirstMove** `bool`: Is this event a special first-move touch event.
-- **FMotionEvent** `FInputEvent`: Describes a touch pad event using the internal gyroscope such as it being Pressed/Moved/Lifted/Rotated/etc.
-    - **Tilt** `FVector`: The current tilt of the device/controller.
-    - **RotationRate** `FVector`: The rotation speed of the device/controller.
-    - **Gravity** `FVector`: The direction of gravity in the real world(pointing down towards the ground) that was reported by the device/controller.
-    - **Acceleration** `FVector`: The 3D acceleration of the device/controller.
-- **FNavigationEvent** `FInputEvent`: The focus navigation event for Left/Right/Up/Down which is passed around for **User Focus**.
-    - **NavigationType** `EUINavigation`: The navigation direction of this event, if it was Up/Down/Left/Right/etc.
-    - **NavigationGenesis** `ENavigationGenesis`: Enum for knowing where this navigation event came from(was caused by) such as Keyboard/Controller/User.
+- **FKeyEvent** `FInputEvent` ：按下/释放键盘/游戏手柄的按键操作。它被传递给处理此键输入的事件处理程序。
+    - **Key** `FKey` ：按下的键的名称。
+    - **CharacterCode** `uint32` ：所按下按键的 Unreal 友好版本的字符代码。如果没有考虑到，则字符键返回零。
+    - **KeyCode** `uint32` ：从硬件/SDK 接收的原始字符代码。
+- **FAnalogInputEvent** `FKeyEvent` ：描述模拟键值以说明摇杆。
+    - **AnalogValue** `float` ：0-1 值代表摇杆轴，0 = 未按下，1 表示完全按下。
+- **FCharacterEvent** `FInputEvent` ：输入 UTF-16 代码（Unicode 16 位编码）的键盘操作，用于 OnKeyChar 功能。
+    - **字符**`TCHAR` ：按下的字符。
+- **FPointerEvent** `FInputEvent` ：鼠标/触摸输入（因为触摸被视为鼠标输入，并且仅使用鼠标左键作为触摸输入），用于按下/释放/移动等。其中一些值您可能甚至不需要使用，但它提供了很多有用的信息。
+    - **ScreenSpacePosition** `FVector2D` ：此指针事件的当前屏幕空间位置。
+    - **LastScreenSpacePosition** `FVector2D` ：此指针事件的最后一帧的屏幕空间位置。
+    - **CursorDelta** `FVector2D` ：当前和最后一个屏幕空间位置之间的距离。
+    - **PressedButtons** `const TSet<FKey>*` ：此指针事件正在使用的当前按下的鼠标按钮。
+    - **EffectingButton** `FKey` ：此指针事件所代表的鼠标按钮（触摸事件将始终使用鼠标左键）。
+    - **PointerIndex** `uint32` ：哪个指针（手指）索引适用于该 Slate 用户。
+    - **TouchpadIndex** `uint32` ：当使用带有触摸板鼠标的笔记本电脑时，哪个指针（手指）索引适用于该 Slate 用户。
+    - **Force** `float` ：在此触摸板/指针输入上施加了多少力。
+    - **IsTouchEvent** `bool` ：这是基于触摸（包括触控板）的指针事件还是基于鼠标的事件。
+    - **GestureType** `EGestureType` ：此指针事件使用哪种类型的手势，例如滑动、滚动、放大、旋转、长按等。
+    - **WheelOrGestureDelta** `FVector2D` ：自上次相同类型的手势事件以来手势值的变化。
+    - **IsDirectionInvertedFromDevice** `bool` ：手势增量是否反转。
+    - **IsTouchForceChanged** `bool` ：此事件是否为特殊的力改变触摸事件。
+    - **IsTouchFirstMove** `bool` ：此事件是否为特殊的首次移动触摸事件。
+- **FMotionEvent** `FInputEvent` ：使用内部陀螺仪描述触摸板事件，例如按下/移动/抬起/旋转等。
+    - **Tilt** `FVector` ：设备/控制器的当前倾斜度。
+    - **RotationRate** `FVector` ：设备/控制器的旋转速度。
+    - **重力**`FVector` ：设备/控制器报告的现实世界中的重力方向（向下指向地面）。
+    - **Acceleration** `FVector` ：设备/控制器的 3D 加速度。
+- **FNavigationEvent** `FInputEvent` ：左/右/上/下的焦点导航事件，传递给**用户焦点**。
+    - **NavigationType** `EUINavigation` ：此事件的导航方向，如果是上/下/左/右/等。
+    - **NavigationGenesis** `ENavigationGenesis` ：用于了解此导航事件来自何处（由其引起）的枚举，例如键盘/控制器/用户。
 
 <a name="input-modes"></a>
 
-### 10.4 Input Modes
+### 10.4 输入模式
 
-**WidgetBlueprintLibrary** has 3 functions for setting something called **Input Mode** on Player Controllers, the three states explain what’s actually happening in the input flow in relation to step 6; Game Viewport Client. It is important to understand that there is no dedicated Input Mode, but these are shortcuts for changing values on the Game Viewport Client via the Player Controller.
+**WidgetBlueprintLibrary**有 3 个函数用于在玩家控制器上设置称为**输入模式的**功能，这三个状态解释了与步骤 6 有关的输入流中实际发生的情况；游戏视口客户端。重要的是要了解，没有专用的输入模式，但这些是通过玩家控制器更改游戏视口客户端上的值的快捷方式。
 
-Any changes done to input the modes values will persist between level/map travel, regardless of if you used the default Unreal Engine functionality to change it or if you manually changed those values yourself in the Game Viewport Client.
+对输入模式值所做的任何更改都将在关卡/地图旅行之间持续存在，无论您是使用默认的虚幻引擎功能来更改它还是您自己在游戏视口客户端中手动更改了这些值。
 
-- **Input Mode UI Only**: Basically tells the Game Viewport Client to ignore input so any inputs that the Game Viewport Client receives are discarded so the input is not routed down to later steps in the input flow AND releases the mouse so you can click around in the viewport(or outside of the Viewport if the **Mouse Lock Mode** says so).
-- **Input Mode Game Only**: Tells the Game Viewport Client that it can receive inputs so when the Game Viewport Client receives those inputs they are properly routed down to later steps in the input flow AND locks the mouse so it cannot click around in the viewport.
-- **Input Mode Game &amp; UI**: Tells the Game Viewport Client that it can receive inputs AND releases the mouse so you can click around in the viewport (or outside of the Viewport if the **Mouse Lock Mode** says so).
+- **仅输入模式 UI** ：基本上告诉游戏视口客户端忽略输入，因此游戏视口客户端接收到的任何输入都将被丢弃，这样输入就不会路由到输入流中的后续步骤，并释放鼠标，以便您可以在视口（如果**鼠标锁定模式**如此规定，则在视口之外）。
+- **仅游戏输入模式**：告诉游戏视口客户端它可以接收输入，因此当游戏视口客户端收到这些输入时，它们会正确路由到输入流中的后续步骤，并锁定鼠标，使其无法在视口中单击。
+- **输入模式游戏和 UI** ：告诉游戏视口客户端它可以接收输入并释放鼠标，以便您可以在视口中单击（如果**鼠标锁定模式**如此规定，则可以在视口外部单击）。
 
-[](https://youtu.be/ktIDz1wCe0Y)![Input Modes Video Example](video_thumbnails/input_modes_video_thumbnail.png)
+[](https://youtu.be/ktIDz1wCe0Y)![输入模式视频示例](video_thumbnails/input_modes_video_thumbnail.png)
 
-Mouse Lock Mode`EMouseLockMode` is how the mouse cursor is locked(meaning the cursor cannot move out of the bounds) to the viewport depending on the mode it is in:
+鼠标锁定模式`EMouseLockMode`是鼠标光标锁定（意味着光标不能移出边界）到视口的方式，具体取决于其所处的模式：
 
-- **Do Not Lock**: Do not lock the mouse cursor to the viewport.
-     ![Do Not Lock Example](images/mouse_lock_modes/mouse_lock_mode_do_not_lock.png)
-- **Lock On Capture**: Only lock the mouse cursor to the viewport when the mouse is captured(clicking or interacting with the viewport).
-     ![Lock on Capture Example](images/mouse_lock_modes/mouse_lock_mode_lock_capture.png)
-- **Lock Always**: Always lock the mouse cursor to the viewport, not allowing it to leave the viewport.
-     ![Lock Always Example](images/mouse_lock_modes/mouse_lock_mode_lock_always.png)
-- **Lock in Fullscreen**: Always lock the cursor if we're in fullscreen.
-     ![Lock in Fullscreen Example](images/mouse_lock_modes/mouse_lock_mode_lock_fullscreen.png)
+- **不锁定**：不将鼠标光标锁定到视口。
+    ![不锁定示例](images/mouse_lock_modes/mouse_lock_mode_do_not_lock.png)
+- **锁定捕获**：仅在捕获鼠标（单击或与视口交互）时将鼠标光标锁定到视口。
+    ![锁定捕获示例](images/mouse_lock_modes/mouse_lock_mode_lock_capture.png)
+- **始终锁定**：始终将鼠标光标锁定在视口上，不允许其离开视口。
+    ![始终锁定示例](images/mouse_lock_modes/mouse_lock_mode_lock_always.png)
+- **锁定全屏**：如果处于全屏状态，请始终锁定光标。
+    ![锁定全屏示例](images/mouse_lock_modes/mouse_lock_mode_lock_fullscreen.png)
 
-> I want to specify that Mouse Lock Mode is on a per viewport basis which accounts for split screen for each player's viewport while window would account for the entire window all of the viewports.
+> 我想指定鼠标锁定模式是基于每个视口的，它负责每个玩家视口的分屏，而窗口则负责整个窗口的所有视口。
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="unreals-focusing-system"></a>
 
-## 11.0 Unreal's Focusing System
+## 11.0 Unreal的聚焦系统
 
-Unreal Engine’s focusing system in regards to Slate/UMG is the concept of **User Focus** where only one **Slate Widget** can be focused at a time by a specific user known as a **Slate User**.
+虚幻引擎关于 Slate/UMG 的聚焦系统是**用户聚焦**的概念，其中称为**Slate User**的特定用户一次只能聚焦一个**Slate Widget** 。
 
-Multiple Slate Users can focus on the same widget but a user cannot focus on two widgets at once (to do so would require you to have to build that functionality out on your own but at that point you’re probably fighting with it rather than working with it and saving time having to manage both the game you’re building and your custom focusing system).
+多个 Slate 用户可以专注于同一个小部件，但用户不能同时专注于两个小部件（这样做需要您自己构建该功能，但此时您可能正在与它斗争而不是工作有了它，可以节省管理您正在构建的游戏和自定义聚焦系统的时间）。
 
-User Focus is tracked by the **Slate Application** using an integer index for each **Slate User** and the widget focus path for which **Slate Widget** that user is currently focusing on, these are the local users on this application to account for split screen players. Focus will persist between level/map travel so its good practice to reset it by sending focus back to the game's viewport.
+**Slate 应用程序**使用每个**Slate 用户**的整数索引以及用户当前关注的**Slate Widget**的小部件焦点路径来跟踪用户焦点，这些是该应用程序上用于说明分屏播放器的本地用户。焦点将在关卡/地图旅行之间持续存在，因此最好通过将焦点发送回游戏视口来重置焦点。
 
-Unreal Engine’s focusing system is built from 4 key elements:
+虚幻引擎的聚焦系统由 4 个关键要素组成：
 
-- **Slate Application**: This handles tracking which widget is currently in focus(including notifying when focus is changed) and for telling the focusing system that an input was pressed.
-- **HittestGrid**(yes that is how the class is named, I consider it a typo of HitTestGrid): Handles finding the next focusable widget by using the function FindNextFocusableWidget and returns it to the Slate Application.
-- **SWidget**: This is a base functionality in all widgets that is meant to be overridden:
-    - `OnKeyDown`: When a key is pressed and focus is on this widget, this is the functionality for what this widget should do.
-    - `OnNavigation`: When the widget is focused/loses focus, etc.
-- **Navigation Config**: Handles figuring out which navigation direction to use based on an input.
+- **Slate 应用程序**：它处理跟踪当前处于焦点的小部件（包括在焦点更改时发出通知）并告诉聚焦系统按下了输入。
+- **HittestGrid** （是的，这就是该类的命名方式，我认为这是 HitTestGrid 的拼写错误）：通过使用函数 FindNextFocusableWidget 处理查找下一个可聚焦小部件并将其返回到 Slate 应用程序。
+- **SWidget** ：这是所有小部件中的基本功能，应该被覆盖：
+    - `OnKeyDown` ：当按下某个键并且焦点位于该小部件上时，这是该小部件应该执行的功能。
+    - `OnNavigation` ：当小部件获得焦点/失去焦点等时。
+- **导航配置**：根据输入确定要使用的导航方向。
 
 <a name="navigation-grid-explanation"></a>
 
-### 11.1 Navigation Grid Explanation
+### 11.1 导航网格说明
 
-> To visualize the hit test grid, the console command is `Slate.HitTestGridDebugging [0/1]` also located in the [Debug Console Commands](#debug-console-commands) of the [Development &amp; Debug Tools for UMG/Slate](#dev-debug-tools) section.
+> 为了可视化命中测试网格，控制台命令是`Slate.HitTestGridDebugging [0/1]`它也位于[UMG/Slate 的开发和调试工具](#dev-debug-tools)部分的[调试控制台命令](#debug-console-commands)中。
 
-The hit test grid is basically how it handles navigation, and it will facilitate which widget to navigate to per use(so each user has their own Hittest Grid), navigation is calculated only along the direction specified along a grid(at a resolution of 128, there is no reason to change it since it checks if the widget is within that evenly spaced grid in a straight line) made up of the collidable bounding boxes of each opted in widget (thus desired size and geometry come into play here) and this grid is populated based on specific widgets that have opted into this hit test grid.
+命中测试网格基本上是它处理导航的方式，它将有助于每次使用时导航到哪个小部件（因此每个用户都有自己的命中测试网格），导航仅沿着沿网格指定的方向计算（分辨率为 128） ，没有理由更改它，因为它检查小部件是否位于直线上均匀间隔的网格内），该网格由每个选择的小部件的可碰撞边界框组成（因此所需的大小和几何形状在这里发挥作用）并且这个网格是根据选择加入此命中测试网格的特定小部件填充的。
 
-![Hit Test Grid Example 1](images/hittest_grid_1.png) | ![Hit Test Grid Example 2](images/hittest_grid_2.png)
+![命中测试网格示例 1](images/hittest_grid_1.png) | ![命中测试网格示例 2](images/hittest_grid_2.png)
 :-: | :-:
 
 
-*In this example we show what buttons we can navigate to on navigation direction press. Button 2 in this case will always navigate to the closest widget because it can navigate to any widget below it.*
+*在此示例中，我们展示了按下导航方向时可以导航到哪些按钮。在这种情况下，按钮 2 将始终导航到最近的小部件，因为它可以导航到其下方的任何小部件。*
 
-![Navigation Grid Debug View](images/nav_grid_debug.png)
- *This is what the navigation grid actually looks like in the example when using the `Slate.HitTestGridDebugging 1` console command.*
+![导航网格调试视图](images/nav_grid_debug.png)
+*这是使用`Slate.HitTestGridDebugging 1`控制台命令时示例中导航网格的实际外观。*
 
-When an **Navigation Genesis** occurs it basically gets the cells that the currently focused widget is at and then based off the navigation direction the hit test grid check in a straight line to find the focusable widget by sweeping in each cell to see if there is a widgets bounding box within it and running through a series of checks in the specified order, if they fail these checks then we return a debug result for it and skip it:
+当**导航创世**发生时，它基本上获取当前聚焦的小部件所在的单元格，然后根据导航方向，命中测试网格沿直线检查，通过扫描每个单元格以查看是否有小部件来找到可聚焦的小部件它包含在其中的边界框，并按指定的顺序运行一系列检查，如果它们未通过这些检查，则我们返回它的调试结果并跳过它：
 
-1. **Does Not Intersect**: If the bounding rectangle of the widget is not intersecting with the sweep.
-2. **Previous Widget Is Better**: If the widget isn’t closer than the previously checked widget then we failed because the previous widget was closer, the closest widget is always favored.
-3. **Not A Descendent**: If the widget's boundary navigation rule isn’t Escape and the widget isn’t a descendent of our boundary condition widget(so we’re not supposed to navigate to this widget in the first place).
-4. **Disabled**: If that widget is not enabled.
-5. **Does Not Support Keyboard Focus**: This widget does not support keyboard focus.
+1. **不相交**：如果小部件的边界矩形不与扫描相交。
+2. **上一个小部件更好**：如果该小部件不比之前检查的小部件更接近，那么我们就会失败，因为前一个小部件更接近，所以总是优先选择最接近的小部件。
+3. **不是后代**：如果小部件的边界导航规则不是 Escape 并且该小部件不是我们的边界条件小部件的后代（因此我们不应该首先导航到该小部件）。
+4. **已禁用**：如果该小部件未启用。
+5. **不支持键盘焦点**：此小部件不支持键盘焦点。
 
-After the widget has passed these tests it is saved as the Best Widget and saves its **Slate Rect**(to be used for navigation later) and then it checks what that widgets boundary navigation rule is (Explicit, Custom, CustomBoundary, Stop, Wrap) and handles for each one that isn’t Escape. Once the sweep reaches the window edge of the screen, it will send focus to the best widget.
+小部件通过这些测试后，它被保存为最佳小部件并保存其**Slate 矩形**（稍后用于导航），然后检查小部件边界导航规则是什么（显式、自定义、自定义边界、停止、换行）并每个不是 Escape 的句柄。一旦扫描到达屏幕的窗口边缘，它将把焦点发送到最好的小部件。
 
-You can also know when focus changes for any user(be sure to filter for specific users!) by getting the Slate Application and getting its `FocusChangingDelegate` using the `OnFocusChanging()` accessor function (depending on your version of Unreal you may just be able to get the delegate variable itself)and listening for focus changes.
+您还可以通过获取 Slate 应用程序并使用`OnFocusChanging()`访问器函数获取其`FocusChangingDelegate` （取决于您的 Unreal 版本，您可能只能获取委托变量本身）并监听焦点变化。
 
-You can filter which user changed focus via the `FFocusEvent` that the delegate outputs that has the user index that changed focus(it also has the cause for the focus change in case you need to know that for a specific use case).
+您可以通过委托输出的`FFocusEvent`过滤哪个用户更改了焦点，该事件具有更改焦点的用户索引（如果您需要知道特定用例的情况，它也有焦点更改的原因）。
 
-*Scroll to the right for the header file -&gt;*
+*向右滚动找到头文件 -&gt;*
 
 
-<table> <tr> <td style="text-align: center;">Source File(.cpp)</td>  <td style="text-align: center;">Header File(.h)</td> </tr>
-<comment></comment> <td> ```c++ void AMyPlayerController::BeginPlay() {   Super::BeginPlay();  <p data-md-type="paragraph">// Valid check that slate application initialized if(FSlateApplication::IsInitialized()) { // Depending on your version of Unreal Engine, // you may need to just do "FSlateApplication::Get().FocusChangingDelegate" instead of using a function to get it</p> <pre data-md-type="block_code" data-md-language=""><code>// Bind for when focus changes, if you're having issues with this then I recommend learning about Unreal's delegate framework
+<table>
+<tr>
+<td style="text-align: center;">源文件(.cpp)</td>
+<td style="text-align: center;">头文件(.h)</td>
+</tr>
+<comment></comment><td> ```c++ void AMyPlayerController::BeginPlay() { Super::BeginPlay();<p data-md-type="paragraph"> // 有效检查 slate 应用程序已初始化 if(FSlateApplication::IsInitialized()) { // 根据您的虚幻引擎版本， // 您可能只需要执行“FSlateApplication::Get().FocusChangingDelegate”，而不是使用函数来获取它</p>
+<pre data-md-type="block_code" data-md-language=""><code>// Bind for when focus changes, if you're having issues with this then I recommend learning about Unreal's delegate framework
 // or looking at the slate application's header and source file regarding the focus changing delegate
 FSlateApplication::Get().OnFocusChanging().AddUObject(this, &amp;AMyPlayerController::FocusChanged);
-</code></pre> <p data-md-type="paragraph">}<br data-md-type="linebreak"> }</p> <p data-md-type="paragraph">void AMyPlayerController::FocusChanged(const FFocusEvent&amp; FocusEvent, const FWeakWidgetPath&amp; OldFocusedWidgetPath, const TSharedPtr<swidget data-md-type="raw_html">&amp; OldFocusedWidget, const FWidgetPath&amp; NewFocusedWidgetPath, const TSharedPtr<swidget data-md-type="raw_html">&amp; NewFocusedWidget) { // Check if this player controller has a valid local player object yet if(!IsValid(GetLocalPlayer())) { // If we don't have a valid local player object then don't continue because we're not done setting up the player controller return; } // Check if the player that changed focus is ourselves if(GetLocalPlayer()-&gt;GetControllerId() != FocusEvent.GetUser()) { // If self didn't do this focus change, then don't continue return; } // Do stuff }</swidget></swidget></p> <pre data-md-type="block_code" data-md-language=""><code>&lt;/td&gt;
+</code></pre>
+<p data-md-type="paragraph">}<br data-md-type="linebreak"> }</p>
+<p data-md-type="paragraph"> void AMyPlayerController::FocusChanged(const FFocusEvent&amp; FocusEvent, const FWeakWidgetPath&amp; OldFocusedWidgetPath, const TSharedPtr<swidget data-md-type="raw_html"> &amp; OldFocusedWidget, const FWidgetPath&amp; NewFocusedWidgetPath, const TSharedPtr<swidget data-md-type="raw_html"> &amp; NewFocusedWidget) { // 检查此玩家控制器是否具有有效的本地玩家对象 if(!IsValid(GetLocalPlayer())) { // 如果我们没有有效的本地玩家对象，则不要继续，因为我们'尚未完成玩家控制器返回的设置； } // 检查改变焦点的玩家是否是我们自己 if(GetLocalPlayer()-&gt;GetControllerId() != FocusEvent.GetUser()) { // 如果 self 没有进行这次焦点改变，则不继续 return; } // 做东西 }</swidget></swidget></p>
+<pre data-md-type="block_code" data-md-language=""> <code>&lt;/td&gt;
 &lt;td&gt;
 ```c++
 UCLASS()
 class MYGAME_API AMyPlayerController : public APlayerController
 {
-	GENERATED_BODY()
+GENERATED_BODY()
 protected:
 
-  // AActor interface
-  virtual void BeginPlay() override;
-  // ~AActor interface
+// AActor interface
+virtual void BeginPlay() override;
+// ~AActor interface
 
-  /**
-   * Occurs when a Slate User changes widget focus.
-   * @param FocusEvent The type of focus event that occured.
-   * @param OldFocusedWidgetPath The previously focused widget's path in the widget tree.
-   * @param OldFocusedWidget The previously focused slate widget.
-   * @param NewFocusedWidgetPath The widget path of the slate widget we're going to focus.
-   * @param NewFocusedWidget The slate widget we're going to focus.
-   */
-  virtual void FocusChanged(const FFocusEvent&amp; FocusEvent,
-    const FWeakWidgetPath&amp;  OldFocusedWidgetPath,
-    const TSharedPtr&lt;SWidget&gt;&amp; OldFocusedWidget,
-    const FWidgetPath&amp; NewFocusedWidgetPath,
-    const TSharedPtr&lt;SWidget&gt;&amp; NewFocusedWidget);
+/**
+* Occurs when a Slate User changes widget focus.
+* @param FocusEvent The type of focus event that occured.
+* @param OldFocusedWidgetPath The previously focused widget's path in the widget tree.
+* @param OldFocusedWidget The previously focused slate widget.
+* @param NewFocusedWidgetPath The widget path of the slate widget we're going to focus.
+* @param NewFocusedWidget The slate widget we're going to focus.
+*/
+virtual void FocusChanged(const FFocusEvent&amp; FocusEvent,
+const FWeakWidgetPath&amp; OldFocusedWidgetPath,
+const TSharedPtr&lt;SWidget&gt;&amp; OldFocusedWidget,
+const FWidgetPath&amp; NewFocusedWidgetPath,
+const TSharedPtr&lt;SWidget&gt;&amp; NewFocusedWidget);
 };
-</code></pre> </td>
-<div data-md-type="block_html"></div> </table>
+</code></pre>
+</td>
+</table>
+<div data-md-type="block_html"></div>
 
 <a name="navigation-genesis"></a>
 
-### 11.2 Navigation Genesis
+### 11.2 导航起源
 
-Navigation can be caused by 3 types, known as **Navigation Genesis**:
+导航可以由 3 种类型引起，称为**导航起源**：
 
-- **Keyboard**: The navigation event was caused by the keyboard input.
-- **Controller**: The navigation event was caused by the gamepad input.
-- **User**: The navigation event is a user generated event that was caused by game code, widgets, etc.
+- **键盘**：导航事件是由键盘输入引起的。
+- **控制器**：导航事件是由游戏手柄输入引起的。
+- **用户**：导航事件是由游戏代码、小部件等引起的用户生成的事件。
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="split-screen"></a>
 
-## 12.0 Split Screen
+## 12.0分屏
 
-Split Screen works where it has a **Game Layer Manager** that manages the viewport slate widget, which player that’s using that slate widget and how to shape that slate widget. The game layer manager is instanced by the game engine on initialization inside `GameEngine.cpp`(`UGameEngine`) and in `PlayLevel.cpp`(`UEditorEngine`) using a hard coded class so to build your own it would require modifying the engine’s source code in `UGameEngine::CreateGameViewportWidget` &amp; `UEditorEngine::GeneratePIEViewportWindow` (Epic if you see this, please change this to be a configurable class that can be specified in the project settings, you have it setup for the Game Viewport Client so it's already halfway there!).
+分屏功能的工作原理是，它有一个**游戏层管理器**来管理视口板岩小部件、哪个玩家正在使用该板岩小部件以及如何塑造该板岩小部件。游戏层管理器由游戏引擎在`GameEngine.cpp` ( `UGameEngine` ) 和`PlayLevel.cpp` ( `UEditorEngine` ) 中初始化时使用硬编码类进行实例化，因此要构建您自己的，需要修改`UGameEngine::CreateGameViewportWidget`中引擎的源代码&amp; `UEditorEngine::GeneratePIEViewportWindow` （史诗般的，如果你看到这个，请将其更改为可以在项目设置中指定的可配置类，你已经为游戏视口客户端设置了它，所以它已经完成了一半！）。
 
-> One possible route depending on your use case would be to call `UGameViewportClient::SetGameLayerManager` but be aware this could have downstream effects and could require some workarounds from non-overridable engine code.
+> 根据您的用例，一种可能的途径是调用`UGameViewportClient::SetGameLayerManager` ，但请注意这可能会产生下游影响，并且可能需要来自不可覆盖的引擎代码的一些解决方法。
 
-When displaying a widget to the screen you have two options:
+当在屏幕上显示小部件时，您有两个选择：
 
-- **Add to Viewport**: Adds it to the entire game viewport, covering both players viewports with that one widget; useful for pause menus or anything that’s meant to entirely take up the screen and is something that should affect all other local players.
-- **Add to Player Screen**: Adds it to that specific player’s viewport and does not cover other players viewports with that one widget; useful for HUDs or anything that is specific to that local player and not all the other players.
+- **添加到视口**：将其添加到整个游戏视口，用该小部件覆盖两个玩家视口；对于暂停菜单或任何需要完全占据屏幕的东西很有用，并且应该影响所有其他本地玩家。
+- **添加到玩家屏幕**：将其添加到特定玩家的视口，并且不会用该小部件覆盖其他玩家的视口；对于 HUD 或特定于该本地玩家而非所有其他玩家的任何内容很有用。
 
 <a name="game-layer-manager"></a>
 
-### 12.1 Game Layer Manager
+### 12.1 游戏层管理器
 
-The Game Layer Manager is an interface that has the barebones information for getting the geometry of the viewport, getting the local player using this widget, adding layers of widgets(not recommended unless you know what you’re doing) which holds all slate widgets that have been added to that specific viewport, and for holding the actual game viewport slate widget. The Game Layer Manager is located in `SGameLayerManager.h/cpp` and you can find the interface (`IGameLayerManager`) and a compound widget that is the `SGameLayerManager` which handles displaying the game viewport widget(also useful as a basic example implementation of the interface) using a simple rectangle layout that is retrieved from the game viewport client. The `SGameLayerManager` also routes changes to DPI scale and for scaling the viewport based on the DPI scale value including all of its widget layers.
+游戏层管理器是一个界面，其中包含用于获取视口几何形状、让本地玩家使用此小部件、添加小部件层（不推荐，除非您知道自己在做什么）的准系统信息，其中包含所有板岩小部件已添加到该特定视口，并用于保存实际的游戏视口板岩小部件。游戏层管理器位于`SGameLayerManager.h/cpp`中，您可以找到接口 ( `IGameLayerManager` ) 和一个复合小部件，即`SGameLayerManager` ，它处理显示游戏视口小部件（也可用作界面的基本示例实现），使用从游戏视口客户端检索的简单矩形布局。 `SGameLayerManager`还将更改路由到 DPI 比例，并根据 DPI 比例值（包括其所有小部件层）缩放视口。
 
 <a name="viewport-layout"></a>
 
-### 12.2 Viewport Layout
+### 12.2 视口布局
 
-By default the layout design is a rectangle shape that is customized via its X/Y size and its X/Y position on the screen in a 0-1 ratio for the center of it. This is set in the default `UGameViewportClient`’s constructor. If you want to create your own custom viewport shapes; you would have to create your own Game Layer Manager class to have it calculate out a custom shape and apply it to the viewport widget.
+默认情况下，布局设计是一个矩形形状，可通过其 X/Y 尺寸及其在屏幕上的 X/Y 位置（中心比例为 0-1）进行自定义。这是在默认`UGameViewportClient`的构造函数中设置的。如果您想创建自己的自定义视口形状；您必须创建自己的游戏层管理器类才能计算出自定义形状并将其应用到视口小部件。
 
-![Game Viewport Layer Framework](images/game_layer_general.png)
- *This is a general overview of how the game layer manager works with some visual explanation of how the Slate Application talks to these systems.*
+![游戏视口层框架](images/game_layer_general.png)
+*这是游戏层管理器如何工作的总体概述，以及 Slate 应用程序如何与这些系统通信的一些可视化解释。*
 
 <a name="local-players"></a>
 
-### 12.3 Local Players
+### 12.3 本地玩家
 
-Each local player on a single machine has a `ULocalPlayer` object that can exist between levels. This is the literal representation of the player as a `UObject` type, each local player is useful for knowing which gamepad that this player is using, which viewport client this player is using, getting its Slate User, getting online subsystem information, etc.
+单台机器上的每个本地玩家都有一个可以存在于关卡之间的`ULocalPlayer`对象。这是玩家作为`UObject`类型的字面表示，每个本地玩家对于了解该玩家正在使用哪个游戏手柄、该玩家正在使用哪个视口客户端、获取其 Slate 用户、获取在线子系统信息等很有用。
 
-Local Players are tracked using different ID's for different elements of the application, they are listed below:
+本地玩家使用不同的 ID 来跟踪应用程序的不同元素，如下所示：
 
-- Platform ID: The player's ID on this machine, so index 0 would be the initial player.
-- Controller ID: While this says controller, this is actually the gamepad ID.
-- Unique Net ID: The unique network ID for this player in an online multiplayer level.
+- 平台ID：玩家在本机上的ID，因此索引0为初始玩家。
+- 控制器 ID：虽然这里说的是控制器，但实际上是游戏手柄 ID。
+- 唯一网络 ID：该玩家在在线多人游戏关卡中的唯一网络 ID。
 
 <a name="gamepad-id"></a>
 
-#### 12.3.1 Gamepad ID(Controller ID)
+#### 12.3.1 手柄ID（控制器ID）
 
-> Gamepad ID is really Controller ID, but to avoid confusion we will be saying Gamepad ID from this point onward. Also none of the gamepad ID functionality is exposed to Blueprint so you would need to do this yourself but they are all publicly accessible values and functions in `ULocalPlayer`.
+> 游戏手柄 ID 实际上是控制器 ID，但为了避免混淆，从现在开始我们将使用游戏手柄 ID。此外，游戏手柄 ID 功能均未向蓝图公开，因此您需要自己执行此操作，但它们都是`ULocalPlayer`中可公开访问的值和函数。
 
-Local Players are able to know which gamepad ID they're using by calling `ULocalPlayer::GetControllerId()`. For changing it to another gamepad you would call `ULocalPlayer::SetControllerId()`, if another player is using that ID then it will force-ably swap that player's gamepad ID and it will update the platform user ID as well. For getting the delegates for when the gamepad ID is changed you can use `ULocalPlayer::OnControllerIdChanged()`.
+本地玩家可以通过调用`ULocalPlayer::GetControllerId()`知道他们正在使用哪个游戏手柄 ID。要将其更改为另一个游戏手柄，您可以调用`ULocalPlayer::SetControllerId()` ，如果另一个玩家正在使用该 ID，那么它将强制交换该玩家的游戏手柄 ID，并且也会更新平台用户 ID。要获取游戏手柄 ID 更改时的委托，您可以使用`ULocalPlayer::OnControllerIdChanged()` 。
 
-> Why is it Controller ID and not Gamepad ID? I honestly don't know, I do hope Epic fixes this naming convention because this can be confused to be talking about Player Controller and not Gamepad Controller (honestly just saying gamepad would 100% clear up confusion). The code comments do not explain this clearly either because they refer to it as physical ControllerID, which again could be confused with Player Controllers.
+> 为什么是控制器 ID 而不是游戏手柄 ID？老实说，我不知道，我确实希望 Epic 修复这个命名约定，因为这可能会与谈论玩家控制器而不是游戏手柄控制器混淆（老实说，只说游戏手柄就可以 100% 消除混淆）。代码注释也没有清楚地解释这一点，因为它们将其称为物理 ControllerID，这又可能与玩家控制器混淆。
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
 <a name="important-file-names"></a>
 
-## 13.0 Important File Names
+## 13.0 重要文件名
 
-Here is a list(in no particular order) of important/helpful C++ files within Unreal Engine that it’s recommended you should look at, some might not even be talked about in this compendium.
+以下是虚幻引擎中重要/有用的 C++ 文件的列表（排名不分先后），建议您查看，有些文件甚至可能不会在本纲要中讨论。
 
-You don’t need to understand it immediately but this helps with knowing helpful files to refer back to.
+您不需要立即理解它，但这有助于了解有用的文件以供参考。
 
-Object Name | Header | Source | Notes
+对象名称 | 标头 | 来源 | 笔记
 :-: | :-: | :-: | :--
-`FEngineLoop`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Launch/FEngineLoop/) | LaunchEngineLoop.h | LaunchEngineLoop.cpp | This is the heart of the entire Unreal Engine application, recommend only looking but not touching.
-[Multiple] | SharedPointer.h | SharedPointerInternals.h | This is where Epic's Shared(Smart) Pointer Framework is located, also recommend taking a look at `SharedPointerTesting.ini` for example's of using Shared Pointers.
-`FSlateApplication`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Slate/Framework/Application/FSlateApplication/) | SlateApplication.h | SlateApplication.cpp |
-`FHittestGrid`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/SlateCore/Input/FHittestGrid/) | HittestGrid.h | HittestGrid.cpp |
-`SWidget`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/SlateCore/Widgets/SWidget/) | SWidget.h | SWidget.cpp |
-`UWidget`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/UMG/Components/UWidget/) | Widget.h | Widget.cpp |
-[Multiple] | DeclarativeSyntaxSupport.h | [None] | Holds all the declarative syntax macros for Slate to use such as SNew, SLATE_ARGUMENT, etc. Extremely important file to study.
-`SUserWidget`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/SlateCore/Widgets/SUserWidget/) | SUserWidget.h | SUserWidget.cpp |
-`UUserWidget`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/UMG/Blueprint/UUserWidget/) | UserWidget.h | UserWidget.cpp |
-`FNavigationConfig`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Slate/Framework/Application/FNavigationConfig/) | NavigationConfig.h | NavigationConfig.cpp | This is where most of the Navigation related types are, this includes structs and enums.
-[Multiple] | SlateEnums.h | [None] | This is where most of the Slate related Enum Types are.
-`TAttribute`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Core/Misc/TAttribute/) | Attribute.h | [None] |
-`TSlateAttribute`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/SlateCore/Widgets/TSlateAttribute_FText_EInvalidat-/) | SWidget.h &amp; SlateAttribute.h |  | While this is declared in `SWidget.h`, it is actually explained in `SlateAttribute.h`
-[Multiple] | InputCoreTypes.h | InputCoreTypes.cpp | This is where most of the Input related types are, this includes structs and enums.
-`FInputEvent`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/SlateCore/Input/FInputEvent/) | Events.h | Events.cpp | This is where the hierarchy of `FInputEvent` types are located.
-`SGameLayerManager`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Slate/SGameLayerManager/) | SGameLayerManager .h | SGameLayerManager .cpp |
-`UGameViewportClient`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Engine/UGameViewportClient/) | GameViewportClient.h | GameViewportClient.cpp |
-[Multiple] | UnrealClient.h | UnrealClient.cpp | This one is interesting because it holds manager objects for the viewport's rendering and some of its functionality at the same time.<br>This is also where screenshots are processed(including ones with/without UI).
-`FSceneViewport`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Slate/FSceneViewport/) | SceneViewport.h | SceneViewport.cpp | This is where our viewport's slate widget is essentially housed.
-`IInputProcessor`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Slate/Framework/Application/IInputProcessor/) | IInputProcessor.h | [None] | This is the base interface class for Input Pre Processors, you would inherit from this class if you were making one. For an example of how to set one up, lookup FAnalogCursor.
-`FAnalogCursor`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Slate/Framework/Application/FAnalogCursor/) | AnalogCursor.h | AnalogCursor.cpp |
-`FSlateUser`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Slate/Framework/Application/FSlateUser/) | SlateUser.h | SlateUser.cpp |
-`ULocalPlayer`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Engine/ULocalPlayer/) | LocalPlayer.h | LocalPlayer.cpp | This also holds `FLocalPlayerContext` which is useful for passing around to UI and other objects to have context to the local player, its player controller, game instance, world, etc.
-`UWidgetLayoutLibrary`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/UMG/Blueprint/UWidgetLayoutLibrary/) | WidgetLayoutLibrary.h | WidgetLayoutLibrary.cpp |
-`USlateBlueprintLibrary`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/UMG/Blueprint/USlateBlueprintLibrary/) | SlateBlueprintLibrary.h | SlateBlueprintLibrary.cpp | As a heads up, the script name is also written as "SlateLibrary" in case you have trouble finding it.
-`UWidgetBlueprintLibrary`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/UMG/Blueprint/UWidgetBlueprintLibrary/) | WidgetBlueprintLibrary.h | WidgetBlueprintLibrary.cpp | As a heads up, the script name is also written as "WidgetLibrary" in case you have trouble finding it.
-`UUserinterfaceSettings`<br>[Documentation](https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Engine/UUserInterfaceSettings/) | UserinterfaceSettings.h | UserinterfaceSettings.cpp | This is also where the render focus rule and a few other data types that you find in those settings are declared.
+`FEngineLoop`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Launch/FEngineLoop/) | LaunchEngineLoop.h | LaunchEngineLoop.cpp | 这是整个虚幻引擎应用的核心，建议只看不碰。
+[多种的] | 共享指针.h | 共享指针内部.h | 这是 Epic 的共享（智能）指针框架所在的位置，还建议查看`SharedPointerTesting.ini` ，例如使用共享指针的示例。
+`FSlateApplication`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Slate/Framework/Application/FSlateApplication/) | SlateApplication.h | SlateApplication.cpp |
+`FHittestGrid`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/SlateCore/Input/FHittestGrid/) | 命中测试网格.h | 命中测试网格.cpp |
+`SWidget`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/SlateCore/Widgets/SWidget/) | SWidget.h | SWidget.cpp |
+`UWidget`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/UMG/Components/UWidget/) | 小部件.h | 小部件.cpp |
+[多种的] | 声明性语法支持.h | [没有任何] | 保存 Slate 使用的所有声明性语法宏，例如 SNew、SLATE_ARGUMENT 等。需要研究的极其重要的文件。
+`SUserWidget`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/SlateCore/Widgets/SUserWidget/) | SUserWidget.h | SUserWidget.cpp |
+`UUserWidget`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/UMG/Blueprint/UUserWidget/) | UserWidget.h | UserWidget.cpp |
+`FNavigationConfig`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Slate/Framework/Application/FNavigationConfig/) | 导航配置.h | 导航配置.cpp | 这是大多数导航相关类型所在的位置，包括结构体和枚举。
+[多种的] | SlateEnums.h | [没有任何] | 这是大多数与 Slate 相关的枚举类型所在的位置。
+`TAttribute`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Core/Misc/TAttribute/) | 属性.h | [没有任何] |
+`TSlateAttribute`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/SlateCore/Widgets/TSlateAttribute_FText_EInvalidat-/) | SWidget.h 和 SlateAttribute.h |  | 虽然这是在`SWidget.h`中声明的，但实际上是在`SlateAttribute.h`中解释的
+[多种的] | 输入核心类型.h | 输入核心类型.cpp | 这是大多数输入相关类型所在的位置，包括结构体和枚举。
+`FInputEvent`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/SlateCore/Input/FInputEvent/) | 事件.h | 事件.cpp | 这是`FInputEvent`类型的层次结构所在的位置。
+`SGameLayerManager`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Slate/SGameLayerManager/) | SGameLayerManager.h | SGameLayerManager.cpp |
+`UGameViewportClient`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Engine/UGameViewportClient/) | GameViewportClient.h | GameViewportClient.cpp |
+[多种的] | 虚幻客户端.h | 虚幻客户端.cpp | 这个很有趣，因为它同时保存用于视口渲染的管理器对象及其一些功能。<br>这也是处理屏幕截图的地方（包括带/不带 UI 的屏幕截图）。
+`FSceneViewport`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Slate/FSceneViewport/) | 场景视口.h | 场景视口.cpp | 这是我们视口的板岩小部件的本质所在。
+`IInputProcessor`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Slate/Framework/Application/IInputProcessor/) | 输入处理器.h | [没有任何] | 这是输入预处理器的基本接口类，如果您要创建一个，则将从该类继承。有关如何设置的示例，请查找 FAnalogCursor。
+`FAnalogCursor`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Slate/Framework/Application/FAnalogCursor/) | 模拟光标.h | 模拟光标.cpp |
+`FSlateUser`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Slate/Framework/Application/FSlateUser/) | SlateUser.h | SlateUser.cpp |
+`ULocalPlayer`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Engine/ULocalPlayer/) | 本地播放器.h | 本地播放器.cpp | 它还包含`FLocalPlayerContext` ，它对于传递到 UI 和其他对象以获得本地玩家、其玩家控制器、游戏实例、世界等的上下文非常有用。
+`UWidgetLayoutLibrary`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/UMG/Blueprint/UWidgetLayoutLibrary/) | WidgetLayoutLibrary.h | WidgetLayoutLibrary.cpp |
+`USlateBlueprintLibrary`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/UMG/Blueprint/USlateBlueprintLibrary/) | SlateBlueprintLibrary.h | SlateBlueprintLibrary.cpp | 请注意，脚本名称也写为“SlateLibrary”，以防您找不到它。
+`UWidgetBlueprintLibrary`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/UMG/Blueprint/UWidgetBlueprintLibrary/) | WidgetBlueprintLibrary.h | WidgetBlueprintLibrary.cpp | 请注意，脚本名称也写为“WidgetLibrary”，以防您找不到它。
+`UUserinterfaceSettings`<br> [文档](https://docs.unrealengine.com/latest/INT/API/Runtime/Engine/Engine/UUserInterfaceSettings/) | 用户界面设置.h | 用户界面设置.cpp | 这也是声明渲染焦点规则和您在这些设置中找到的其他一些数据类型的地方。
 
-**[<span>⬆</span> Back to Top](#table-of-contents)**
+**[<span>⬆</span>返回顶部](#table-of-contents)**
